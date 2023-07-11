@@ -1,6 +1,6 @@
 "use client";
-import { Box, Link, Typography, useTheme } from "@mui/material";
 import axios from "axios";
+import { Box, Link, Typography, useTheme } from "@mui/material";
 import React from "react";
 import { useQuery } from "react-query";
 import ReactLoading from "react-loading";
