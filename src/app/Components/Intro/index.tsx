@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Typography, Button } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 
 export const Intro = () => {
   return (
@@ -17,7 +17,7 @@ export const Intro = () => {
         I like working with exciting people on exciting projects
       </Typography>
       <Typography variant="h6" color="common.white">
-        . . .and golfing when I've free time!
+        . . .and golfing when I&apos;ve free time!
       </Typography>
       <Box sx={{ mt: 3 }}>
         <Button
