@@ -1,0 +1,14 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.next-image {
+  width: 100%;
+  height: auto;
+}
+
+.mx-auto {
+  margin: 0 auto;
+}/*# sourceMappingURL=styles.css.map */
