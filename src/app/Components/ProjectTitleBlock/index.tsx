@@ -1,9 +1,16 @@
 "use client";
-import { Box, Button, Container, Link, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Link,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import { StyledHr } from "./styles";
 import { ProjectTechFeature } from "./ProjectTechFeatures";
-import GitHubIcon from "@mui/icons-material/Github";
+import { GitHub } from "react-feather";
 import LaunchIcon from "@mui/icons-material/Launch";
 
 type TechStackProps = {
@@ -21,6 +28,8 @@ type Props = {
 };
 
 export const ProjectTitleBlock = (props: Props) => {
+  const theme = useTheme();
+
   return (
     <Container>
       <Grid container columnGap={3} justifyContent="center">
@@ -68,7 +77,11 @@ export const ProjectTitleBlock = (props: Props) => {
             Learn More
           </Button> */}
           <Button variant="contained" color="secondary">
-            <GitHubIcon />
+            <GitHub
+              color={theme.palette.primary.main}
+              size={48}
+              strokeWidth={1.1}
+            />
           </Button>
         </Grid>
         <Grid xs={10} lg={5}>
