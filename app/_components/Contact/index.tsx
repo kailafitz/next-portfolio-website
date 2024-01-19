@@ -1,5 +1,8 @@
 import React from "react";
-import { Box, Container, Link, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import { Mail, Linkedin, Phone } from "react-feather";
 import Image from "next/image";

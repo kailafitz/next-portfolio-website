@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Tooltip from "@mui/material/Tooltip";
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 import Image from "next/image";
 import { TechStackProps } from "../../../../_types";
 

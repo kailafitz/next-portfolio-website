@@ -1,5 +1,8 @@
 import React from "react";
-import { Box, Typography, Button, Container } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 export const Intro = () => {
   return (

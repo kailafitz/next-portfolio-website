@@ -5,7 +5,9 @@ import { Contact } from "../../_components/Contact";
 import { Dribbble } from "../../_components/Dribbble";
 import { Intro } from "../../_components/Intro";
 import { Projects } from "../../_components/Projects";
-import { Box, Container, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Image from "next/image";
 

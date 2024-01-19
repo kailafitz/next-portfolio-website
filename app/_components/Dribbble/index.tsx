@@ -1,6 +1,8 @@
 "use client";
 import axios from "axios";
-import { Box, Container, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import React from "react";
 import { useQuery } from "react-query";
 import ReactLoading from "react-loading";

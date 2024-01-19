@@ -1,13 +1,11 @@
 "use client";
-import {
-  Box,
-  Button,
-  Container,
-  Link,
-  Typography,
-  useTheme,
-} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
 import { StyledHr } from "./styles";
 import { ProjectStackLogo } from "./ProjectStackLogo";
 import { GitHub } from "react-feather";

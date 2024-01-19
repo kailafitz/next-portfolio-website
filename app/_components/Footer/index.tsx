@@ -1,5 +1,6 @@
 "use client";
-import { Button, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import Button from "@mui/material/Button";
 import { StyledFooter } from "./styles";
 import { GitHub } from "react-feather";
 
