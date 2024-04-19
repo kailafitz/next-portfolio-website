@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 import React from "react";
 import { useQuery } from "react-query";
 import ReactLoading from "react-loading";
-import { HeaderLink } from "./HeaderLink";
+import { HeaderLink } from "../HeaderLink";
 
 export const Dribbble = () => {
   const theme = useTheme();
@@ -24,17 +24,29 @@ export const Dribbble = () => {
 
   if (status === "success") {
     return (
-      <Box minHeight="50vh">
+      <Box
+        sx={{ mb: 6 }}
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+      >
         <Container>
-          <HeaderLink />
+          <HeaderLink link="https://dribbble.com/kfitz47" label="Dribbble" />
           <Box
             display="flex"
             flexDirection={{ xs: "column", md: "row" }}
             justifyContent="center"
-            sx={{ flexGrow: 1 }}
+            sx={{ flexGrow: 1, "img:not(:last-child)": { mr: 5 } }}
           >
             {data.map((shot: { images: { normal: any } }, i: number) => {
-              return <img key={i} src={shot.images.normal} alt="shot" />;
+              return (
+                <img
+                  key={i}
+                  src={shot.images.normal}
+                  alt="shot"
+                  className="shadow"
+                />
+              );
             })}
           </Box>
         </Container>
@@ -52,7 +64,7 @@ export const Dribbble = () => {
           justifyContent: "center",
         }}
       >
-        <HeaderLink />
+        <HeaderLink link="https://dribbble.com/kfitz47" label="Dribbble" />
         <Box
           flexGrow={1}
           sx={{

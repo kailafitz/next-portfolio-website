@@ -16,12 +16,12 @@ export const Intro = () => {
       <Typography variant="h3" color="common.white" mb={2} fontWeight="300">
         React | TypeScript
       </Typography>
-      <Typography variant="body1" color="common.white" fontWeight="400">
+      <Typography variant="body2" color="common.white" fontWeight="400">
         . . .and I like to golf when I&apos;ve free time!
       </Typography>
       <Box sx={{ mt: 3 }}>
         <Button
-          variant="contained"
+          variant="inset"
           href="./MikhailaFitzpatrick_Technical_CurriculumVitae.pdf"
           download="MikhailaFitzpatrick_Technical_CurriculumVitae"
           sx={{ width: { xs: "100%", sm: "fit-content" } }}
@@ -29,10 +29,10 @@ export const Intro = () => {
           Download my resume
         </Button>
         <Button
-          variant="contained"
+          variant="inset"
           id="action-contact-button"
           data-scroll-to
-          href="#contact-bio"
+          href="#contact"
           sx={{
             ml: { sm: 3 },
             mt: { xs: 3, sm: 0 },

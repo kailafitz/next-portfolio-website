@@ -2,6 +2,7 @@ html,
 body {
     margin: 0;
     padding: 0;
+    background-color: #f4f3f3;
 }
 
 * {
@@ -27,12 +28,22 @@ body {
     width: 100%;
 }
 
-
-a {
-    transition: all .3s ease;
+.shadow {
+    box-shadow: -2px 5px 24px -13px grey;
 }
 
-a:hover {
-    transition: all .3s ease;
-    opacity: .7;
+.image-inset-shadow {
+    box-shadow: inset 7px 9px 29px -2px #080808;
+    border-radius: 50%;
+}
+
+.iframe-test {
+    display: none;
+    visibility: hidden;
+}
+
+.test {
+    width: 5px;
+    background-color: green;
+    transform: rotate(180deg);
 }

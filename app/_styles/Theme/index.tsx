@@ -1,17 +1,28 @@
 "use client";
 import { Urbanist, Open_Sans } from "next/font/google";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { customPalettes } from "../../variables";
 
-const urban = Urbanist({ subsets: ["latin"] });
-const open = Open_Sans({ subsets: ["latin"] });
+const urban = Urbanist({
+  weight: ["300", "400", "600", "700", "800"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+});
+const open = Open_Sans({
+  weight: ["300", "400", "600", "700", "800"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+});
 
 let theme = createTheme({
   palette: {
     primary: {
-      main: "#e26d5c",
+      main: customPalettes.primary.main,
+      dark: customPalettes.primary.dark,
     },
     secondary: {
-      main: "rgb(74, 78, 105)",
+      main: customPalettes.secondary.main,
+      dark: customPalettes.secondary.dark,
     },
   },
   typography: {
@@ -23,14 +34,13 @@ let theme = createTheme({
       fontFamily: urban.style.fontFamily,
       fontWeight: 300,
     },
-    subtitle1: {
-      fontSize: "1.2rem",
-      fontFamily: open.style.fontFamily,
-      fontWeight: 500,
-    },
+    // subtitle1: {
+    //   fontSize: "1.2rem",
+    //   fontFamily: open.style.fontFamily,
+    //   fontWeight: 500,
+    // },
     body1: {
       fontFamily: open.style.fontFamily,
-      fontWeight: 500,
     },
     button: {
       textTransform: "capitalize",
@@ -39,13 +49,76 @@ let theme = createTheme({
       fontFamily: open.style.fontFamily,
       fontSize: "2rem",
     },
+    copyright: {
+      fontSize: "9px",
+      color: "#fff",
+      fontFamily: open.style.fontFamily,
+    },
   },
   components: {
     MuiTypography: {
       defaultProps: {
         variantMapping: {
           name: "h1",
+          body1: "p",
+          copyright: "p",
         },
+      },
+    },
+    MuiButton: {
+      defaultProps: {
+        disableRipple: true,
+        disableTouchRipple: true,
+      },
+      styleOverrides: {
+        root: { minWidth: "unset", fontSize: "1.2rem" },
+      },
+      variants: [
+        {
+          props: { variant: "inset", color: "primary" },
+          style: {
+            color: "#fff",
+            boxShadow: `0px 0px 0px ${customPalettes.primary.dark},
+                        0px 0px 0px ${customPalettes.primary.light},
+                        inset 5px 5px 10px ${customPalettes.primary.dark},
+                        inset -5px -5px 5px ${customPalettes.primary.light}`,
+            transition: "box-shadow .2s ease-in",
+            "&:hover": {
+              boxShadow: `3px 4px 8px ${customPalettes.primary.dark},
+                          -1px -1px 10px ${customPalettes.primary.light},
+                          inset 0px 0px 0px ${customPalettes.primary.dark},
+                          inset 0px 0px 0px ${customPalettes.primary.light}`,
+              opacity: 1,
+              backgroundColor: customPalettes.primary.main,
+              transition: "box-shadow .2 ease-in",
+            },
+          },
+        },
+        {
+          props: { variant: "inset", color: "secondary" },
+          style: {
+            color: "#000",
+            boxShadow: `0px 0px 0px ${customPalettes.white.dark},
+                        0px 0px 0px ${customPalettes.white.light},
+                        inset 5px 5px 10px ${customPalettes.white.dark},
+                        inset -5px -5px 5px ${customPalettes.white.light}`,
+            transition: "box-shadow .2s ease-in",
+            "&:hover": {
+              boxShadow: `3px 4px 8px ${customPalettes.white.dark},
+                          -1px -1px 10px ${customPalettes.white.light},
+                          inset 0px 0px 0px ${customPalettes.white.dark},
+                          inset 0px 0px 0px ${customPalettes.white.light}`,
+              opacity: 1,
+              backgroundColor: customPalettes.white.main,
+              transition: "box-shadow .2 ease-in",
+            },
+          },
+        },
+      ],
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: { textDecoration: "none" },
       },
     },
   },

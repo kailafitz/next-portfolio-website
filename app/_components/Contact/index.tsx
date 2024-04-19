@@ -4,31 +4,40 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
-import { Mail, Linkedin, Phone } from "react-feather";
 import Image from "next/image";
+import { Typography } from "@mui/material";
 
 export const Contact = () => {
   const theme = useTheme();
   return (
     <Box
-      id="contact-bio"
       position="relative"
       sx={{
         width: "100%",
-        backgroundColor: (theme) => theme.palette.primary.main,
-        py: 8,
+        backgroundColor: "secondary.main",
+        // py: 8,
       }}
     >
       <Container maxWidth="lg">
-        <Grid container justifyContent="center">
-          <Grid xs={10} md={6} sx={{ mb: 4, display: "block" }}>
-            <Image
-              src="/contact.png"
-              alt="Get in Touch!"
-              height={500}
-              width={500}
-              className="next-image mx-auto d-block"
-            />
+        {/* <Typography
+          variant="h3"
+          color="common.white"
+          textAlign="center"
+          fontWeight={700}
+        >
+          Contact Me
+        </Typography> */}
+        {/* <Grid container justifyContent="center">
+          <Grid xs={10} md={6} sx={{ xs: { mb: 4 }, display: "block" }}>
+            <Box>
+              <Image
+                src="/call-me.png"
+                alt="Get in Touch!"
+                height={500}
+                width={500}
+                className="next-image mx-auto d-block image-inset-shadow"
+              />
+            </Box>
           </Grid>
           <Grid
             xs={10}
@@ -65,7 +74,7 @@ export const Contact = () => {
               />
             </Link>
           </Grid>
-        </Grid>
+        </Grid> */}
       </Container>
     </Box>
   );
