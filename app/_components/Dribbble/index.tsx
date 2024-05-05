@@ -38,8 +38,9 @@ export const Dribbble = () => {
               display="flex"
               flexDirection={{ xs: "column", md: "row" }}
               justifyContent="center"
+              className="mx-auto"
               sx={{
-                flexGrow: 1,
+                maxWidth: { xs: "100%", sm: "70%" },
                 "img:not(:last-child)": {
                   mr: { xs: 0, md: 5 },
                   mb: { xs: 5, md: 0 },
@@ -50,10 +51,10 @@ export const Dribbble = () => {
                 return (
                   <Image
                     key={i}
+                    width="300"
+                    height="100"
                     src={shot.images.normal}
                     alt="shot"
-                    width="500"
-                    height="300"
                     className="shadow h-auto"
                   />
                 );

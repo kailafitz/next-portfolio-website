@@ -87,7 +87,7 @@ const Intro = () => {
           >
             <Box>
               <Image
-                src="/waving.png"
+                src="/waving2.png"
                 alt="Bitmoji Waving"
                 height={500}
                 width={500}

@@ -46,8 +46,12 @@ li {
 }
 
 .image-inset-shadow {
-    box-shadow: inset 7px 9px 29px -2px #080808;
+    box-shadow: inset 4px 6px 25px 0px #5a180e, inset 0px 0px 11px -1px #5a180e;
     border-radius: 50%;
+}
+
+.insta-image {
+    height: auto;
 }
 
 .iframe-test {

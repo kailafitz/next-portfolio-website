@@ -108,19 +108,15 @@ export const Footer = () => {
           justifyContent="center"
           mb={{ xs: 2, md: 1 }}
         >
-          <Typography variant="copyright">
+          <Typography variant="body1">
             <Link color="common.white" href="privacy-policy">
               Privacy
             </Link>
           </Typography>
-          <Typography
-            variant="copyright"
-            color="common.white"
-            mx={{ xs: 1, md: 0.5 }}
-          >
+          <Typography variant="body1" color="common.white" mx={1}>
             |
           </Typography>
-          <Typography variant="copyright">
+          <Typography variant="body1">
             <Link color="common.white" href="cookies-policy">
               Cookies
             </Link>
@@ -130,6 +126,7 @@ export const Footer = () => {
         <Typography
           variant="copyright"
           sx={{
+            typography: { xs: "body2", md: "copyright" },
             display: "flex",
             flexDirection: "row",
             alignItems: "center",

@@ -62,8 +62,7 @@ let theme = createTheme({
       fontSize: "2rem",
     },
     copyright: {
-      // fontSize: "1.2rem",
-      fontSize: "0.7rem",
+      fontSize: "0.875rem",
       color: "#fff",
       fontFamily: open.style.fontFamily,
     },
