@@ -12,10 +12,11 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Alert, { AlertColor } from "@mui/material/Alert";
 import Link from "../CustomLink";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 // https://www.reddit.com/r/reactjs/comments/oq1rtp/type_authors_author_is_not_assignable_to_type/
 
-const SimpleSnackbar = ({
+const UserFeedbackSnackbar = ({
   show,
   message,
   type,
@@ -58,6 +59,7 @@ const SimpleSnackbar = ({
         onClose={handleClose}
         message=""
         action={action}
+        sx={{ maxWidth: "80%" }}
       >
         <Alert
           onClose={handleClose}
@@ -75,9 +77,10 @@ const SimpleSnackbar = ({
 // https://dev.to/idboussadel/implementing-google-analytics-in-consent-mode-with-a-cookie-banner-for-nextjs-with-ts-1ga6
 // https://blog.cloud66.com/google-tag-manager-consent-mode-v2-in-react
 // https://stackoverflow.com/questions/57086672/element-implicitly-has-an-any-type-because-expression-of-type-string-cant-b
+// https://stackoverflow.com/questions/76300847/getting-referenceerror-localstorage-is-not-defined-even-after-adding-use-clien
+// https://medium.com/@a.pirus/create-a-modal-that-can-be-opened-from-anywhere-in-next-js-13-36f6d0ce1bcf
 
-export default function ConsentBanner() {
-  const [open, setOpen] = useState(true);
+const ConsentBanner = () => {
   const [triggerGAPreferencesUpdate, setTriggerGAPreferencesUpdate] =
     useState(true);
   const [showSnackbar, setShowSnackbar] = useState("not set");
@@ -88,16 +91,24 @@ export default function ConsentBanner() {
     ad_personalization: false,
   });
 
-  const handleAllClick = (all: boolean) => {
+  const searchParams = useSearchParams();
+  const modal = searchParams.get("modal");
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleAllClick = (all: boolean, showFeedback: boolean) => {
     setConsent({
       ad_storage: all,
       analytics_storage: all,
       ad_user_data: all,
       ad_personalization: all,
     });
-    setTriggerGAPreferencesUpdate(!triggerGAPreferencesUpdate);
-    setOpen(false);
-    confirmGAPreferences();
+    {
+      showFeedback &&
+        setTriggerGAPreferencesUpdate(!triggerGAPreferencesUpdate);
+    }
+
+    router.push(pathname);
   };
 
   const handleIndividualToggleClick = (test: string) => {
@@ -120,6 +131,8 @@ export default function ConsentBanner() {
         setShowSnackbar("not saved");
       }, 1000);
     }
+
+    setShowSnackbar("not set");
   };
 
   useEffect(() => {
@@ -132,30 +145,29 @@ export default function ConsentBanner() {
       });
     }
     localStorage.setItem("consentMode", JSON.stringify(consent));
+    if (!triggerGAPreferencesUpdate) {
+      confirmGAPreferences();
+    }
   }, [triggerGAPreferencesUpdate]);
 
   return (
     <>
       <StyledDialog
-        open={open}
+        open={modal ? true : false}
         onClose={(event, reason) => {
-          if (consent.analytics_storage === true) {
-            handleIndividualToggleClick("analytics_storage");
-          }
-          if (consent.analytics_storage !== false) {
-            setTriggerGAPreferencesUpdate(!triggerGAPreferencesUpdate);
-            setOpen(false);
-          }
+          handleAllClick(false, false);
+          router.push(pathname);
         }}
         PaperProps={{
           sx: {
-            p: 5,
+            p: 3,
             "& .MuiFormControlLabel-root": {
               justifyContent: "space-between",
             },
           },
         }}
       >
+        <Typography variant="h3">Cookies</Typography>
         <Typography
           variant="body1"
           sx={{
@@ -169,13 +181,13 @@ export default function ConsentBanner() {
           improvements that could be made to the website. All data collected is{" "}
           <b>anonymous</b> and not inclusive of personal data that may be traced
           back in any way to an individual. If you are okay with this please
-          keep the "Analytics Storage" toggle on. View our{" "}
+          keep the &quot;Analytics Storage&quot; toggle on. View our{" "}
           <Link color="primary.main" href="/privacy-policy">
             Privacy Policy
           </Link>{" "}
           for more information.
         </Typography>
-        <FormGroup>
+        <FormGroup sx={{ my: 3 }}>
           <FormControlLabel
             control={
               <Switch
@@ -225,22 +237,33 @@ export default function ConsentBanner() {
             labelPlacement="start"
           />
         </FormGroup>
-        <ButtonGroup>
+        <ButtonGroup
+          disableElevation
+          fullWidth
+          size="small"
+          orientation="vertical"
+          variant="text"
+          // sx={{
+          //   button: { borderBottom: "none", ":not(last-child)": { mb: 2 } },
+          // }}
+        >
           <Button
             onClick={() => {
               setTriggerGAPreferencesUpdate(!triggerGAPreferencesUpdate);
-              setOpen(false);
+              router.push(pathname);
               confirmGAPreferences();
             }}
           >
             Save my Choices
           </Button>
-          <Button onClick={() => handleAllClick(true)}>Accept All</Button>
-          <Button onClick={() => handleAllClick(false)}>Reject All</Button>
+          <Button onClick={() => handleAllClick(true, true)}>Accept All</Button>
+          <Button onClick={() => handleAllClick(false, true)}>
+            Reject All
+          </Button>
         </ButtonGroup>
       </StyledDialog>
       {showSnackbar === "saved" && (
-        <SimpleSnackbar
+        <UserFeedbackSnackbar
           type="success"
           show={true}
           message={
@@ -256,16 +279,16 @@ export default function ConsentBanner() {
               </Link>
             </>
           }
-        ></SimpleSnackbar>
+        ></UserFeedbackSnackbar>
       )}
       {showSnackbar === "not saved" && (
-        <SimpleSnackbar
+        <UserFeedbackSnackbar
           type="error"
           show={true}
           message={
             <>
               Something has gone wrong. Please try again later or get in touch
-              with me here at
+              with me here at{" "}
               <Link
                 href="mailto:mikhailafitzpatrick@gmail.com"
                 color="common.white"
@@ -274,8 +297,10 @@ export default function ConsentBanner() {
               </Link>
             </>
           }
-        ></SimpleSnackbar>
+        ></UserFeedbackSnackbar>
       )}
     </>
   );
-}
+};
+
+export default ConsentBanner;

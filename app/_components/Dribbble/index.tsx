@@ -7,6 +7,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import ReactLoading from "react-loading";
 import { HeaderLink } from "../HeaderLink";
+import Image from "next/image";
 
 export const Dribbble = () => {
   const theme = useTheme();
@@ -25,30 +26,40 @@ export const Dribbble = () => {
   if (status === "success") {
     return (
       <Box
-        sx={{ mb: 6 }}
+        sx={{ pb: { xs: 8, md: 12 } }}
         display="flex"
         flexDirection="column"
         justifyContent="center"
       >
         <Container>
-          <HeaderLink link="https://dribbble.com/kfitz47" label="Dribbble" />
-          <Box
-            display="flex"
-            flexDirection={{ xs: "column", md: "row" }}
-            justifyContent="center"
-            sx={{ flexGrow: 1, "img:not(:last-child)": { mr: 5 } }}
-          >
-            {data.map((shot: { images: { normal: any } }, i: number) => {
-              return (
-                <img
-                  key={i}
-                  src={shot.images.normal}
-                  alt="shot"
-                  className="shadow"
-                />
-              );
-            })}
-          </Box>
+          <Container>
+            <HeaderLink link="https://dribbble.com/kfitz47" label="Dribbble" />
+            <Box
+              display="flex"
+              flexDirection={{ xs: "column", md: "row" }}
+              justifyContent="center"
+              sx={{
+                flexGrow: 1,
+                "img:not(:last-child)": {
+                  mr: { xs: 0, md: 5 },
+                  mb: { xs: 5, md: 0 },
+                },
+              }}
+            >
+              {data.map((shot: { images: { normal: any } }, i: number) => {
+                return (
+                  <Image
+                    key={i}
+                    src={shot.images.normal}
+                    alt="shot"
+                    width="500"
+                    height="300"
+                    className="shadow h-auto"
+                  />
+                );
+              })}
+            </Box>
+          </Container>
         </Container>
       </Box>
     );
@@ -58,27 +69,29 @@ export const Dribbble = () => {
     return (
       <Container
         sx={{
-          minHeight: "50vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          pb: { xs: 8, md: 12 },
         }}
       >
-        <HeaderLink link="https://dribbble.com/kfitz47" label="Dribbble" />
-        <Box
-          flexGrow={1}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <ReactLoading
-            type="bubbles"
-            color={theme.palette.secondary.main}
-            className="mx-auto"
-          />
-        </Box>
+        <Container>
+          <HeaderLink link="https://dribbble.com/kfitz47" label="Dribbble" />
+          <Box
+            flexGrow={1}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <ReactLoading
+              type="bubbles"
+              color={theme.palette.secondary.main}
+              className="mx-auto"
+            />
+          </Box>
+        </Container>
       </Container>
     );
   }

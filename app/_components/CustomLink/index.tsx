@@ -24,6 +24,7 @@
 // };
 // export default CustomLink;
 
+"use client";
 import * as React from "react";
 import clsx from "clsx";
 import { useRouter, usePathname } from "next/navigation";

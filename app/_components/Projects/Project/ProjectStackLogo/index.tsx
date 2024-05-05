@@ -12,7 +12,7 @@ export const ProjectStackLogo = (props: TechStackProps) => {
         sx={{
           mr: 2,
           mb: 2,
-          backgroundColor: "common.white",
+          // backgroundColor: "common.white",
           borderRadius: 1,
           p: 1,
           display: "flex",

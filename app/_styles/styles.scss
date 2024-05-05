@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: url("/next/font/google/");
+}
+
 html,
 body {
     margin: 0;
@@ -7,6 +12,14 @@ body {
 
 * {
     scroll-behavior: smooth;
+}
+
+ol,
+ul,
+li {
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.43;
 }
 
 .next-image {
@@ -42,8 +55,6 @@ body {
     visibility: hidden;
 }
 
-.test {
-    width: 5px;
-    background-color: green;
-    transform: rotate(180deg);
+.temp-size {
+    width: 1.2rem;
 }

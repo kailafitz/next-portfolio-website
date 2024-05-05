@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import Navigation from "./_components/Navigation";
@@ -11,10 +11,9 @@ import Script from "next/script";
 import { reponsiveTheme } from "./_styles/Theme";
 import GoogleAnalytics from "./_components/GoogleAnalytics";
 import ConsentBanner from "./_components/ConsentBanner";
+import { useRouter } from "next/navigation";
 
 ReactGA.initialize("G-C3NSFRZ1Q2");
-
-// <GoogleAnalytics GA_MEASUREMENT_ID="G-C3NSFRZ1Q2" />;
 
 export default function RootLayout({
   children,
@@ -22,9 +21,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [queryClient] = React.useState(() => new QueryClient());
+  const router = useRouter();
+
+  useEffect(() => {
+    const localStorageCookies = localStorage.getItem("consentMode");
+    if (localStorageCookies === null) {
+      router.push("?modal=true");
+    }
+  }, []);
+
   return (
     <html lang="en">
       <Script
+        id="GA-1"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
@@ -54,7 +63,7 @@ export default function RootLayout({
         }}
       />
       <head>
-        <Script>
+        <Script id="GA-2">
           {`(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -83,8 +92,8 @@ export default function RootLayout({
             <ThemeProvider theme={reponsiveTheme}>
               <Navigation />
               {children}
-              <ConsentBanner />
               <Footer />
+              <ConsentBanner />
             </ThemeProvider>
           </QueryClientProvider>
         </AppRouterCacheProvider>

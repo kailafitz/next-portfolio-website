@@ -5,7 +5,7 @@ import { Project } from "./Project";
 
 export const Projects = () => {
   return (
-    <Container maxWidth="lg" sx={{ mb: 14 }}>
+    <Container maxWidth="lg" sx={{ pt: { xs: 8, md: 12 } }}>
       {ProjectData.map((project, i) => {
         return (
           <Project

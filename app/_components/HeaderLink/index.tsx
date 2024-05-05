@@ -17,9 +17,16 @@ export const HeaderLink = (props: HeaderLinkProps) => {
         variant="h3"
         textAlign="center"
         fontWeight={300}
-        sx={{ width: "100%", mb: props.subtitle !== undefined ? 1.5 : 3 }}
+        sx={{
+          width: "100%",
+          mb: props.subtitle !== undefined ? 1.5 : 3,
+          span: {
+            display: { xs: "block", md: "inline" },
+            width: { xs: "100%", md: "unset" },
+          },
+        }}
       >
-        Catch me on{" "}
+        <span>Catch me on </span>
         <span>
           <Link
             href={props.link}

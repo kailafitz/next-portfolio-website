@@ -29,25 +29,28 @@ export const Project = (props: ProjectType) => {
   };
 
   return (
-    <Container sx={{ mb: 14, p: 0 }}>
-      <Grid container columnGap={3} justifyContent={{ xs: "space-between" }}>
-        <Grid
-          xs={1}
-          sx={{
-            borderLeft: (theme) => `1px ${theme.palette.primary.main} solid`,
-          }}
-        >
+    <Container sx={{ pb: { xs: 8, md: 12 } }}>
+      <Grid
+        container
+        columnGap={3}
+        justifyContent={{ xs: "center", md: "space-between" }}
+        sx={{
+          borderLeft: (theme) => `1px ${theme.palette.primary.main} solid`,
+        }}
+      >
+        <Grid xs={12} md={1}>
           <Box
             display="flex"
             flexDirection="row"
-            justifyContent="space-between"
+            // justifyContent="space-between"
+            sx={{ mb: { xs: 3, md: 0 } }}
           >
             <StyledHr />
-            <Typography variant="h6">{props.year}</Typography>
+            <Typography variant="h5">{props.year}</Typography>
           </Box>
         </Grid>
         <Grid
-          xs={10}
+          xs={11}
           md={5}
           sx={{
             display: "flex",
@@ -132,7 +135,7 @@ export const Project = (props: ProjectType) => {
             View code
           </Button>
         </Grid>
-        <Grid xs={12} md={5} sx={{ mt: { xs: 8, md: 0 } }}>
+        <Grid xs={11} md={5} sx={{ mt: { xs: 8, md: 0 } }}>
           <Box>
             <Tooltip
               title={

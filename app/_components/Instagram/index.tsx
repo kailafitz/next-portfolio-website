@@ -8,7 +8,7 @@ import Image from "next/image";
 export const Instagram = () => {
   return (
     <Box
-      sx={{ mb: 14 }}
+      sx={{ pb: { xs: 8, md: 12 } }}
       display="flex"
       flexDirection="column"
       justifyContent="center"
@@ -20,6 +20,7 @@ export const Instagram = () => {
         />
         <Box
           display="flex"
+          flexWrap="wrap"
           flexDirection={{ xs: "column", md: "row" }}
           justifyContent={{ xs: "center", md: "space-evenly" }}
           alignItems={{ xs: "center", md: "flex-start" }}
@@ -38,7 +39,7 @@ export const Instagram = () => {
                 key={i}
                 src={`/graphic-${i + 1}.png`}
                 alt={`graphic-${i + 1}`}
-                style={{ height: "auto" }}
+                style={{ height: "auto", width: "auto" }}
                 className="shadow"
               />
             );

@@ -17,7 +17,10 @@ export default function Navigation() {
           <Link href="/" color="common.white" variant="name">
             fizz
           </Link>
-          <Typography variant="name" sx={{ mx: 2, fontWeight: 500 }}>
+          <Typography
+            variant="name"
+            sx={{ mx: { xs: 1, md: 2 }, fontWeight: 500 }}
+          >
             |
           </Typography>
           <Typography variant="name" sx={{ fontWeight: 300 }}>

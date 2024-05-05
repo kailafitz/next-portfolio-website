@@ -8,6 +8,7 @@ const urban = Urbanist({
   style: ["normal", "italic"],
   subsets: ["latin"],
 });
+
 const open = Open_Sans({
   weight: ["300", "400", "600", "700", "800"],
   style: ["normal", "italic"],
@@ -29,10 +30,21 @@ let theme = createTheme({
     h1: {
       fontFamily: urban.style.fontFamily,
       fontWeight: 100,
+      lineHeight: 1,
     },
     h2: {
       fontFamily: urban.style.fontFamily,
       fontWeight: 300,
+      lineHeight: 1.2,
+    },
+    h3: {
+      lineHeight: 1.2,
+    },
+    h5: {
+      fontFamily: urban.style.fontFamily,
+    },
+    h6: {
+      fontFamily: urban.style.fontFamily,
     },
     // subtitle1: {
     //   fontSize: "1.2rem",
@@ -50,7 +62,8 @@ let theme = createTheme({
       fontSize: "2rem",
     },
     copyright: {
-      fontSize: "9px",
+      // fontSize: "1.2rem",
+      fontSize: "0.7rem",
       color: "#fff",
       fontFamily: open.style.fontFamily,
     },
@@ -118,7 +131,11 @@ let theme = createTheme({
     },
     MuiLink: {
       styleOverrides: {
-        root: { textDecoration: "none" },
+        root: {
+          textDecoration: "none",
+          fontFamily: open.style.fontFamily,
+          wordWrap: "break-word",
+        },
       },
     },
   },
