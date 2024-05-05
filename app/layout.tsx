@@ -75,7 +75,7 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1"
         ></meta>
-        <title>fizz | Mikhaila Fitzpatrick</title>
+        <title>Mikhaila Fitzpatrick</title>
         <link rel="icon" type="image/x-icon" href="./favicon.png" />
       </head>
       <body>

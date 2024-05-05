@@ -18,7 +18,8 @@ const Intro = () => {
         width: "100%",
         backgroundColor: theme.palette.primary.main,
         py: { xs: 8, md: 0 },
-        minHeight: { md: "90vh" },
+        minHeight: { md: "80vh" },
+        mt: "-1px",
       }}
     >
       <Container>
@@ -33,9 +34,15 @@ const Intro = () => {
             }}
           >
             <Container maxWidth="md" sx={{ pl: { md: 0 } }}>
-              <Typography color="common.white" variant="h1" fontWeight="700">
+              {/* <Typography color="common.white" variant="h1" fontWeight="700">
                 fizz
-              </Typography>
+              </Typography> */}
+              {/* <Image
+                width="200"
+                height="200"
+                src={`/mf-logo.png`}
+                alt={`MF logo`}
+              /> */}
               <Typography color="common.white" variant="h2" fontWeight="700">
                 Frontend Development
               </Typography>
