@@ -16,6 +16,7 @@ export const Contact = () => {
   const theme = useTheme();
   return (
     <Box
+      id="contact"
       position="relative"
       sx={{
         width: "100%",
