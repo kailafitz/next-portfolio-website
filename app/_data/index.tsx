@@ -15,10 +15,6 @@ export const ProjectData = [
         alt: "TypeScript",
       },
       {
-        src: "next.png",
-        alt: "NextJS",
-      },
-      {
         src: "mui.png",
         alt: "MaterialUI",
       },

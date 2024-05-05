@@ -156,7 +156,7 @@ export const Project = (props: ProjectType) => {
                 width={300}
                 height={100}
                 alt={props.projectName}
-                className="h-auto"
+                className="h-auto w-100"
               />
             </Tooltip>
           </Box>
