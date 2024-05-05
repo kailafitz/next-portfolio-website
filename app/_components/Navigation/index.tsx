@@ -25,7 +25,12 @@ export default function Navigation() {
           >
             |
           </Typography> */}
-          <Image width="70" height="70" src={`/mf-logo.png`} alt={`MF logo`} />
+          <Image
+            width="70"
+            height="70"
+            src={`/mf-logo-min.png`}
+            alt={`MF logo`}
+          />
           <CustomLink
             href="/"
             variant="name"
