@@ -20,7 +20,7 @@ export const ProjectData = [
       },
     ],
     projectURL: "https://puredivilmentpictures.com",
-    githubURL: "https://github.com/kailafitz/puredivilmentpictures",
+    githubURL: "https://github.com/kailafitz/pure-divilment-pictures",
   },
   {
     projectName: "Lancer",
