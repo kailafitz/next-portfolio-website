@@ -28,9 +28,7 @@ export const Instagram = () => {
             className="mx-auto"
             sx={{
               maxWidth: { xs: "100%", sm: "70%", md: "100%" },
-              img: {
-                width: { xs: "100%", sm: "inherit" },
-              },
+              img: { width: { xs: "100%", md: "300px" } },
               "img:not(:last-child)": {
                 mb: { xs: 5, md: 0 },
               },

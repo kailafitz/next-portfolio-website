@@ -41,6 +41,7 @@ export const Dribbble = () => {
               className="mx-auto"
               sx={{
                 maxWidth: { xs: "100%", sm: "70%" },
+                img: { width: { xs: "100%", md: "300px" } },
                 "img:not(:last-child)": {
                   mr: { xs: 0, md: 5 },
                   mb: { xs: 5, md: 0 },

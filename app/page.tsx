@@ -13,7 +13,7 @@ export default function Home() {
       <Projects />
       <Dribbble />
       <Instagram />
-      {/* <Contact /> */}
+      <Contact />
     </main>
   );
 }

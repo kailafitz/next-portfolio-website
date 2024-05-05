@@ -5,5 +5,6 @@ export const StyledFooter = styled("footer")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  padding: theme.spacing(3, 0, 1, 0),
+  padding: theme.spacing(0, 0, 1, 0),
+  marginTop: "-1px",
 }));
