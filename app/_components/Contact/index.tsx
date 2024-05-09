@@ -12,6 +12,7 @@ import {
   Dribbble,
   Instagram,
 } from "react-feather";
+import { Typography } from "@mui/material";
 
 export const Contact = () => {
   const theme = useTheme();
@@ -22,10 +23,20 @@ export const Contact = () => {
       sx={{
         width: "100%",
         backgroundColor: "secondary.main",
-        pt: 8,
         pb: 5,
       }}
     >
+      <Typography
+        align="center"
+        variant="h5"
+        color="common.white"
+        sx={{
+          pt: 8,
+          pb: 3,
+        }}
+      >
+        Contact Me
+      </Typography>
       <Stack
         className="mx-auto"
         direction="row"
