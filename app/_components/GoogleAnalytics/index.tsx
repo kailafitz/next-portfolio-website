@@ -15,7 +15,6 @@ const GoogleAnalytics = ({
 
   useEffect(() => {
     const localStorageCookies = localStorage.getItem("consentMode");
-    console.log(localStorageCookies);
     if (localStorageCookies === null) {
       router.push("?modal=true");
     }

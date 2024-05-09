@@ -3,7 +3,8 @@
 export const ProjectData = [
   {
     projectName: "Pure Divilment Pictures",
-    projectDescription: "Corporate website for a production company",
+    projectDescription:
+      "Corporate website for a production company based in Dublin.",
     year: "2023",
     techStack: [
       {
@@ -24,7 +25,8 @@ export const ProjectData = [
   },
   {
     projectName: "Lancer",
-    projectDescription: "My final project for CS50x",
+    projectDescription:
+      "My final project for CS50x, an online introductory course on computer science taught at Harvard University and Yale University",
     year: "2022",
     techStack: [
       {

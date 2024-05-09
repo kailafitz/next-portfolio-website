@@ -9,7 +9,7 @@ export const Footer = () => {
   return (
     <StyledFooter>
       <Container>
-        <Box
+        {/* <Box
           textAlign="center"
           display="flex"
           alignItems="center"
@@ -30,7 +30,7 @@ export const Footer = () => {
               Cookies
             </Link>
           </Typography>
-        </Box>
+        </Box> */}
 
         <Typography
           variant="copyright"

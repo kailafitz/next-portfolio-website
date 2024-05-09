@@ -84,17 +84,29 @@ const ConsentBanner = () => {
   const [triggerGAPreferencesUpdate, setTriggerGAPreferencesUpdate] =
     useState(true);
   const [showSnackbar, setShowSnackbar] = useState("not set");
-  const [consent, setConsent] = useState({
-    ad_storage: false,
-    analytics_storage: true,
-    ad_user_data: false,
-    ad_personalization: false,
-  });
+  const [currentConsent, setCurrentConsent] = useState();
+  const [consent, setConsent] = useState(
+    currentConsent
+      ? currentConsent
+      : {
+          ad_storage: false,
+          analytics_storage: true,
+          ad_user_data: false,
+          ad_personalization: false,
+        }
+  );
 
   const searchParams = useSearchParams();
   const modal = searchParams.get("modal");
   const pathname = usePathname();
   const router = useRouter();
+
+  useEffect(() => {
+    let test = localStorage.getItem("consentMode");
+    if (test) {
+      setCurrentConsent(JSON.parse(test));
+    }
+  }, [currentConsent]);
 
   const handleAllClick = (all: boolean, showFeedback: boolean) => {
     setConsent({
@@ -145,9 +157,8 @@ const ConsentBanner = () => {
       });
     }
     localStorage.setItem("consentMode", JSON.stringify(consent));
-    if (!triggerGAPreferencesUpdate) {
-      confirmGAPreferences();
-    }
+
+    confirmGAPreferences();
   }, [triggerGAPreferencesUpdate]);
 
   return (
