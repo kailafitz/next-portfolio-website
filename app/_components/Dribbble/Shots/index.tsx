@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
+// https://matthewelsom.com/blog/display-shots-on-webpage-with-dribbble-v2-api.html
+
 const GetData = async ({ token }: { token: string }) => {
   const res = await fetch(
     `https://api.dribbble.com/v2/user/shots?access_token=${token}`
@@ -10,7 +12,7 @@ const GetData = async ({ token }: { token: string }) => {
 
 const Shots = async () => {
   let accessToken =
-    "1763a53e8b0f7b928a96e89c17c67d3f0f0fb36e37a8b03585aac9069a6222f1";
+    "ebad71dc82872a2f2f68e92083be89ae31eeb672ae6907c4e5c7ecebc010dd45";
   const data = await GetData({ token: accessToken });
 
   return (
