@@ -21,7 +21,8 @@ export const Contact = () => {
       sx={{
         width: "100%",
         backgroundColor: "secondary.main",
-        py: 8,
+        pt: 8,
+        pb: 5,
       }}
     >
       <Stack

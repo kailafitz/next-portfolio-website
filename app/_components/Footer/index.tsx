@@ -15,6 +15,7 @@ export const Footer = () => {
           alignItems="center"
           justifyContent="center"
           mb={{ xs: 2, md: 3 }}
+          mt={3}
         >
           <Typography variant="body1">
             <Link color="common.white" href="privacy-policy">
