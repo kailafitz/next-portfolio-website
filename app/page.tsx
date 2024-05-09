@@ -15,7 +15,7 @@ export default function Home() {
     <main>
       <Intro />
       <Projects />
-      {/* <Dribbble /> */}
+      <Dribbble />
       <Instagram />
       <Contact />
     </main>
