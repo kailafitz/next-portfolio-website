@@ -7,7 +7,6 @@ const GetData = async ({ token }: { token: string }) => {
   const res = await fetch(
     `https://api.dribbble.com/v2/user/shots?access_token=${token}`,
     {
-      method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
