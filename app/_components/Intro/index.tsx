@@ -44,6 +44,9 @@ const Intro = () => {
                 src={`/mf-logo.png`}
                 alt={`MF logo`}
               /> */}
+              <Typography color="common.white" variant="h6">
+                Website under progress!
+              </Typography>
               <Typography color="common.white" variant="h2" fontWeight="700">
                 Frontend Development
               </Typography>
