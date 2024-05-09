@@ -10,7 +10,7 @@ const GetData = async ({ token }: { token: string }) => {
 
 const Shots = async () => {
   let accessToken =
-    "80cdba96a6100c8df4e2526e289935e5e5f13dffc35392e443c91236f17ceeb6";
+    "b8b26229ea10deae87edc66f823a59478c197a8313d06827202a609ad1838723";
   const data = await GetData({ token: accessToken });
 
   return (
