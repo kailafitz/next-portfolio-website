@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Image from "next/image";
@@ -95,7 +96,7 @@ const Intro = () => {
             <Box>
               <Image
                 src="/waving2.png"
-                alt="Bitmoji Waving"
+                alt="Mikhaila Fitzpatrick avatar"
                 height={500}
                 width={500}
                 className="next-image mx-auto d-block image-inset-shadow"

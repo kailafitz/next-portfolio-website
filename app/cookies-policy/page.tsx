@@ -4,6 +4,11 @@ import React from "react";
 import Link from "../_components/CustomLink";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cookies Policy",
+};
 
 const CookiesPolicy = () => {
   return (
@@ -244,9 +249,9 @@ const CookiesPolicy = () => {
       </Typography>
       <Typography variant="body2">
         As the means by which you can refuse cookies through your web browser
-        controls vary from browser to browser, you should visit your browser's
-        help menu for more information. The following is information about how
-        to manage cookies on the most popular browsers:
+        controls vary from browser to browser, you should visit your
+        browser&#39;s help menu for more information. The following is
+        information about how to manage cookies on the most popular browsers:
       </Typography>
       <ul>
         <li>
@@ -337,10 +342,10 @@ const CookiesPolicy = () => {
         Do you use Flash cookies or Local Shared Objects?
       </Typography>
       <Typography variant="body2">
-        Websites may also use so-called "Flash Cookies" (also known as Local
-        Shared Objects or &quot;LSOs&quot;) to, among other things, collect and
-        store information about your use of our services, fraud prevention, and
-        for other site operations.
+        Websites may also use so-called &quot;Flash Cookies&quot; (also known as
+        Local Shared Objects or &quot;LSOs&quot;) to, among other things,
+        collect and store information about your use of our services, fraud
+        prevention, and for other site operations.
         <br />
         <br />
         If you do not want Flash Cookies stored on your computer, you can adjust

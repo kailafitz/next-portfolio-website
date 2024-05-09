@@ -1,43 +1,54 @@
+"use client";
+import React, { useEffect } from "react";
 import Script from "next/script";
-import React from "react";
+import { useRouter } from "next/navigation";
+import ReactGA from "react-ga4";
+
+ReactGA.initialize("G-C3NSFRZ1Q2");
 
 const GoogleAnalytics = ({
   GA_MEASUREMENT_ID,
 }: {
   GA_MEASUREMENT_ID: string;
 }) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const localStorageCookies = localStorage.getItem("consentMode");
+    if (localStorageCookies === null) {
+      router.push("?modal=true");
+    }
+  }, []);
   return (
     <>
       <Script
-        id="GAScript"
+        id="GA"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-                gtag('consent', 'default', {
-                  'ad_user_data': 'denied',
-                  'ad_personalization': 'denied',
-                  'ad_storage': 'denied',
-                  'analytics_storage': 'denied',
-                  'wait_for_update': 500,
-                });
-            `,
-        }}
-      />
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-      />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { window.dataLayer.push(arguments) }
 
-                gtag('config', '${GA_MEASUREMENT_ID}');
-            `,
+          if (localStorage.getItem('consentMode') === null) {
+            gtag("consent", "default", {
+              ad_storage: "denied",
+              analytics_storage: "denied",
+              personalization_storage: "denied",
+              functionality_storage: "denied",
+              security_storage: "denied",
+            })
+          }
+          else {
+            gtag(
+              "consent",
+              "default",
+              JSON.parse(localStorage.getItem("consentMode"))
+            )
+          }
+
+          gtag('js', new Date());
+          gtag('config', '${GA_MEASUREMENT_ID}');
+        `,
         }}
       />
     </>
