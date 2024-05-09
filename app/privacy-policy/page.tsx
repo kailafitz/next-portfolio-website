@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Table from "@mui/material/Table";
@@ -11,7 +11,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Link from "../_components/CustomLink";
-import ConsentBanner from "../_components/ConsentBanner";
 
 interface row {
   category: string;
@@ -129,8 +128,8 @@ const PrivayPolicy = () => {
         This privacy notice for Mikhaila Fitzpatrick (doing business as
         kailafitz), (&quot;we&quot;, &quot;us&quot; or &quot;our&quot;),
         describes how and why we might collect, store, use, and/or share
-        (&quot;process&quot;) your information when you use our services
-        (&quot;Services&quot;), such as when you:
+        (&#39;process&#39;) your information when you use our services
+        (&#39;Services&#39;), such as when you:
       </Typography>
       <ul>
         <li>
@@ -1407,7 +1406,7 @@ const PrivayPolicy = () => {
         <br />
         Mikhaila Fitzpatrick <br />
         Attyterrila <br />
-        Ennis, <br />
+        Ennis <br />
         Co. Clare <br />
         Ireland
       </Typography>

@@ -21,14 +21,14 @@ export const Footer = () => {
               Privacy Policy
             </Link>
           </Typography>
-          {/* <Typography variant="body1" color="common.white" mx={1}>
+          <Typography variant="body1" color="common.white" mx={1}>
             |
           </Typography>
           <Typography variant="body1">
             <Link color="common.white" href="cookies-policy">
               Cookies
             </Link>
-          </Typography> */}
+          </Typography>
         </Box>
 
         <Typography
