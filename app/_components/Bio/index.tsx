@@ -54,9 +54,9 @@ const Bio = () => {
               }}
               className="mx-auto"
             >
-              I'm a developer from Ireland, always on the look out for exciting
-              new projects to get stuck into! My primary goals when designing
-              and developing anything are <b>functionality</b>,{" "}
+              I&#39;m a developer from Ireland, always on the look out for
+              exciting new projects to get stuck into! My primary goals when
+              designing and developing anything are <b>functionality</b>,{" "}
               <b>user experience (UX)</b> and <b>mobile responsiveness</b>.
             </Typography>
           </Box>
