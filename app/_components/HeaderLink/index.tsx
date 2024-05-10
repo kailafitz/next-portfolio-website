@@ -13,16 +13,16 @@ export const HeaderLink = (props: HeaderLinkProps) => {
   return (
     <>
       <Typography
-        color="secondary"
-        variant="h3"
-        textAlign="center"
+        color="primary"
+        variant="h2"
+        textAlign="left"
         fontWeight={300}
         sx={{
           width: "100%",
-          mb: props.subtitle !== undefined ? 1.5 : 3,
+          mb: props.subtitle !== undefined ? 1.5 : { xs: 8, sm: 16 },
           span: {
-            display: { xs: "block", md: "inline" },
-            width: { xs: "100%", md: "unset" },
+            display: { xs: "block", sm: "inline" },
+            width: { xs: "100%", sm: "unset" },
           },
         }}
       >

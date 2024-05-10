@@ -8,7 +8,7 @@ import Image from "next/image";
 export const Instagram = () => {
   return (
     <Box
-      sx={{ pb: { xs: 8, md: 12 } }}
+      sx={{ pb: { xs: 16, md: 8 }, minHeight: "100vh" }}
       display="flex"
       flexDirection="column"
       justifyContent="center"
@@ -22,13 +22,13 @@ export const Instagram = () => {
           <Box
             display="flex"
             flexWrap="wrap"
-            flexDirection={{ xs: "column", md: "row" }}
-            justifyContent={{ xs: "center", md: "space-evenly" }}
-            alignItems={{ xs: "center", md: "flex-start" }}
+            flexDirection={{ xs: "column", sm: "row" }}
+            justifyContent={{ xs: "center", sm: "space-evenly" }}
+            alignItems={{ xs: "center", sm: "flex-start" }}
             className="mx-auto"
             sx={{
-              maxWidth: { xs: "100%", sm: "70%", md: "100%" },
-              img: { width: { xs: "100%", md: "300px" } },
+              maxWidth: "100%",
+              img: { width: { xs: "100%", sm: "300px" } },
               "img:not(:last-child)": {
                 mb: { xs: 5, md: 0 },
               },

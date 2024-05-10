@@ -29,7 +29,7 @@ export const Project = (props: ProjectType) => {
   };
 
   return (
-    <Container sx={{ pb: { xs: 8, md: 12 } }}>
+    <Box sx={{ pb: { xs: 8, md: 12 } }}>
       <Grid
         container
         columnGap={3}
@@ -162,6 +162,6 @@ export const Project = (props: ProjectType) => {
           </Box>
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 };

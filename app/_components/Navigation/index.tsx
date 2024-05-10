@@ -30,13 +30,17 @@ export default function Navigation() {
               height="70"
               src={`/mf-logo-min.png`}
               alt={`MF logo`}
+              className="logo"
             />
           </Link>
           <Link
             href="/"
-            variant="name"
             color="common.white"
-            sx={{ fontWeight: 300 }}
+            sx={{
+              fontWeight: 300,
+              typography: { md: "name" },
+              fontSize: "h5.fontSize",
+            }}
           >
             Mikhaila Fitzpatrick
           </Link>

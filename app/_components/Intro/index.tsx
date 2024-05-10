@@ -12,15 +12,22 @@ const Intro = () => {
   const theme = useTheme();
   return (
     <Box
+      position={{ md: "fixed" }}
+      zIndex="-1"
+      top="0"
       display="flex"
       flexDirection="column"
       justifyContent="center"
       sx={{
         width: "100%",
         backgroundColor: theme.palette.primary.main,
-        py: { xs: 8, md: 0 },
-        minHeight: { md: "80vh" },
-        mt: "-1px",
+        // py: { xs: 8, md: 0 },
+        pb: { xs: 16, md: "inherit" },
+        minHeight: { md: "100vh" },
+        // mt: "-1px",
+        // mt: { xs: "104px", md: 0 },
+        // overflowY: "scroll",
+        // maxHeight: "99vh",
       }}
     >
       <Container>
@@ -102,7 +109,7 @@ const Intro = () => {
                 alt="Mikhaila Fitzpatrick avatar"
                 height={500}
                 width={500}
-                className="next-image mx-auto d-block image-inset-shadow"
+                className="next-image mx-auto d-block image-inset-shadow-primary"
               />
             </Box>
           </Grid>

@@ -26,7 +26,7 @@ export const ProjectData = [
   {
     projectName: "Lancer",
     projectDescription:
-      "My final project for CS50x, an online introductory course on computer science taught at Harvard University and Yale University",
+      "My final project for CS50x, an online introductory course on computer science taught at Harvard University and Yale University.",
     year: "2022",
     techStack: [
       {
@@ -48,10 +48,6 @@ export const ProjectData = [
       {
         src: "bootstrap.png",
         alt: "Bootstrap",
-      },
-      {
-        src: "sass.png",
-        alt: "Sass",
       },
     ],
     projectURL: "https://kailafitz.pythonanywhere.com",

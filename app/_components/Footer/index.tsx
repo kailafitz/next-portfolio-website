@@ -7,7 +7,7 @@ import Container from "@mui/material/Container";
 
 export const Footer = () => {
   return (
-    <StyledFooter>
+    <StyledFooter id="contact">
       <Container>
         {/* <Box
           textAlign="center"
