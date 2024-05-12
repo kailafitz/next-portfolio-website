@@ -149,6 +149,7 @@ const ProjectDetails = ({ params }: { params: { projectId: string } }) => {
         {[1, 2, 3, 4].map((img, i) => {
           return (
             <Image
+              key={i}
               src={`/project-${id}/shot-${i + 1}.png`}
               alt={`${Project[0].projectName} image`}
               width={300}
