@@ -53,6 +53,7 @@ let theme = createTheme({
     // },
     body1: {
       fontFamily: open.style.fontFamily,
+      lineHeight: 1,
     },
     button: {
       textTransform: "capitalize",

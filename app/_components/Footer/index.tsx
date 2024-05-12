@@ -7,15 +7,14 @@ import Container from "@mui/material/Container";
 
 export const Footer = () => {
   return (
-    <StyledFooter id="contact">
-      <Container>
+    <StyledFooter>
+      <Container sx={{ mt: 1 }}>
         {/* <Box
           textAlign="center"
           display="flex"
           alignItems="center"
           justifyContent="center"
           mb={{ xs: 2, md: 3 }}
-          mt={3}
         >
           <Typography variant="body1">
             <Link color="common.white" href="privacy-policy">

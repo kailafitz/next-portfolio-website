@@ -21,6 +21,7 @@ export const Contact = () => {
   let size = 40;
   return (
     <Box
+      id="contact"
       position="relative"
       sx={{
         width: "100%",

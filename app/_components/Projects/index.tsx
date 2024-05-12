@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 
 export const Projects = () => {
   return (
-    <Container maxWidth="lg" sx={{ pb: { xs: 16, md: 8 } }}>
+    <Container maxWidth="lg" sx={{ pb: { xs: 16, md: 8 } }} id="projects">
       <Container>
         <Typography variant="h2" color="primary" pb={{ xs: 8, md: 16 }}>
           Some things I have worked on...
@@ -15,12 +15,14 @@ export const Projects = () => {
           return (
             <Project
               key={i}
+              projectId={project.projectId}
               projectName={project.projectName}
               projectDescription={project.projectDescription}
               year={project.year}
               techStack={project.techStack}
               projectURL={project.projectURL}
               githubURL={project.githubURL}
+              projectDetails={project.projectDetails}
             />
           );
         })}

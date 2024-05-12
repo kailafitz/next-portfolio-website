@@ -9,11 +9,14 @@ import Tooltip from "@mui/material/Tooltip";
 import { useTheme } from "@mui/material/styles";
 import { StyledHr } from "./styles";
 import { ProjectStackLogo } from "./ProjectStackLogo";
-import { GitHub } from "react-feather";
+import { GitHub, Monitor } from "react-feather";
 import LaunchIcon from "@mui/icons-material/Launch";
 import ReactGA from "react-ga4";
 import { ProjectType, TechStackProps } from "../../../_types";
 import Image from "next/image";
+import Stack from "@mui/material/Stack";
+import AOS from "aos";
+import { useEffect } from "react";
 
 export const Project = (props: ProjectType) => {
   const theme = useTheme();
@@ -28,8 +31,12 @@ export const Project = (props: ProjectType) => {
     });
   };
 
+  useEffect(() => {
+    AOS.init(); //You can add options as per your need inside an object
+  }, []);
+
   return (
-    <Box sx={{ pb: { xs: 8, md: 12 } }}>
+    <Box sx={{ pb: { xs: 8, md: 12 } }} data-aos="fade-up">
       <Grid
         container
         columnGap={3}
@@ -60,8 +67,8 @@ export const Project = (props: ProjectType) => {
         >
           <Box>
             <Link
-              href={props.projectURL}
-              target="_blank"
+              href={`/projects/${props.projectId}`}
+              // target="_blank"
               underline="none"
               // onClick={sendGA4}
               onClick={() => sendGA4(props.projectName)}
@@ -93,7 +100,7 @@ export const Project = (props: ProjectType) => {
                 }}
               >
                 {props.projectName}
-                <LaunchIcon sx={{ width: "15px", height: "15px" }} />
+                {/* <LaunchIcon sx={{ width: "15px", height: "15px" }} /> */}
               </Typography>
             </Link>
             <Typography variant="subtitle1" mb={2}>
@@ -119,21 +126,46 @@ export const Project = (props: ProjectType) => {
                 })}
             </Box>
           </Box>
-          <Button
-            href={props.githubURL}
-            target="_blank"
-            variant="inset"
-            color="secondary"
-            sx={{ p: theme.spacing(1), svg: { mr: 1 } }}
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            justifyContent="space-between"
+            sx={{
+              a: {
+                width: { xs: "100%", md: "45%" },
+              },
+            }}
           >
-            <GitHub
-              // color={theme.palette.common.white}
-              color={theme.palette.secondary.main}
-              size={25}
-              strokeWidth={1.1}
-            />
-            View code
-          </Button>
+            <Button
+              href={props.githubURL}
+              target="_blank"
+              variant="inset"
+              color="secondary"
+              sx={{ p: theme.spacing(1), mb: { xs: 3, md: 0 }, svg: { mr: 1 } }}
+            >
+              <GitHub
+                // color={theme.palette.common.white}
+                color={theme.palette.secondary.main}
+                size={25}
+                strokeWidth={1.1}
+              />
+              View code
+            </Button>
+            <Button
+              href={props.projectURL}
+              target="_blank"
+              variant="inset"
+              color="secondary"
+              sx={{ p: theme.spacing(1), svg: { mr: 1 } }}
+            >
+              <Monitor
+                // color={theme.palette.common.white}
+                color={theme.palette.secondary.main}
+                size={25}
+                strokeWidth={1.1}
+              />
+              View site
+            </Button>
+          </Stack>
         </Grid>
         <Grid xs={11} md={5} sx={{ mt: { xs: 8, md: 0 } }}>
           <Box>

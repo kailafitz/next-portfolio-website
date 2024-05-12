@@ -1,11 +1,16 @@
 "use client";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import React from "react";
+import React, { useEffect } from "react";
 import { HeaderLink } from "../HeaderLink";
 import Image from "next/image";
+import AOS from "aos";
 
 export const Instagram = () => {
+  useEffect(() => {
+    AOS.init(); //You can add options as per your need inside an object
+  }, []);
+
   return (
     <Box
       sx={{ pb: { xs: 16, md: 8 }, minHeight: "100vh" }}
@@ -43,6 +48,8 @@ export const Instagram = () => {
                   src={`/graphic-${i + 1}-min.png`}
                   alt={`graphic-${i + 1}`}
                   className="shadow insta-image"
+                  data-aos="fade-up"
+                  data-aos-delay={i * 100}
                 />
               );
             })}

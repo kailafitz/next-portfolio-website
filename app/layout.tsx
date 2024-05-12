@@ -10,6 +10,7 @@ import ConsentBanner from "./_components/ConsentBanner";
 import { Metadata } from "next";
 import GTagHeadScript from "./_components/GoogleAnalytics/GTagHeadScript";
 import GTagBodyScript from "./_components/GoogleAnalytics/GTagBodyScript";
+import "aos/dist/aos.css";
 
 export const metadata: Metadata = {
   title: {
@@ -39,7 +40,7 @@ export default function RootLayout({
         <link rel="icon" type="image/x-icon" href="./favicon.png" />
       </head>
       <body>
-        <GTagBodyScript />
+        {/* <GTagBodyScript /> */}
         <AppRouterCacheProvider options={{ key: "css", enableCssLayer: true }}>
           <ThemeProvider theme={reponsiveTheme}>
             <Navigation />

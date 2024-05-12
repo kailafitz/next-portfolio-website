@@ -134,3 +134,25 @@ li {
     // background-color: #f4f3f398;
     // backdrop-filter: blur(20px);
 }
+
+.project-gallery-image {
+    width: 100%;
+    height: auto;
+
+    &:not(:last-of-type) {
+        margin-bottom: 10px;
+    }
+
+    @media (min-width: 900px) {
+        width: 24.8%;
+        height: auto;
+
+        &:not(:last-of-type) {
+            margin-bottom: 0px;
+        }
+    }
+}
+
+.project-image {
+    max-width: 100%;
+}
