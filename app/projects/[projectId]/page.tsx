@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Fragment } from "react";
 import { ProjectType } from "../../_types";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
@@ -29,20 +29,20 @@ const ProjectDetails = ({ params }: { params: { projectId: string } }) => {
 
   return (
     <>
+      <Button
+        variant="inset"
+        color="secondary"
+        href="/#projects"
+        startIcon={<NavigateBeforeIcon />}
+        sx={{ mb: { xs: 3, md: 0 }, ml: 3, mt: 3 }}
+      >
+        Home
+      </Button>
       <Container sx={{ py: { xs: 8, md: 16 } }}>
         <Container>
-          <Button
-            variant="inset"
-            color="secondary"
-            href="/#projects"
-            startIcon={<NavigateBeforeIcon />}
-            sx={{ mb: { xs: 3, md: 0 } }}
-          >
-            Home
-          </Button>
           {Project.map((proj) => {
             return (
-              <>
+              <Fragment key={proj.projectId}>
                 <Grid
                   container
                   direction={{ xs: "column", md: "row" }}
@@ -52,19 +52,21 @@ const ProjectDetails = ({ params }: { params: { projectId: string } }) => {
                 >
                   <Grid xs={12} md={7}>
                     <Typography
-                      variant="h2"
+                      variant="h4"
                       color="secondary"
                       align="left"
+                      fontWeight="600"
                       mb={6}
+                      fontSize="h1.fontSize"
                     >
                       {proj.projectName}
                     </Typography>
                     <Stack
-                      direction={{ xs: "column", md: "row" }}
+                      direction={{ xs: "column", sm: "row" }}
                       justifyContent="space-between"
                       sx={{
                         a: {
-                          width: { xs: "100%", md: "45%" },
+                          width: { xs: "100%", sm: "47%" },
                         },
                       }}
                     >
@@ -75,7 +77,7 @@ const ProjectDetails = ({ params }: { params: { projectId: string } }) => {
                         color="secondary"
                         sx={{
                           p: 1,
-                          mb: { xs: 3, md: 0 },
+                          mb: { xs: 3, sm: 0 },
                           svg: { mr: 1 },
                         }}
                       >
@@ -107,17 +109,17 @@ const ProjectDetails = ({ params }: { params: { projectId: string } }) => {
                   <Grid xs={12} md={4} sx={{ pt: { xs: 6, md: 0 } }}>
                     <Image
                       src={`/${createFileHandle}.png`}
-                      width={300}
-                      height={100}
+                      width={500}
+                      height={300}
                       alt={proj.projectName}
-                      className="h-auto mx-auto d-block project-image"
+                      className="h-auto w-auto mx-auto d-block project-image"
                     />
                   </Grid>
                 </Grid>
                 <Grid container py={16} rowSpacing={7}>
                   {proj.projectDetails.map((section) => {
                     return (
-                      <>
+                      <Fragment key={section.sectionTitle}>
                         <Grid xs={12} md={4}>
                           <Typography
                             variant="body1"
@@ -132,11 +134,11 @@ const ProjectDetails = ({ params }: { params: { projectId: string } }) => {
                             {section.sectionDetails}
                           </Typography>
                         </Grid>
-                      </>
+                      </Fragment>
                     );
                   })}
                 </Grid>
-              </>
+              </Fragment>
             );
           })}
         </Container>

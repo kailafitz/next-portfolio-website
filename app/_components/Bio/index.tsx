@@ -21,8 +21,9 @@ const Bio = () => {
   return (
     <Container
       sx={{
+        py: { xs: 16, md: 0 },
         mt: { md: "90vh" },
-        minHeight: "100vh",
+        minHeight: { md: "100vh" },
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",

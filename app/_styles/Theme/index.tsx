@@ -90,7 +90,7 @@ let theme = createTheme({
         {
           props: { variant: "inset", color: "primary" },
           style: {
-            color: "#fff",
+            color: customPalettes.white.main,
             boxShadow: `0px 0px 0px ${customPalettes.primary.dark},
                         0px 0px 0px ${customPalettes.primary.light},
                         inset 5px 5px 10px ${customPalettes.primary.dark},
@@ -110,7 +110,7 @@ let theme = createTheme({
         {
           props: { variant: "inset", color: "secondary" },
           style: {
-            color: "#000",
+            color: customPalettes.secondary.main,
             boxShadow: `0px 0px 0px ${customPalettes.white.dark},
                         0px 0px 0px ${customPalettes.white.light},
                         inset 5px 5px 10px ${customPalettes.white.dark},
