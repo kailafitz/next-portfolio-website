@@ -25,6 +25,10 @@ let theme = createTheme({
       main: customPalettes.secondary.main,
       dark: customPalettes.secondary.dark,
     },
+    white: {
+      main: customPalettes.white.main,
+      dark: customPalettes.white.dark,
+    },
   },
   typography: {
     h1: {
@@ -64,7 +68,7 @@ let theme = createTheme({
     },
     copyright: {
       fontSize: "0.875rem",
-      color: "#fff",
+      color: customPalettes.white.main,
       fontFamily: open.style.fontFamily,
     },
   },
@@ -110,6 +114,26 @@ let theme = createTheme({
         {
           props: { variant: "inset", color: "secondary" },
           style: {
+            color: customPalettes.white.main,
+            boxShadow: `0px 0px 0px ${customPalettes.secondary.dark},
+                        0px 0px 0px ${customPalettes.secondary.light},
+                        inset 5px 5px 10px ${customPalettes.secondary.dark},
+                        inset -5px -5px 5px ${customPalettes.secondary.light}`,
+            transition: "box-shadow .2s ease-in",
+            "&:hover": {
+              boxShadow: `3px 4px 8px ${customPalettes.secondary.dark},
+                          -1px -1px 10px ${customPalettes.secondary.light},
+                          inset 0px 0px 0px ${customPalettes.secondary.dark},
+                          inset 0px 0px 0px ${customPalettes.secondary.light}`,
+              opacity: 1,
+              backgroundColor: customPalettes.secondary.main,
+              transition: "box-shadow .2 ease-in",
+            },
+          },
+        },
+        {
+          props: { variant: "inset", color: "white" },
+          style: {
             color: customPalettes.secondary.main,
             boxShadow: `0px 0px 0px ${customPalettes.white.dark},
                         0px 0px 0px ${customPalettes.white.light},
@@ -137,6 +161,44 @@ let theme = createTheme({
           wordWrap: "break-word",
         },
       },
+    },
+    MuiTextField: {
+      variants: [
+        {
+          props: {
+            color: "white",
+          },
+          style: {
+            "& label": {
+              color: customPalettes.white.main,
+            },
+            "& label.Mui-focused": {
+              color: customPalettes.primary.main,
+            },
+          },
+        },
+      ],
+    },
+    MuiInput: {
+      variants: [
+        {
+          props: {
+            color: "white",
+          },
+          style: {
+            color: customPalettes.white.main,
+            "&::before": {
+              borderBottom: `2px solid ${customPalettes.white.main}`,
+            },
+            "&:hover:not(.Mui-disabled, .Mui-error):before": {
+              borderBottom: `2px solid ${customPalettes.white.main}`,
+            },
+            "&.Mui-focused:after": {
+              borderBottom: `2px solid ${customPalettes.primary.main}`,
+            },
+          },
+        },
+      ],
     },
   },
 });

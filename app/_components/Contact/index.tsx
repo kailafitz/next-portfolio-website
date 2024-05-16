@@ -14,6 +14,8 @@ import {
   Instagram,
 } from "react-feather";
 import { Typography } from "@mui/material";
+import ContactForm from "../ContactForm";
+import { customPalettes } from "../../variables";
 
 export const Contact = () => {
   const theme = useTheme();
@@ -46,6 +48,21 @@ export const Contact = () => {
           >
             Contact Me
           </Typography>
+          <Box className="mx-auto" sx={{ width: { xs: "80%", md: "50%" } }}>
+            <ContactForm />
+          </Box>
+          <Stack
+            direction="row"
+            py={8}
+            className="mx-auto"
+            sx={{ width: { xs: "80%", md: "50%" } }}
+          >
+            <hr className="contact-hr-line" />
+            <Typography variant="body2" color="common.white">
+              Or
+            </Typography>
+            <hr className="contact-hr-line" />
+          </Stack>
           <Stack
             className="mx-auto"
             direction={{ xs: "column", md: "row" }}
@@ -63,8 +80,6 @@ export const Contact = () => {
                 display: "block",
                 margin: "auto",
               },
-              // pb: { xs: 2, md: 1 },
-              // "a:not(:last-child)": { mr: { md: 3 } },
             }}
           >
             <Link href="mailto:mikhailafitzpatrick@gmail.com">
@@ -87,7 +102,7 @@ export const Contact = () => {
               color="common.white"
             >
               <svg
-                fill="#fff"
+                fill={customPalettes.white.main}
                 width="38"
                 height="38"
                 viewBox="0 0 199.99996 200.01354"

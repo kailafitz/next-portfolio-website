@@ -139,7 +139,7 @@ export const Project = (props: ProjectType) => {
               href={props.githubURL}
               target="_blank"
               variant="inset"
-              color="secondary"
+              color="white"
               sx={{ p: theme.spacing(1), mb: { xs: 3, md: 0 }, svg: { mr: 1 } }}
             >
               <GitHub
@@ -154,7 +154,7 @@ export const Project = (props: ProjectType) => {
               href={props.projectURL}
               target="_blank"
               variant="inset"
-              color="secondary"
+              color="white"
               sx={{ p: theme.spacing(1), svg: { mr: 1 } }}
             >
               <Monitor

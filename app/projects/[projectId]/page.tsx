@@ -112,7 +112,7 @@ const ProjectDetails = ({ params }: { params: { projectId: string } }) => {
                       width={500}
                       height={300}
                       alt={proj.projectName}
-                      className="h-auto w-auto mx-auto d-block project-image"
+                      className="h-auto mx-auto d-block project-image"
                     />
                   </Grid>
                 </Grid>
