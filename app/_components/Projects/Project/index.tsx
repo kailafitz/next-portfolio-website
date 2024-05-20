@@ -18,7 +18,7 @@ import Stack from "@mui/material/Stack";
 import AOS from "aos";
 import { useEffect } from "react";
 
-export const Project = (props: ProjectType) => {
+export const Project = (props: ProjectType | ProjectType) => {
   const theme = useTheme();
 
   const createFileHandle = props.projectName.replaceAll(" ", "-").toLowerCase();
@@ -67,7 +67,9 @@ export const Project = (props: ProjectType) => {
         >
           <Box>
             <Link
-              href={`/projects/${props.projectId}`}
+              href={`/projects/${
+                props.companyName === undefined ? `personal` : `professional`
+              }/${props.projectId}`}
               // target="_blank"
               underline="none"
               // onClick={sendGA4}
@@ -115,7 +117,7 @@ export const Project = (props: ProjectType) => {
               }}
             >
               {props.techStack?.length > 1 &&
-                props.techStack.map((tech: TechStackProps, i) => {
+                props.techStack.map((tech: TechStackProps, i: number) => {
                   return (
                     <ProjectStackLogo
                       key={i}

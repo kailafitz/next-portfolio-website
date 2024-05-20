@@ -1,6 +1,6 @@
 // type Projects = {};
 
-export const ProjectData = [
+export const PersonalProjectData = [
   {
     projectId: "1",
     projectName: "Lancer",
@@ -50,6 +50,9 @@ export const ProfessionalProjectData = [
   {
     projectId: "2",
     projectName: "Pure Divilment Pictures",
+    companyName: "Pure Divilment Pictures",
+    industry: "Arts & Media",
+    purpose: "Digital Presence",
     projectDescription:
       "Corporate website for a production company based in Dublin.",
     year: "2023",

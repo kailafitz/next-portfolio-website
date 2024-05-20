@@ -138,6 +138,14 @@ let theme = createTheme({
         },
       },
     },
+    // MuiTab: {
+    //   styleOverrides: {
+    //     root: {
+    //       fontSize: "h3.fontSize",
+    //       "& .MuiButtonBase-root-MuiTab-root": { fontSize: "h4.fontSize" },
+    //     },
+    //   },
+    // },
   },
 });
 
