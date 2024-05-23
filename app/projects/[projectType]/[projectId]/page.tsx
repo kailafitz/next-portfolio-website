@@ -1,24 +1,37 @@
 "use client";
 import React, { Fragment } from "react";
-import { ProjectType } from "../../_types";
+import {
+  ProjectType,
+  TechStackProps,
+  ProjectDetailSection,
+} from "../../../_types";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
-import { ProjectData } from "../../_data";
+import { PersonalProjectData, ProfessionalProjectData } from "../../../_data";
 import Image from "next/image";
-import { Contact } from "../../_components/Contact";
+import { Contact } from "../../../_components/Contact";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { GitHub, Monitor } from "react-feather";
 import { useTheme } from "@mui/material/styles";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import { ProjectStackLogo } from "../../../_components/Projects/Project/ProjectStackLogo";
 
-const ProjectDetails = ({ params }: { params: { projectId: string } }) => {
+const ProjectDetails = ({
+  params,
+}: {
+  params: { projectId: string; projectType: string };
+}) => {
   const theme = useTheme();
   let id = params.projectId;
+  let data =
+    params.projectType !== "personal"
+      ? ProfessionalProjectData
+      : PersonalProjectData;
 
-  const Project = ProjectData.filter((project) => {
+  const Project: ProjectType[] = data.filter((project) => {
     return project.projectId === id;
   });
 
@@ -40,9 +53,9 @@ const ProjectDetails = ({ params }: { params: { projectId: string } }) => {
       </Button>
       <Container sx={{ py: { xs: 8, md: 16 } }}>
         <Container>
-          {Project.map((proj) => {
+          {Project.map((proj: ProjectType) => {
             return (
-              <Fragment key={proj.projectId}>
+              <Fragment key={proj.projectName}>
                 <Grid
                   container
                   direction={{ xs: "column", md: "row" }}
@@ -56,11 +69,25 @@ const ProjectDetails = ({ params }: { params: { projectId: string } }) => {
                       color="secondary"
                       align="left"
                       fontWeight="600"
-                      mb={6}
+                      mb={3}
                       fontSize="h1.fontSize"
                     >
                       {proj.projectName}
                     </Typography>
+                    <Stack direction="row" mb={3}>
+                      {proj.techStack?.length > 1 &&
+                        proj.techStack.map(
+                          (tech: TechStackProps, i: number) => {
+                            return (
+                              <ProjectStackLogo
+                                key={i}
+                                src={`${tech.src}`}
+                                alt={tech.alt}
+                              />
+                            );
+                          }
+                        )}
+                    </Stack>
                     <Stack
                       direction={{ xs: "column", sm: "row" }}
                       justifyContent="space-between"
@@ -117,7 +144,55 @@ const ProjectDetails = ({ params }: { params: { projectId: string } }) => {
                   </Grid>
                 </Grid>
                 <Grid container py={16} rowSpacing={7}>
-                  {proj.projectDetails.map((section) => {
+                  <Grid xs={12} md={4}>
+                    {proj.companyName && (
+                      <Stack
+                        direction={{ xs: "column", md: "row" }}
+                        justifyContent={{ xs: "center", md: "space-between" }}
+                        alignItems="center"
+                        mb={{ xs: 2, md: 0 }}
+                      >
+                        <Typography variant="h6" mb={{ xs: 1, md: 0 }}>
+                          Company
+                        </Typography>
+                        <Typography variant="body2" align="left">
+                          {proj.companyName}
+                        </Typography>
+                      </Stack>
+                    )}
+                    {proj.industry && (
+                      <Stack
+                        direction={{ xs: "column", md: "row" }}
+                        justifyContent={{ xs: "center", md: "space-between" }}
+                        alignItems="center"
+                        mb={{ xs: 2, md: 0 }}
+                      >
+                        <Typography variant="h6" mb={{ xs: 1, md: 0 }}>
+                          Industry
+                        </Typography>
+                        <Typography variant="body2" align="left">
+                          {proj.industry}
+                        </Typography>
+                      </Stack>
+                    )}
+                    {proj.industry && (
+                      <Stack
+                        direction={{ xs: "column", md: "row" }}
+                        justifyContent={{ xs: "center", md: "space-between" }}
+                        alignItems="center"
+                        mb={{ xs: 2, md: 0 }}
+                      >
+                        <Typography variant="h6" mb={{ xs: 1, md: 0 }}>
+                          Purpose
+                        </Typography>
+                        <Typography variant="body2" align="left">
+                          {proj.purpose}
+                        </Typography>
+                      </Stack>
+                    )}
+                  </Grid>
+                  <Grid xs={0} sm={8} />
+                  {proj.projectDetails.map((section: ProjectDetailSection) => {
                     return (
                       <Fragment key={section.sectionTitle}>
                         <Grid xs={12} md={4}>
@@ -153,7 +228,7 @@ const ProjectDetails = ({ params }: { params: { projectId: string } }) => {
             <Image
               key={i}
               src={`/project-${id}/shot-${i + 1}.png`}
-              alt={`${Project[0].projectName} image`}
+              alt={`${Project[0]?.projectName} image`}
               width={300}
               height={100}
               className="project-gallery-image"

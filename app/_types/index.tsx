@@ -3,18 +3,27 @@ export type TechStackProps = {
   alt: string;
 };
 
-export type ProjectDetailSection = {
+export interface ProjectDetailSection {
   sectionTitle: string;
   sectionDetails: string;
-};
+}
 
-export type ProjectType = {
+export interface ProjectType {
   projectId: string;
   projectName: string;
+  companyName?: string;
+  industry?: string;
+  purpose?: string;
   projectDescription: string;
   year: string;
   techStack: TechStackProps[];
   projectURL: string;
   githubURL: string;
   projectDetails: ProjectDetailSection[];
-};
+}
+
+// export interface ProfessionalProjectType extends ProjectType {
+//   companyName: string;
+//   industry: string;
+//   purpose: string;
+// }
