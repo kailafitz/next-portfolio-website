@@ -12,9 +12,6 @@ const Intro = () => {
   const theme = useTheme();
   return (
     <Box
-      position={{ md: "fixed" }}
-      zIndex="-1"
-      top="0"
       display="flex"
       flexDirection="column"
       justifyContent="center"
@@ -23,7 +20,7 @@ const Intro = () => {
         backgroundColor: theme.palette.primary.main,
         // py: { xs: 8, md: 0 },
         pb: { xs: 16, md: "inherit" },
-        minHeight: { md: "100vh" },
+        minHeight: { md: "90vh" },
         // mt: "-1px",
         // mt: { xs: "104px", md: 0 },
         // overflowY: "scroll",
