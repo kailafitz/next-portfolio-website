@@ -44,7 +44,7 @@ const ProjectDetails = ({
     <>
       <Button
         variant="inset"
-        color="secondary"
+        color="white"
         href="/#projects"
         startIcon={<NavigateBeforeIcon />}
         sx={{ mb: { xs: 3, md: 0 }, ml: 3, mt: 3 }}
@@ -101,7 +101,7 @@ const ProjectDetails = ({
                         href={proj.githubURL}
                         target="_blank"
                         variant="inset"
-                        color="secondary"
+                        color="white"
                         sx={{
                           p: 1,
                           mb: { xs: 3, sm: 0 },
@@ -120,7 +120,7 @@ const ProjectDetails = ({
                         href={proj.projectURL}
                         target="_blank"
                         variant="inset"
-                        color="secondary"
+                        color="white"
                         sx={{ p: theme.spacing(1), svg: { mr: 1 } }}
                       >
                         <Monitor
