@@ -39,6 +39,7 @@ export const Footer = () => {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "center",
+            opacity: 0.5,
             svg: {
               mr: 1,
             },

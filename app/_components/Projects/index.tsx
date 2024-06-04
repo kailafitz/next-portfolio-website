@@ -69,7 +69,7 @@ export const Projects = () => {
                 );
               })}
             </TabPanel>
-            <TabPanel value="2" sx={{ pt: 8 }}>
+            <TabPanel value="2" sx={{ p: 0, pt: 8 }}>
               {ProfessionalProjectData.map(
                 (project: ProjectType, i: number) => {
                   return (

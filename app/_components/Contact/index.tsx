@@ -28,7 +28,7 @@ export const Contact = () => {
       sx={{
         width: "100%",
         backgroundColor: "secondary.main",
-        pb: 5,
+        py: 5,
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
@@ -38,13 +38,10 @@ export const Contact = () => {
       <Container>
         <Container>
           <Typography
-            align="left"
+            align="center"
             variant="h2"
             color="common.white"
-            sx={{
-              pt: 8,
-              pb: 3,
-            }}
+            pb={{ xs: 8, md: 16 }}
           >
             Contact Me
           </Typography>
