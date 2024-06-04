@@ -52,7 +52,7 @@ export const Projects = () => {
                 />
               </TabList>
             </Box>
-            <TabPanel value="1" sx={{ pt: 8 }}>
+            <TabPanel value="1" sx={{ p: 0, pt: 8 }}>
               {PersonalProjectData.map((project: ProjectType, i: number) => {
                 return (
                   <Project
