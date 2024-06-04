@@ -25,7 +25,7 @@ export const ProjectStackLogo = (props: TechStackProps) => {
           alt={props.alt}
           width="30"
           height="25"
-          className="h-auto"
+          className="h-auto w-auto"
         />
       </Box>
     </Tooltip>

@@ -1,29 +1,3 @@
-// import { LinkProps, Link as MuiLink } from "@mui/material";
-// import NextLink, { LinkProps as NextLinkProps } from "next/link";
-
-// export type CustomNextLinkProps = Omit<NextLinkProps, "href"> & {
-//   _href: NextLinkProps["href"];
-// };
-
-// export const CustomNextLink = ({ _href, ...props }: CustomNextLinkProps) => {
-//   return <NextLink href={_href} {...props} />;
-// };
-
-// type CombinedLinkProps = LinkProps<typeof NextLink>;
-
-// type MyLinkProps = Omit<CombinedLinkProps, "href"> & {
-//   href: NextLinkProps["href"];
-// };
-
-// const CustomLink = ({ href, ...props }: MyLinkProps) => {
-//   return (
-//     <MuiLink {...props} component={CustomNextLink} _href={href}>
-//       {props.children}
-//     </MuiLink>
-//   );
-// };
-// export default CustomLink;
-
 "use client";
 import * as React from "react";
 import clsx from "clsx";

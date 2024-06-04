@@ -47,7 +47,7 @@ export const Instagram = () => {
                   height="100"
                   src={`/graphic-${i + 1}-min.png`}
                   alt={`graphic-${i + 1}`}
-                  className="shadow insta-image"
+                  className="shadow h-auto w-auto"
                   data-aos="fade-up"
                   data-aos-delay={i * 100}
                 />

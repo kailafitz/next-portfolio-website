@@ -11,6 +11,7 @@ const GetData = async ({ token }: { token: string }) => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
+      cache: "no-cache",
     }
   );
   return res.json();
@@ -21,20 +22,29 @@ const Shots = async () => {
     "ebad71dc82872a2f2f68e92083be89ae31eeb672ae6907c4e5c7ecebc010dd45";
   const data = await GetData({ token: accessToken });
 
+  // console.log(data.slice(0, 3));
+
   return (
     <>
-      {data.slice(0, 2).map((shot: { images: { normal: any } }, i: number) => {
-        return (
-          <Image
-            key={i}
-            width="300"
-            height="100"
-            src={shot.images.normal}
-            alt="shot"
-            className="shadow h-auto"
-          />
-        );
-      })}
+      {data
+        .slice(0, 3)
+        .map(
+          (
+            shot: { images: { normal: any }; low_profile: false },
+            i: number
+          ) => {
+            return (
+              <Image
+                key={i}
+                width="300"
+                height="100"
+                src={shot.images.normal}
+                alt="shot"
+                className="shadow h-auto object-cover"
+              />
+            );
+          }
+        )}
     </>
   );
 };

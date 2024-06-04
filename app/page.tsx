@@ -19,7 +19,7 @@ export default function Home() {
       <Box className="body">
         <Bio />
         <Projects />
-        {/* <Dribbble /> */}
+        <Dribbble />
         <Instagram />
         <Contact />
       </Box>
