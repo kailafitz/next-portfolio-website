@@ -28,7 +28,7 @@ export const Contact = () => {
       sx={{
         width: "100%",
         backgroundColor: "secondary.main",
-        py: 5,
+        py: { xs: 16, md: 8 },
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
