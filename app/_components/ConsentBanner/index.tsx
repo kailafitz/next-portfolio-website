@@ -76,8 +76,12 @@ const ConsentBanner = () => {
         </Typography>
         <ConsentForm test={setShowSnackbar} />
       </StyledDialog>
-      {showSnackbar === "saved" && <SuccessFeedback />}
-      {showSnackbar === "not saved" && <ErrorFeedback />}
+
+      {showSnackbar === "saved" ? (
+        <SuccessFeedback />
+      ) : showSnackbar === "not saved" ? (
+        <ErrorFeedback />
+      ) : null}
     </>
   );
 };

@@ -14,31 +14,56 @@ export const ConsentForm = (props: Props) => {
   const [triggerGAPreferencesUpdate, setTriggerGAPreferencesUpdate] =
     useState(true); // used to send GA updates
   const [currentConsent, setCurrentConsent] = useState();
-  const [consent, setConsent] = useState(
-    currentConsent
-      ? currentConsent
-      : {
-          ad_storage: false,
-          analytics_storage: true,
-          ad_user_data: false,
-          ad_personalization: false,
-        }
-  ); // GA object
+  const [consent, setConsent] = useState({
+    ad_storage: false,
+    analytics_storage: true,
+    ad_user_data: false,
+    ad_personalization: false,
+  }); // GA object
+  // const [consent, setConsent] = useState(
+  //   currentConsent
+  //     ? currentConsent
+  //     : {
+  //         ad_storage: false,
+  //         analytics_storage: true,
+  //         ad_user_data: false,
+  //         ad_personalization: false,
+  //       }
+  // ); // GA object
 
   const pathname = usePathname();
   const router = useRouter();
 
-  const handleAllClick = (all: boolean, showFeedback: boolean) => {
+  console.log("consent object", consent);
+
+  const confirmGAPreferences = () => {
+    console.log("2, Check if objects match in confirmGAPreferences", consent);
+    let localStorageString = localStorage.getItem("consentMode");
+    let choicesMadeString = JSON.stringify(consent);
+
+    if (localStorageString === choicesMadeString) {
+      setTimeout(() => {
+        props.test("saved");
+      }, 100);
+    } else {
+      setTimeout(() => {
+        props.test("not saved");
+      }, 100);
+    }
+  };
+
+  const handleAllClick = (all: boolean) => {
     setConsent({
       ad_storage: all,
       analytics_storage: all,
       ad_user_data: all,
       ad_personalization: all,
     });
-    {
-      showFeedback &&
-        setTriggerGAPreferencesUpdate(!triggerGAPreferencesUpdate);
-    }
+    // {
+    //   showFeedback &&
+    //     setTriggerGAPreferencesUpdate(!triggerGAPreferencesUpdate);
+    // }
+    confirmGAPreferences();
 
     router.push(pathname);
   };
@@ -48,23 +73,6 @@ export const ConsentForm = (props: Props) => {
       ...consent,
       [`${test}`]: !consent[test as keyof typeof consent],
     });
-  };
-
-  const confirmGAPreferences = () => {
-    let localStorageString = localStorage.getItem("consentMode");
-    let choicesMadeString = JSON.stringify(consent);
-
-    if (localStorageString == choicesMadeString) {
-      setTimeout(() => {
-        props.test("saved");
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        props.test("not saved");
-      }, 1000);
-    }
-
-    props.test("not set");
   };
 
   useEffect(() => {
@@ -77,7 +85,11 @@ export const ConsentForm = (props: Props) => {
       });
     }
     localStorage.setItem("consentMode", JSON.stringify(consent));
-  }, [triggerGAPreferencesUpdate]);
+    console.log(
+      "2, useEffect to update consent object AND set local storage cookie",
+      consent
+    );
+  }, [triggerGAPreferencesUpdate, consent]);
 
   return (
     <>
@@ -146,8 +158,8 @@ export const ConsentForm = (props: Props) => {
         >
           Save my Choices
         </Button>
-        <Button onClick={() => handleAllClick(true, true)}>Accept All</Button>
-        <Button onClick={() => handleAllClick(false, true)}>Reject All</Button>
+        <Button onClick={() => handleAllClick(true)}>Accept All</Button>
+        <Button onClick={() => handleAllClick(false)}>Reject All</Button>
       </ButtonGroup>
     </>
   );
