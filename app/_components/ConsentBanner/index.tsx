@@ -1,6 +1,6 @@
 "use client";
 import { StyledDialog } from "./styles";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Link from "../CustomLink";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
@@ -18,22 +18,6 @@ const ConsentBanner = () => {
   const [showSnackbar, setShowSnackbar] = useState<string>("not set"); // show user feedback
   const searchParams = useSearchParams();
   const modal = searchParams.get("modal");
-  const pathname = usePathname();
-  const router = useRouter();
-
-  // const handleDefaultSettingOnClose = () => {
-  //   return {
-  //     all: false,
-  //     showFeedback: false,
-  //   };
-  // };
-
-  // useEffect(() => {
-  //   let test = localStorage.getItem("consentMode");
-  //   if (test) {
-  //     setCurrentConsent(JSON.parse(test));
-  //   }
-  // }, [currentConsent]);
 
   return (
     <>
@@ -52,8 +36,12 @@ const ConsentBanner = () => {
           },
         }}
       >
-        <Typography variant="h3" sx={{ display: "flex", alignItems: "center" }}>
-          Cookies <CookieOutlinedIcon sx={{ fontSize: "h3.fontSize", ml: 1 }} />
+        <Typography
+          variant="h4"
+          sx={{ display: "flex", alignItems: "center", mb: 2 }}
+        >
+          Cookies{" "}
+          <CookieOutlinedIcon sx={{ fontSize: "h3.fontSize", ml: 0.5 }} />
         </Typography>
         <Typography
           variant="body1"
@@ -63,12 +51,9 @@ const ConsentBanner = () => {
             },
           }}
         >
-          My website uses cookies to track your actvity on my website. This
-          helps me to check the global reach of the website and to help identify
-          improvements that could be made to the website. All data collected is{" "}
-          <b>anonymous</b> and not inclusive of personal data that may be traced
-          back in any way to an individual. If you are okay with this please
-          keep the &quot;Analytics Storage&quot; toggle on. View our{" "}
+          Cookies are used on this website to collect data on user activity.
+          This data is not shared with any third-parties and is only used to
+          ensure that the website is functioning properly. View{" "}
           <Link color="primary.main" href="/privacy-policy">
             Privacy Policy
           </Link>{" "}

@@ -3,8 +3,8 @@ import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import { usePathname, useRouter } from "next/navigation";
+import { Stack } from "@mui/material";
 
 type Props = {
   test: React.Dispatch<React.SetStateAction<string>>;
@@ -13,31 +13,17 @@ type Props = {
 export const ConsentForm = (props: Props) => {
   const [triggerGAPreferencesUpdate, setTriggerGAPreferencesUpdate] =
     useState(true); // used to send GA updates
-  const [currentConsent, setCurrentConsent] = useState();
   const [consent, setConsent] = useState({
     ad_storage: false,
     analytics_storage: true,
     ad_user_data: false,
     ad_personalization: false,
   }); // GA object
-  // const [consent, setConsent] = useState(
-  //   currentConsent
-  //     ? currentConsent
-  //     : {
-  //         ad_storage: false,
-  //         analytics_storage: true,
-  //         ad_user_data: false,
-  //         ad_personalization: false,
-  //       }
-  // ); // GA object
 
   const pathname = usePathname();
   const router = useRouter();
 
-  console.log("consent object", consent);
-
   const confirmGAPreferences = () => {
-    console.log("2, Check if objects match in confirmGAPreferences", consent);
     let localStorageString = localStorage.getItem("consentMode");
     let choicesMadeString = JSON.stringify(consent);
 
@@ -59,10 +45,6 @@ export const ConsentForm = (props: Props) => {
       ad_user_data: all,
       ad_personalization: all,
     });
-    // {
-    //   showFeedback &&
-    //     setTriggerGAPreferencesUpdate(!triggerGAPreferencesUpdate);
-    // }
     confirmGAPreferences();
 
     router.push(pathname);
@@ -85,10 +67,6 @@ export const ConsentForm = (props: Props) => {
       });
     }
     localStorage.setItem("consentMode", JSON.stringify(consent));
-    console.log(
-      "2, useEffect to update consent object AND set local storage cookie",
-      consent
-    );
   }, [triggerGAPreferencesUpdate, consent]);
 
   return (
@@ -139,17 +117,18 @@ export const ConsentForm = (props: Props) => {
           labelPlacement="start"
         />
       </FormGroup>
-      <ButtonGroup
-        disableElevation
-        fullWidth
-        size="small"
-        orientation="vertical"
-        variant="text"
-        // sx={{
-        //   button: { borderBottom: "none", ":not(last-child)": { mb: 2 } },
-        // }}
+
+      <Stack
+        direction={{ xs: "column", md: "row" }}
+        sx={{
+          button: {
+            "&:not(:last-child)": { mb: { xs: 2, md: 0 }, mr: { md: 1 } },
+            flexGrow: 1,
+          },
+        }}
       >
         <Button
+          variant="contained"
           onClick={() => {
             setTriggerGAPreferencesUpdate(!triggerGAPreferencesUpdate);
             router.push(pathname);
@@ -158,9 +137,13 @@ export const ConsentForm = (props: Props) => {
         >
           Save my Choices
         </Button>
-        <Button onClick={() => handleAllClick(true)}>Accept All</Button>
-        <Button onClick={() => handleAllClick(false)}>Reject All</Button>
-      </ButtonGroup>
+        <Button variant="contained" onClick={() => handleAllClick(true)}>
+          Accept All
+        </Button>
+        <Button variant="outlined" onClick={() => handleAllClick(false)}>
+          Reject All
+        </Button>
+      </Stack>
     </>
   );
 };
