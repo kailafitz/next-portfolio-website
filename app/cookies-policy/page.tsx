@@ -34,11 +34,12 @@ const CookiesPolicy = () => {
         Last updated March 27th, 2024
       </Typography>
       <Typography variant="body2">
-        This Cookie Policy for Mikhaila Fitzpatrick (doing business as
-        kailafitz), (&quot;we&quot;, &quot;us&quot; or &quot;our&quot;), uses
-        cookies and similar technologies to recognize you when you visit our
-        website at{" "}
-        <Link href="mailto:https://kailafitz.com">https://kailafitz.com</Link>{" "}
+        This Cookie Policy explains how Mikhaila Fitzpatrick, (&quot;we&quot;,
+        &quot;us&quot; or &quot;our&quot;), uses cookies and similar
+        technologies to recognize you when you visit our website at{" "}
+        <Link href="mailto:https://mikhailafitzpatrick.com">
+          https://mikhailafitzpatrick.com
+        </Link>{" "}
         (&quot;Website&quot;). It explains what these technologies are and why
         we use them, as well as your rights to control our use of them.
         <br />
@@ -180,7 +181,7 @@ const CookiesPolicy = () => {
             align="left"
             sx={{ width: { xs: "unset", sm: "90%" } }}
           >
-            kailafitz.com
+            mikhailafitzpatrick.com
           </Typography>
         </Stack>
         <Stack flexDirection="row">
