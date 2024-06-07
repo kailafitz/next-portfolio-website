@@ -130,15 +130,15 @@ const PrivayPolicy = () => {
       </Typography>
       <Typography variant="body2">
         This privacy notice for Mikhaila Fitzpatrick (doing business as
-        kailafitz), (&quot;we&quot;, &quot;us&quot; or &quot;our&quot;),
-        describes how and why we might collect, store, use, and/or share
-        (&#39;process&#39;) your information when you use our services
-        (&#39;Services&#39;), such as when you:
+        mikhailafitzpatrick), (&quot;we&quot;, &quot;us&quot; or
+        &quot;our&quot;), describes how and why we might collect, store, use,
+        and/or share (&#39;process&#39;) your information when you use our
+        services (&#39;Services&#39;), such as when you:
       </Typography>
       <ul>
         <li>
-          Visit our website at kailafitz.com, or any website of ours that links
-          to this privacy notice
+          Visit our website at mikhailafitzpatrick.com, or any website of ours
+          that links to this privacy notice
         </li>
         <li>
           Engage with us in other related ways, including any sales, marketing,
@@ -346,8 +346,8 @@ const PrivayPolicy = () => {
         Like many businesses, we also collect information through cookies and
         similar technologies. You can find out more about this in our Cookie
         Notice:{" "}
-        <Link href="http://www.kailafitz.com/cookies">
-          http://www.kailafitz.com/cookies.
+        <Link href="http://www.mikhailafitzpatrick.com/cookies">
+          http://www.mikhailafitzpatrick.com/cookies.
         </Link>
         <br />
         <br />
@@ -591,8 +591,8 @@ const PrivayPolicy = () => {
         and pixels) to access or store information. Specific information about
         how we use such technologies and how you can refuse certain cookies is
         set out in our Cookie Notice:{" "}
-        <Link href="http://www.kailafitz.com/cookies">
-          http://www.kailafitz.com/cookies
+        <Link href="http://www.mikhailafitzpatrick.com/cookies">
+          http://www.mikhailafitzpatrick.com/cookies
         </Link>
         .
       </Typography>
@@ -756,8 +756,8 @@ const PrivayPolicy = () => {
         cookies or reject cookies, this could affect certain features or
         services of our Services. For further information, please see our Cookie
         Notice:{" "}
-        <Link href="http://www.kailafitz.com/cookies">
-          http://www.kailafitz.com/cookies
+        <Link href="http://www.mikhailafitzpatrick.com/cookies">
+          http://www.mikhailafitzpatrick.com/cookies
         </Link>
         .
         <br />
