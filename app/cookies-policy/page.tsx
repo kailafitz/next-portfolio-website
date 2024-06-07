@@ -181,7 +181,137 @@ const CookiesPolicy = () => {
             align="left"
             sx={{ width: { xs: "unset", sm: "90%" } }}
           >
-            mikhailafitzpatrick.com
+            .mikhailafitzpatrick.com
+          </Typography>
+        </Stack>
+        <Stack flexDirection="row">
+          <Typography
+            variant="body2"
+            sx={{
+              textAlign: { xs: "left", sm: "right" },
+              mr: 3,
+              width: { xs: "unset", sm: "10%" },
+            }}
+          >
+            Service:
+          </Typography>
+          <Typography
+            variant="body2"
+            align="left"
+            sx={{ width: { xs: "unset", sm: "90%" } }}
+          >
+            Google Analytics{" "}
+            <Link href="https://policies.google.com/privacy">
+              View Service Privacy Policy
+            </Link>
+          </Typography>
+        </Stack>
+        <Stack flexDirection="row">
+          <Typography
+            variant="body2"
+            sx={{
+              textAlign: { xs: "left", sm: "right" },
+              mr: 3,
+              width: { xs: "unset", sm: "10%" },
+            }}
+          >
+            Type:
+          </Typography>
+          <Typography
+            variant="body2"
+            align="left"
+            sx={{ width: { xs: "unset", sm: "90%" } }}
+          >
+            http_cookie
+          </Typography>
+        </Stack>
+        <Stack flexDirection="row">
+          <Typography
+            variant="body2"
+            sx={{
+              textAlign: { xs: "left", sm: "right" },
+              mr: 3,
+              width: { xs: "unset", sm: "10%" },
+            }}
+          >
+            Expires in:
+          </Typography>
+          <Typography
+            variant="body2"
+            align="left"
+            sx={{ width: { xs: "unset", sm: "90%" } }}
+          >
+            1 year 1 month 4 days
+          </Typography>
+        </Stack>
+      </Card>
+      <Card
+        sx={{
+          my: 2,
+          p: 4,
+          color: "grey.600",
+          div: {
+            mb: 1,
+          },
+        }}
+      >
+        <Stack flexDirection="row">
+          <Typography
+            variant="body2"
+            sx={{
+              textAlign: { xs: "left", sm: "right" },
+              mr: 3,
+              width: { xs: "unset", sm: "10%" },
+            }}
+          >
+            Name:
+          </Typography>
+          <Typography
+            variant="body2"
+            align="left"
+            sx={{ width: { xs: "unset", sm: "90%" } }}
+          >
+            _ga_#
+          </Typography>
+        </Stack>
+        <Stack flexDirection="row">
+          <Typography
+            variant="body2"
+            sx={{
+              textAlign: { xs: "left", sm: "right" },
+              mr: 3,
+              width: { xs: "unset", sm: "10%" },
+            }}
+          >
+            Purpose:
+          </Typography>
+          <Typography
+            variant="body2"
+            align="left"
+            sx={{ width: { xs: "unset", sm: "90%" } }}
+          >
+            Used to distinguish individual users by means of designation of a
+            randomly generated number as a client identifier which allows
+            calculation of sessions and visits
+          </Typography>
+        </Stack>
+        <Stack flexDirection="row">
+          <Typography
+            variant="body2"
+            sx={{
+              textAlign: { xs: "left", sm: "right" },
+              mr: 3,
+              width: { xs: "unset", sm: "10%" },
+            }}
+          >
+            Provider:
+          </Typography>
+          <Typography
+            variant="body2"
+            align="left"
+            sx={{ width: { xs: "unset", sm: "90%" } }}
+          >
+            .mikhailafitzpatrick.com
           </Typography>
         </Stack>
         <Stack flexDirection="row">
