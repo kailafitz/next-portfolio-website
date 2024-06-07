@@ -29,9 +29,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* <GoogleAnalytics GA_MEASUREMENT_ID="G-C3NSFRZ1Q2" /> */}
+      <GoogleAnalytics GA_MEASUREMENT_ID="G-C3NSFRZ1Q2" />
       <head>
-        {/* <GTagHeadScript GTAG_ID="GTM-PKHDDR77" /> */}
+        <GTagHeadScript GTAG_ID="GTM-PKHDDR77" />
         <meta charSet="utf-8"></meta>
         <meta
           name="viewport"
@@ -40,13 +40,13 @@ export default function RootLayout({
         <link rel="icon" type="image/x-icon" href="./favicon.png" />
       </head>
       <body>
-        {/* <GTagBodyScript /> */}
+        <GTagBodyScript />
         <AppRouterCacheProvider options={{ key: "css", enableCssLayer: true }}>
           <ThemeProvider theme={reponsiveTheme}>
             <Navigation />
             {children}
             <Footer />
-            {/* <ConsentBanner /> */}
+            <ConsentBanner />
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
