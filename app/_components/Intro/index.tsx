@@ -7,9 +7,17 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material/styles";
+import ReactGA from "react-ga4";
 
 const Intro = () => {
   const theme = useTheme();
+  const sendGA4 = () => {
+    ReactGA.event({
+      category: "link_clicked",
+      action: "Click Link",
+      label: "Download Resume",
+    });
+  };
   return (
     <Box
       display="flex"
@@ -71,6 +79,7 @@ const Intro = () => {
                   href="./MikhailaFitzpatrick_Technical_CurriculumVitae.pdf"
                   download="MikhailaFitzpatrick_Technical_CurriculumVitae"
                   sx={{ width: { xs: "100%", sm: "fit-content" } }}
+                  onClick={() => sendGA4()}
                 >
                   Download my resume
                 </Button>

@@ -1,7 +1,6 @@
 "use client";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
@@ -10,7 +9,6 @@ import { useTheme } from "@mui/material/styles";
 import { StyledHr } from "./styles";
 import { ProjectStackLogo } from "./ProjectStackLogo";
 import { GitHub, Monitor } from "react-feather";
-import LaunchIcon from "@mui/icons-material/Launch";
 import ReactGA from "react-ga4";
 import { ProjectType, TechStackProps } from "../../../_types";
 import Image from "next/image";
