@@ -534,13 +534,6 @@ const CookiesPolicy = () => {
         legal, or regulatory reasons. Please therefore revisit this Cookie
         Policy regularly to stay informed about our use of cookies and related
         technologies.
-        <br />
-        <br />
-        We may update this Cookie Policy from time to time in order to reflect,
-        for example, changes to the cookies we use or for other operational,
-        legal, or regulatory reasons. Please therefore revisit this Cookie
-        Policy regularly to stay informed about our use of cookies and related
-        technologies.
       </Typography>
       <Typography variant="h5" sx={{ my: 3 }}>
         Where can I get further information?
