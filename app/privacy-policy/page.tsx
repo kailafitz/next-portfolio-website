@@ -346,8 +346,8 @@ const PrivayPolicy = () => {
         Like many businesses, we also collect information through cookies and
         similar technologies. You can find out more about this in our Cookie
         Notice:{" "}
-        <Link href="http://www.mikhailafitzpatrick.com/cookies">
-          http://www.mikhailafitzpatrick.com/cookies.
+        <Link href="http://www.mikhailafitzpatrick.com/cookies-policy">
+          http://www.mikhailafitzpatrick.com/cookies-policy.
         </Link>
         <br />
         <br />
@@ -591,8 +591,8 @@ const PrivayPolicy = () => {
         and pixels) to access or store information. Specific information about
         how we use such technologies and how you can refuse certain cookies is
         set out in our Cookie Notice:{" "}
-        <Link href="http://www.mikhailafitzpatrick.com/cookies">
-          http://www.mikhailafitzpatrick.com/cookies
+        <Link href="http://www.mikhailafitzpatrick.com/cookies-policy">
+          http://www.mikhailafitzpatrick.com/cookies-policy
         </Link>
         .
       </Typography>
@@ -756,8 +756,8 @@ const PrivayPolicy = () => {
         cookies or reject cookies, this could affect certain features or
         services of our Services. For further information, please see our Cookie
         Notice:{" "}
-        <Link href="http://www.mikhailafitzpatrick.com/cookies">
-          http://www.mikhailafitzpatrick.com/cookies
+        <Link href="http://www.mikhailafitzpatrick.com/cookies-policy">
+          http://www.mikhailafitzpatrick.com/cookies-policy
         </Link>
         .
         <br />
