@@ -53,18 +53,24 @@ const Bio = () => {
             color={theme.palette.secondary.main}
             size={size}
             strokeWidth={1.2}
+            data-aos="fade-up"
+            data-aos-delay={1 * 100}
           />
 
           <User
             color={theme.palette.secondary.main}
             size={size}
             strokeWidth={1.2}
+            data-aos="fade-up"
+            data-aos-delay={2 * 100}
           />
 
           <Smartphone
             color={theme.palette.secondary.main}
             size={size}
             strokeWidth={1.2}
+            data-aos="fade-up"
+            data-aos-delay={3 * 100}
           />
         </Stack>
         {/* <Box sx={{ width: "fit-content" }} className="mx-auto">
