@@ -5,6 +5,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import Alert from "@mui/material/Alert";
 import PropTypes from "prop-types";
 import { FeedbackSnackbar } from "../../../_types";
+import Link from "@mui/material/Link";
+import NextLink from "next/link";
 
 // https://www.reddit.com/r/reactjs/comments/oq1rtp/type_authors_author_is_not_assignable_to_type/
 
@@ -74,6 +76,7 @@ export const SuccessFeedback = () => {
           Your preferences have been successfully saved! To change your
           preferences, please visit our{" "}
           <Link
+            component={NextLink}
             href="/privacy-policy"
             color="common.white"
             sx={{ fontWeight: 700 }}
