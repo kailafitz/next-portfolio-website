@@ -10,6 +10,11 @@ import Image from "next/image";
 import { Contact } from "../../../../_components/Contact";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import ProjectDetails from "../../../../_components/ProjectDetails";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Project",
+};
 
 const ProjectPage = ({
   params,

@@ -12,7 +12,7 @@ const getData = async ({ token }: { token: string }) => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      cache: "no-cache",
+      // cache: "no-cache",
     }
   );
   return res.json();
@@ -23,8 +23,7 @@ getData.propTypes = {
 };
 
 const Shots = async () => {
-  let accessToken =
-    "ebad71dc82872a2f2f68e92083be89ae31eeb672ae6907c4e5c7ecebc010dd45";
+  let accessToken = process.env.DRIBBBLE_ACCESS_TOKEN ?? "";
   const data = await getData({ token: accessToken });
 
   // console.log(data.slice(0, 3));
