@@ -21,10 +21,18 @@ export const Project = (props: ProjectType | ProjectType) => {
 
   const createFileHandle = props.projectName.replaceAll(" ", "-").toLowerCase();
 
-  const sendGA4 = (projectName: String) => {
+  const sendGA4LearnMoreOnProject = (projectName: String) => {
     ReactGA.event({
       category: "link_clicked",
-      action: "Click Link",
+      action: "Learn more on the Project",
+      label: `${projectName}`,
+    });
+  };
+
+  const sendGA4ProjectView = (projectName: String) => {
+    ReactGA.event({
+      category: "link_clicked",
+      action: "View Project URL",
       label: `${projectName}`,
     });
   };
@@ -70,8 +78,7 @@ export const Project = (props: ProjectType | ProjectType) => {
               }/${props.projectId}`}
               // target="_blank"
               underline="none"
-              // onClick={sendGA4}
-              onClick={() => sendGA4(props.projectName)}
+              onClick={() => sendGA4LearnMoreOnProject(props.projectName)}
             >
               <Typography
                 variant="h4"
@@ -152,6 +159,7 @@ export const Project = (props: ProjectType | ProjectType) => {
             </Button>
             <Button
               href={props.projectURL}
+              onClick={() => sendGA4ProjectView(props.projectName)}
               target="_blank"
               variant="inset"
               color="white"

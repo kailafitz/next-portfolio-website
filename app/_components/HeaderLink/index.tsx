@@ -2,6 +2,7 @@ import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import LaunchIcon from "@mui/icons-material/Launch";
 import Box from "@mui/material/Box";
+import ReactGA from "react-ga4";
 
 type HeaderLinkProps = {
   link: string;
@@ -10,6 +11,14 @@ type HeaderLinkProps = {
 };
 
 export const HeaderLink = (props: HeaderLinkProps) => {
+  const sendGA4Social = (projectName: String) => {
+    ReactGA.event({
+      category: "link_clicked",
+      action: "View Dribbble/ Instagram",
+      label: `${projectName}`,
+    });
+  };
+
   return (
     <>
       <Typography
@@ -29,6 +38,7 @@ export const HeaderLink = (props: HeaderLinkProps) => {
         <span>Catch me on </span>
         <span>
           <Link
+            onClick={() => sendGA4Social(props.label)}
             href={props.link}
             target="_blank"
             underline="none"
