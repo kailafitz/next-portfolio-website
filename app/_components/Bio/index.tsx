@@ -1,15 +1,13 @@
 "use client";
 import React, { useEffect } from "react";
 import Container from "@mui/material/Container";
-import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { Smartphone, Settings, User } from "react-feather";
 import Stack from "@mui/material/Stack";
 import AOS from "aos";
+import { customPalettes } from "../../variables";
 
 const Bio = () => {
-  const theme = useTheme();
-
   let size = 100;
 
   useEffect(() => {
@@ -47,7 +45,7 @@ const Bio = () => {
           }}
         >
           <Settings
-            color={theme.palette.secondary.main}
+            color={customPalettes.secondary.main}
             size={size}
             strokeWidth={1.2}
             data-aos="fade-up"
@@ -55,7 +53,7 @@ const Bio = () => {
           />
 
           <User
-            color={theme.palette.secondary.main}
+            color={customPalettes.secondary.main}
             size={size}
             strokeWidth={1.2}
             data-aos="fade-up"
@@ -63,7 +61,7 @@ const Bio = () => {
           />
 
           <Smartphone
-            color={theme.palette.secondary.main}
+            color={customPalettes.secondary.main}
             size={size}
             strokeWidth={1.2}
             data-aos="fade-up"

@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
-import { useTheme } from "@mui/material/styles";
 import { StyledHr } from "./styles";
 import { GitHub, Monitor } from "react-feather";
 import ReactGA from "react-ga4";
@@ -15,10 +14,9 @@ import Stack from "@mui/material/Stack";
 import AOS from "aos";
 import { useEffect } from "react";
 import ProjectStackLogo from "./ProjectStackLogo";
+import { customPalettes } from "../../../variables";
 
 export const Project = (props: ProjectType | ProjectType) => {
-  const theme = useTheme();
-
   const createFileHandle = props.projectName.replaceAll(" ", "-").toLowerCase();
 
   const sendGA4LearnMoreOnProject = (projectName: String) => {
@@ -48,7 +46,7 @@ export const Project = (props: ProjectType | ProjectType) => {
         columnGap={3}
         justifyContent={{ xs: "center", md: "space-between" }}
         sx={{
-          borderLeft: (theme) => `1px ${theme.palette.primary.main} solid`,
+          borderLeft: (theme) => `1px ${customPalettes.primary.main} solid`,
         }}
       >
         <Grid xs={12} md={1}>
@@ -141,10 +139,10 @@ export const Project = (props: ProjectType | ProjectType) => {
               target="_blank"
               variant="inset"
               color="white"
-              sx={{ p: theme.spacing(1), mb: { xs: 3, md: 0 }, svg: { mr: 1 } }}
+              sx={{ p: 1, mb: { xs: 3, md: 0 }, svg: { mr: 1 } }}
             >
               <GitHub
-                color={theme.palette.secondary.main}
+                color={customPalettes.secondary.main}
                 size={25}
                 strokeWidth={1.1}
               />
@@ -156,10 +154,10 @@ export const Project = (props: ProjectType | ProjectType) => {
               target="_blank"
               variant="inset"
               color="white"
-              sx={{ p: theme.spacing(1), svg: { mr: 1 } }}
+              sx={{ p: 1, svg: { mr: 1 } }}
             >
               <Monitor
-                color={theme.palette.secondary.main}
+                color={customPalettes.secondary.main}
                 size={25}
                 strokeWidth={1.1}
               />

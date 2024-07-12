@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Image from "next/image";
@@ -6,11 +5,8 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { useTheme } from "@mui/material/styles";
-import ReactGA from "react-ga4";
 
 const Intro = () => {
-  const theme = useTheme();
   return (
     <Box
       display="flex"
@@ -18,14 +14,9 @@ const Intro = () => {
       justifyContent="center"
       sx={{
         width: "100%",
-        backgroundColor: theme.palette.primary.main,
-        // py: { xs: 8, md: 0 },
+        backgroundColor: "primary.main",
         pb: { xs: 16, md: "inherit" },
         minHeight: { md: "90vh" },
-        // mt: "-1px",
-        // mt: { xs: "104px", md: 0 },
-        // overflowY: "scroll",
-        // maxHeight: "99vh",
       }}
     >
       <Container>

@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import ReactGA from "react-ga4";
-import { useTheme } from "@mui/material/styles";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
@@ -19,7 +18,6 @@ import ContactForm from "./ContactForm";
 import { customPalettes } from "../../variables";
 
 export const Contact = () => {
-  const theme = useTheme();
   const sendGA4ContactIcon = (ContactIcon: String) => {
     ReactGA.event({
       category: "link_clicked",
@@ -92,7 +90,7 @@ export const Contact = () => {
               onClick={() => sendGA4ContactIcon("Email")}
             >
               <Mail
-                color={theme.palette.common.white}
+                color={customPalettes.white.main}
                 size={size}
                 strokeWidth={1.1}
               />
@@ -102,7 +100,7 @@ export const Contact = () => {
               onClick={() => sendGA4ContactIcon("Mobile")}
             >
               <Phone
-                color={theme.palette.common.white}
+                color={customPalettes.white.main}
                 size={size}
                 strokeWidth={1.1}
               />
@@ -132,7 +130,7 @@ export const Contact = () => {
               onClick={() => sendGA4ContactIcon("LinkedIn")}
             >
               <Linkedin
-                color={theme.palette.common.white}
+                color={customPalettes.white.main}
                 size={size}
                 strokeWidth={1.1}
               />
@@ -143,7 +141,7 @@ export const Contact = () => {
               onClick={() => sendGA4ContactIcon("Github")}
             >
               <GitHub
-                color={theme.palette.common.white}
+                color={customPalettes.white.main}
                 size={size}
                 strokeWidth={1.1}
               />
@@ -154,7 +152,7 @@ export const Contact = () => {
               onClick={() => sendGA4ContactIcon("Dribbble")}
             >
               <Dribbble
-                color={theme.palette.common.white}
+                color={customPalettes.white.main}
                 size={size}
                 strokeWidth={1.1}
               />
@@ -165,7 +163,7 @@ export const Contact = () => {
               onClick={() => sendGA4ContactIcon("Instagram")}
             >
               <Instagram
-                color={theme.palette.common.white}
+                color={customPalettes.white.main}
                 size={size}
                 strokeWidth={1.1}
               />
