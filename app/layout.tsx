@@ -1,9 +1,8 @@
 import React from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import Navigation from "./_components/Navigation";
+import Navigation from "./_components/Layout/Navigation";
 import "./_styles/styles.scss";
-import { Footer } from "./_components/Footer";
 import { reponsiveTheme } from "./_styles/Theme";
 import GoogleAnalytics from "./_components/GoogleAnalytics";
 import ConsentBanner from "./_components/ConsentBanner";
@@ -11,6 +10,7 @@ import { Metadata } from "next";
 import GTagHeadScript from "./_components/GoogleAnalytics/GTagHeadScript";
 import GTagBodyScript from "./_components/GoogleAnalytics/GTagBodyScript";
 import "aos/dist/aos.css";
+import { Footer } from "./_components/Layout/Footer";
 
 export const metadata: Metadata = {
   title: {

@@ -4,20 +4,23 @@ import {
   ProjectType,
   TechStackProps,
   ProjectDetailSection,
-} from "../../../_types";
+} from "../../../../_types";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
-import { PersonalProjectData, ProfessionalProjectData } from "../../../_data";
+import {
+  PersonalProjectData,
+  ProfessionalProjectData,
+} from "../../../../_data";
 import Image from "next/image";
-import { Contact } from "../../../_components/Contact";
+import { Contact } from "../../../../_components/Contact";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { GitHub, Monitor } from "react-feather";
 import { useTheme } from "@mui/material/styles";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import { ProjectStackLogo } from "../../../_components/Projects/Project/ProjectStackLogo";
+import { ProjectStackLogo } from "../../../../_components/Projects/Project/ProjectStackLogo";
 
 const ProjectDetails = ({
   params,

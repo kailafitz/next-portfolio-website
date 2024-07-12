@@ -75,7 +75,9 @@ export const Project = (props: ProjectType | ProjectType) => {
             <Link
               href={`/projects/${
                 props.companyName === undefined ? `personal` : `professional`
-              }/${props.projectId}`}
+              }/${props.projectId}/${props.projectName
+                .replace(/ /g, "-")
+                .toLowerCase()}`}
               // target="_blank"
               underline="none"
               onClick={() => sendGA4LearnMoreOnProject(props.projectName)}

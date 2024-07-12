@@ -1,3 +1,4 @@
+"use client";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import LaunchIcon from "@mui/icons-material/Launch";

@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 // import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import Link from "../CustomLink";
+import Link from "../../CustomLink";
 
 // https://stackoverflow.com/questions/77262540/warning-failed-prop-type-invalid-prop-component-supplied-to-forwardreflink
 // https://stackoverflow.com/questions/74421327/nextrouter-was-not-mounted-next-js

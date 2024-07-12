@@ -1,7 +1,5 @@
 "use client";
 import React, { useEffect } from "react";
-import Image from "next/image";
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
@@ -73,16 +71,6 @@ const Bio = () => {
             data-aos-delay={3 * 100}
           />
         </Stack>
-        {/* <Box sx={{ width: "fit-content" }} className="mx-auto">
-          <Typography variant="h5" color="primary">
-            Services and skills include:
-          </Typography>
-          <ul id="services-list" className="services-list">
-            <li>UI development</li>
-            <li>UI design</li>
-            <li>Graphic design</li>
-          </ul>
-        </Box> */}
       </Container>
     </Container>
   );

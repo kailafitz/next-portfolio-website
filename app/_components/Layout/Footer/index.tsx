@@ -2,8 +2,8 @@
 import { StyledFooter } from "./styles";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Link from "../CustomLink";
 import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
 
 export const Footer = () => {
   return (

@@ -40,7 +40,7 @@ export const PersonalProjectData = [
       {
         sectionTitle: "The Spec",
         sectionDetails:
-          "Lancer is a filing system for freelancers so they may keep track of invoices and tax records.A login system is in place so that users may keep a personal account of their individual records. Employers and job details can be inputted into the system and a mini dashboard is also available for an overview of the income earned and the tax due on an annual basis.This project is roughly based on the Irish income tax brackets.",
+          "Lancer is a filing system for freelancers so they may keep track of invoices and tax records. A login system is in place so that users may keep a personal account of their individual records. Employers and job details can be inputted into the system and a mini dashboard is also available for an overview of the income earned and the tax due on an annual basis.This project is roughly based on the Irish income tax brackets.",
       },
     ],
   },

@@ -15,7 +15,7 @@ import {
   Instagram,
 } from "react-feather";
 import { Typography } from "@mui/material";
-import ContactForm from "../ContactForm";
+import ContactForm from "./ContactForm";
 import { customPalettes } from "../../variables";
 
 export const Contact = () => {
