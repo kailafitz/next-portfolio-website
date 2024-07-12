@@ -1,5 +1,5 @@
 "use client";
-import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
+import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
@@ -52,12 +52,7 @@ export const Project = (props: ProjectType | ProjectType) => {
         }}
       >
         <Grid xs={12} md={1}>
-          <Box
-            display="flex"
-            flexDirection="row"
-            // justifyContent="space-between"
-            sx={{ mb: { xs: 3, md: 0 } }}
-          >
+          <Box display="flex" flexDirection="row" sx={{ mb: { xs: 3, md: 0 } }}>
             <StyledHr />
             <Typography variant="h5">{props.year}</Typography>
           </Box>
@@ -78,7 +73,6 @@ export const Project = (props: ProjectType | ProjectType) => {
               }/${props.projectId}/${props.projectName
                 .replace(/ /g, "-")
                 .toLowerCase()}`}
-              // target="_blank"
               underline="none"
               onClick={() => sendGA4LearnMoreOnProject(props.projectName)}
             >
@@ -88,7 +82,6 @@ export const Project = (props: ProjectType | ProjectType) => {
                 color="secondary.main"
                 fontWeight="600"
                 sx={{
-                  // textShadow: "-5px -6px 3px #0000002b, 5px 8px 3px #f6f5f5",
                   transition: "text-shadow .6s ease",
                   svg: {
                     transform: "scale(1)",
@@ -97,7 +90,6 @@ export const Project = (props: ProjectType | ProjectType) => {
                     transition: "all .3s ease-in",
                   },
                   "&:hover": {
-                    // textShadow: "0px 0px 0px #0000002b, 0px 0px 0px #f6f5f5",
                     transition: "text-shadow .6s ease",
                     svg: {
                       transform: "scale(1.6)",
@@ -152,7 +144,6 @@ export const Project = (props: ProjectType | ProjectType) => {
               sx={{ p: theme.spacing(1), mb: { xs: 3, md: 0 }, svg: { mr: 1 } }}
             >
               <GitHub
-                // color={theme.palette.common.white}
                 color={theme.palette.secondary.main}
                 size={25}
                 strokeWidth={1.1}
@@ -168,7 +159,6 @@ export const Project = (props: ProjectType | ProjectType) => {
               sx={{ p: theme.spacing(1), svg: { mr: 1 } }}
             >
               <Monitor
-                // color={theme.palette.common.white}
                 color={theme.palette.secondary.main}
                 size={25}
                 strokeWidth={1.1}

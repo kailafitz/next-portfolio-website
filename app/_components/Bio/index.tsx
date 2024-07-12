@@ -38,7 +38,6 @@ const Bio = () => {
           pb={{ xs: 16, md: 0 }}
           flexDirection={{ xs: "column", md: "row" }}
           justifyContent={{ xs: "center", md: "space-around" }}
-          data-aos="fade-up"
           sx={{
             width: { xs: "fit-content", md: "100%" },
             margin: { xs: "0 auto" },

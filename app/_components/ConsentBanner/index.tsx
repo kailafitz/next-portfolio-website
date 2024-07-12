@@ -3,7 +3,7 @@ import { StyledDialog } from "./styles";
 import { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Link from "../CustomLink";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ErrorFeedback, SuccessFeedback } from "./UserFeedbackSnackbar";
 import { ConsentForm } from "./ConsentForm";
 import CookieOutlinedIcon from "@mui/icons-material/CookieOutlined";
@@ -23,10 +23,6 @@ const ConsentBanner = () => {
     <>
       <StyledDialog
         open={modal ? true : false}
-        // onClose={(event, reason) => {
-        //   handleDefaultSettingOnClose();
-        //   router.push(pathname);
-        // }}
         PaperProps={{
           sx: {
             p: 3,
