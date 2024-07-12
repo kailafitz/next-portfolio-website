@@ -62,7 +62,7 @@ const UserFeedbackSnackbar = (props: FeedbackSnackbar) => {
 
 UserFeedbackSnackbar.propTypes = {
   show: PropTypes.bool,
-  message: PropTypes.bool,
+  message: PropTypes.node,
   type: PropTypes.string,
 };
 
