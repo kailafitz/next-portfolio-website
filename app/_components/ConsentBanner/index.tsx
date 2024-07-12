@@ -2,10 +2,11 @@
 import { StyledDialog } from "./styles";
 import { useState } from "react";
 import Typography from "@mui/material/Typography";
-import Link from "../CustomLink";
 import { useSearchParams } from "next/navigation";
 import { ErrorFeedback, SuccessFeedback } from "./UserFeedbackSnackbar";
 import ConsentForm from "./ConsentForm";
+import NextLink from "next/link";
+import Link from "@mui/material/Link";
 import CookieOutlinedIcon from "@mui/icons-material/CookieOutlined";
 
 // https://dev.to/idboussadel/implementing-google-analytics-in-consent-mode-with-a-cookie-banner-for-nextjs-with-ts-1ga6
@@ -50,7 +51,11 @@ const ConsentBanner = () => {
           Cookies are used on this website to collect data on user activity.
           This data is not shared with any third-parties and is only used to
           ensure that the website is functioning properly. View{" "}
-          <Link color="primary.main" href="/privacy-policy">
+          <Link
+            component={NextLink}
+            color="primary.main"
+            href="/privacy-policy"
+          >
             Privacy Policy
           </Link>{" "}
           for more information.

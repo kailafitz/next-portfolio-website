@@ -1,7 +1,6 @@
 import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import { StyledHr } from "./styles";
@@ -12,6 +11,8 @@ import Image from "next/image";
 import Stack from "@mui/material/Stack";
 import ProjectStackLogo from "./ProjectStackLogo";
 import { customPalettes } from "../../../variables";
+import Link from "@mui/material/Link";
+import NextLink from "next/link";
 
 export const Project = (props: ProjectType | ProjectType) => {
   const createFileHandle = props.projectName.replaceAll(" ", "-").toLowerCase();
@@ -59,6 +60,7 @@ export const Project = (props: ProjectType | ProjectType) => {
         >
           <Box>
             <Link
+              component={NextLink}
               href={`/projects/${
                 props.companyName === undefined ? `personal` : `professional`
               }/${props.projectId}/${props.projectName

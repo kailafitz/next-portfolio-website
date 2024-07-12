@@ -1,10 +1,10 @@
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import React from "react";
-import Link from "../_components/CustomLink";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 import { Metadata } from "next";
+import Link from "@mui/material/Link";
 
 export const metadata: Metadata = {
   title: "Cookies Policy",

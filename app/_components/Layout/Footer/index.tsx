@@ -3,6 +3,7 @@ import { StyledFooter } from "./styles";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import NextLink from "next/link";
 import Link from "@mui/material/Link";
 
 export const Footer = () => {
@@ -17,7 +18,11 @@ export const Footer = () => {
           mb={{ xs: 2, md: 3 }}
         >
           <Typography variant="body1">
-            <Link color="common.white" href="privacy-policy">
+            <Link
+              component={NextLink}
+              color="common.white"
+              href="privacy-policy"
+            >
               Privacy Policy
             </Link>
           </Typography>
@@ -25,7 +30,11 @@ export const Footer = () => {
             |
           </Typography>
           <Typography variant="body1">
-            <Link color="common.white" href="cookies-policy">
+            <Link
+              component={NextLink}
+              color="common.white"
+              href="cookies-policy"
+            >
               Cookies
             </Link>
           </Typography>

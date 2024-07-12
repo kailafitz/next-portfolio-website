@@ -3,9 +3,9 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-// import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import Link from "../../CustomLink";
+import NextLink from "next/link";
+import Link from "@mui/material/Link";
 
 // https://stackoverflow.com/questions/77262540/warning-failed-prop-type-invalid-prop-component-supplied-to-forwardreflink
 // https://stackoverflow.com/questions/74421327/nextrouter-was-not-mounted-next-js
@@ -24,7 +24,7 @@ export default function Navigation() {
           >
             |
           </Typography> */}
-          <Link href="/">
+          <Link href="/" component={NextLink}>
             <Image
               width="70"
               height="70"

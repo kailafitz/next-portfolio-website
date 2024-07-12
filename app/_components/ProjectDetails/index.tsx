@@ -1,4 +1,3 @@
-"use client";
 import React, { Fragment } from "react";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { GitHub, Monitor } from "react-feather";

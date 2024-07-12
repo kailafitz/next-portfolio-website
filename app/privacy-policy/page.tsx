@@ -9,8 +9,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import Link from "../_components/CustomLink";
 import { Metadata } from "next";
+import NextLink from "next/link";
+import Link from "@mui/material/Link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -121,7 +122,7 @@ const PrivayPolicy = () => {
         <Typography variant="h1" mb={2}>
           Privacy Policy
         </Typography>
-        <Link sx={{ mb: 2 }} href="?modal=true">
+        <Link component={NextLink} sx={{ mb: 2 }} href="?modal=true">
           Update Privacy Settings
         </Link>
       </Stack>
@@ -219,77 +220,77 @@ const PrivayPolicy = () => {
       </Typography>
       <ol>
         <li>
-          <Link href="#section1" color="common.black">
+          <Link component={NextLink} href="#section1" color="common.black">
             What Information Do We Collect?
           </Link>
         </li>
         <li>
-          <Link href="#section2" color="common.black">
+          <Link component={NextLink} href="#section2" color="common.black">
             How Do We Process Your Information?
           </Link>
         </li>
         <li>
-          <Link href="#section3" color="common.black">
+          <Link component={NextLink} href="#section3" color="common.black">
             What Legal Bases Do We Rely On To Process Your Personal Information?
           </Link>
         </li>
         <li>
-          <Link href="#section4" color="common.black">
+          <Link component={NextLink} href="#section4" color="common.black">
             When And With Whom Do We Share Your Personal Information?
           </Link>
         </li>
         <li>
-          <Link href="#section5" color="common.black">
+          <Link component={NextLink} href="#section5" color="common.black">
             Do We Use Cookies And Other Tracking Technologies?
           </Link>
         </li>
         <li>
-          <Link href="#section6" color="common.black">
+          <Link component={NextLink} href="#section6" color="common.black">
             How Long Do We Keep Your Information?
           </Link>
         </li>
         <li>
-          <Link href="#section7" color="common.black">
+          <Link component={NextLink} href="#section7" color="common.black">
             How Do We Keep Your How Do We Keep Your Information Safe?
           </Link>
         </li>
         <li>
-          <Link href="#section8" color="common.black">
+          <Link component={NextLink} href="#section8" color="common.black">
             Do We Collect Information From Minors?
           </Link>
         </li>
         <li>
-          <Link href="#section9" color="common.black">
+          <Link component={NextLink} href="#section9" color="common.black">
             What Are Your Privacy Rights?
           </Link>
         </li>
         <li>
-          <Link href="#section10" color="common.black">
+          <Link component={NextLink} href="#section10" color="common.black">
             Controls For Do-Not-Track Features
           </Link>
         </li>
         <li>
-          <Link href="#section11" color="common.black">
+          <Link component={NextLink} href="#section11" color="common.black">
             Do United States Residents Have Specific Privacy Rights?
           </Link>
         </li>
         <li>
-          <Link href="#section12" color="common.black">
+          <Link component={NextLink} href="#section12" color="common.black">
             Do Other Regions Have Specific Privacy Rights?
           </Link>
         </li>
         <li>
-          <Link href="#section13" color="common.black">
+          <Link component={NextLink} href="#section13" color="common.black">
             Do We Make Updates To This Notice?
           </Link>
         </li>
         <li>
-          <Link href="#section14" color="common.black">
+          <Link component={NextLink} href="#section14" color="common.black">
             How Can You Contact Us About This Notice?
           </Link>
         </li>
         <li>
-          <Link href="#section15" color="common.black">
+          <Link component={NextLink} href="#section15" color="common.black">
             How Can You Review, Update, Or Delete The Data We Collect From You?
           </Link>
         </li>
@@ -344,11 +345,11 @@ const PrivayPolicy = () => {
         <br />
         <br />
         Like many businesses, we also collect information through cookies and
-        similar technologies. You can find out more about this in our Cookie
-        Notice:{" "}
-        <Link href="http://www.mikhailafitzpatrick.com/cookies-policy">
-          http://www.mikhailafitzpatrick.com/cookies-policy.
+        similar technologies. You can find out more about this in our{" "}
+        <Link component={NextLink} href="/cookies-policy">
+          Cookies Policy
         </Link>
+        .
         <br />
         <br />
         The information we collect includes:
@@ -450,7 +451,7 @@ const PrivayPolicy = () => {
           permission (i.e. consent) to use your personal information for a
           specific purpose. You can withdraw your consent at any time. Learn
           more about{" "}
-          <Link href="#WithdrawingConsent">withdrawing your consent.</Link>
+          <Link href="#withdrawing-consent">withdrawing your consent</Link>.
         </li>
         <li>
           <b>Legitimate Interests.</b> We may process your information when we
@@ -489,7 +490,7 @@ const PrivayPolicy = () => {
         (i.e. express consent) to use your personal information for a specific
         purpose, or in situations where your permission can be inferred (i.e.
         implied consent). You can{" "}
-        <Link href="WithdrawingConsent">withdraw your consent</Link> at any
+        <Link href="#withdrawing-consent">withdraw your consent</Link> at any
         time.
         <br />
         <br />
@@ -590,9 +591,9 @@ const PrivayPolicy = () => {
         We may use cookies and similar tracking technologies (ike web beacons
         and pixels) to access or store information. Specific information about
         how we use such technologies and how you can refuse certain cookies is
-        set out in our Cookie Notice:{" "}
-        <Link href="http://www.mikhailafitzpatrick.com/cookies-policy">
-          http://www.mikhailafitzpatrick.com/cookies-policy
+        set out in our{" "}
+        <Link component={NextLink} href="/cookies-policy">
+          Cookies Policy
         </Link>
         .
       </Typography>
@@ -675,7 +676,7 @@ const PrivayPolicy = () => {
       <Typography id="section9" variant="h5" sx={{ my: 3 }}>
         9. What Are Your Privacy Rights?
       </Typography>
-      <Typography id="WithdrawingConsent" variant="body2">
+      <Typography id="withdrawing-consent" variant="body2">
         <b>In Short:</b>{" "}
         <i>
           In some regions, such as the European Economic Area (EEA), United
@@ -694,7 +695,7 @@ const PrivayPolicy = () => {
         certain circumstances, you may also have the right to object to the
         processing of your personal information. You can make such a request by
         contacting us by using the contact details provided in the section{" "}
-        <Link href="#section14">
+        <Link component={NextLink} href="#section14">
           How Can You Contact Us About This Notice?
         </Link>{" "}
         below.
@@ -738,7 +739,7 @@ const PrivayPolicy = () => {
         depending on the applicable law, you have the right to withdraw your
         consent at any time. You can withdraw your consent at any time by
         contacting us by using the contact details provided in the section{" "}
-        <Link href="#section14">
+        <Link component={NextLink} href="#section14">
           How Can You Contact Us About This Notice?
         </Link>{" "}
         below.
@@ -754,10 +755,9 @@ const PrivayPolicy = () => {
         cookies by default. If you prefer, you can usually choose to set your
         browser to remove cookies and to reject cookies. If you choose to remove
         cookies or reject cookies, this could affect certain features or
-        services of our Services. For further information, please see our Cookie
-        Notice:{" "}
-        <Link href="http://www.mikhailafitzpatrick.com/cookies-policy">
-          http://www.mikhailafitzpatrick.com/cookies-policy
+        services of our Services. For further information, please see our{" "}
+        <Link component={NextLink} href="/cookies-policy">
+          Cookies Policy
         </Link>
         .
         <br />
@@ -854,7 +854,10 @@ const PrivayPolicy = () => {
         <br />
         <br />
         Learn about how we use your personal information in the section,{" "}
-        <Link href="#section3">How Do We Process Your Information</Link>.
+        <Link component={NextLink} href="#section3">
+          How Do We Process Your Information
+        </Link>
+        .
         <br />
         <br />
         <b>Will your information be shared with anyone else?</b>
@@ -863,7 +866,7 @@ const PrivayPolicy = () => {
         We may disclose your personal information with our service providers
         pursuant to a written contract between us and each service provider.
         Learn more about how we disclose personal information to in the section,{" "}
-        <Link href="#section4">
+        <Link component={NextLink} href="#section4">
           When and With Whom Do We Share Your Personal Information
         </Link>
         .
@@ -1057,10 +1060,8 @@ const PrivayPolicy = () => {
       </ul>
       <Typography variant="body2">
         To exercise these rights, you can contact us by visiting{" "}
-        <Link href="mailto:mikhailafitzpatrick@gmail.com">
-          mikhailafitzpatrick@gmail.com
-        </Link>
-        , by email at{" "}
+        <Link href="/#contact">mikhailafitzpatrick.com/#contact</Link>, by email
+        at{" "}
         <Link href="mailto:mikhailafitzpatrick@gmail.com">
           mikhailafitzpatrick@gmail.com
         </Link>
@@ -1103,8 +1104,8 @@ const PrivayPolicy = () => {
           mikhailafitzpatrick@gmail.com
         </Link>{" "}
         or visit{" "}
-        <Link href="mailto:mikhailafitzpatrick@gmail.com">
-          mikhailafitzpatrick@gmail.com
+        <Link component={NextLink} href="/#contact">
+          mikhailafitzpatrick.com/#contact
         </Link>
         .
         <br />
@@ -1154,8 +1155,8 @@ const PrivayPolicy = () => {
           mikhailafitzpatrick@gmail.com
         </Link>{" "}
         or visit{" "}
-        <Link href="mailto:mikhailafitzpatrick@gmail.com">
-          mikhailafitzpatrick@gmail.com
+        <Link component={NextLink} href="/#contact">
+          mikhailafitzpatrick.com/#contact
         </Link>
         .
         <br />
@@ -1200,10 +1201,7 @@ const PrivayPolicy = () => {
         <Link href="mailto:mikhailafitzpatrick@gmail.com">
           mikhailafitzpatrick@gmail.com
         </Link>{" "}
-        or visit{" "}
-        <Link href="mailto:mikhailafitzpatrick@gmail.com">
-          mikhailafitzpatrick@gmail.com
-        </Link>
+        or visit <Link href="/#contact">mikhailafitzpatrick.com/#contact</Link>
         .
         <br />
         <br />
@@ -1274,8 +1272,8 @@ const PrivayPolicy = () => {
           mikhailafitzpatrick@gmail.com
         </Link>{" "}
         or visit{" "}
-        <Link href="mailto:mikhailafitzpatrick@gmail.com">
-          mikhailafitzpatrick@gmail.com
+        <Link component={NextLink} href="/#contact">
+          mikhailafitzpatrick.com/#contact
         </Link>
         .
         <br />
@@ -1353,7 +1351,7 @@ const PrivayPolicy = () => {
         At any time, you have the right to request access to or correction of
         your personal information. You can make such a request by contacting us
         by using the contact details provided in the section{" "}
-        <Link href="#section14">
+        <Link component={NextLink} href="#section14">
           How Can You Review, Update, or Delete the Data We Collect From You
         </Link>
         .
