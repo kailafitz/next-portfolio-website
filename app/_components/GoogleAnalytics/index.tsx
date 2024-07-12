@@ -4,6 +4,7 @@ import Script from "next/script";
 import { useRouter } from "next/navigation";
 import ReactGA from "react-ga4";
 import PropTypes from "prop-types";
+import AOS from "aos";
 
 ReactGA.initialize("G-C3NSFRZ1Q2");
 
@@ -19,7 +20,10 @@ const GoogleAnalytics = ({
     if (localStorageCookies === null) {
       router.push("?modal=true");
     }
+
+    AOS.init();
   }, []);
+
   return (
     <>
       <Script

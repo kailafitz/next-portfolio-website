@@ -1,4 +1,3 @@
-"use client";
 import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -11,8 +10,6 @@ import ReactGA from "react-ga4";
 import { ProjectType, StackLogo } from "../../../_types";
 import Image from "next/image";
 import Stack from "@mui/material/Stack";
-import AOS from "aos";
-import { useEffect } from "react";
 import ProjectStackLogo from "./ProjectStackLogo";
 import { customPalettes } from "../../../variables";
 
@@ -34,10 +31,6 @@ export const Project = (props: ProjectType | ProjectType) => {
       label: `${projectName}`,
     });
   };
-
-  useEffect(() => {
-    AOS.init(); //You can add options as per your need inside an object
-  }, []);
 
   return (
     <Box sx={{ pb: { xs: 8, md: 12 } }} data-aos="fade-up">

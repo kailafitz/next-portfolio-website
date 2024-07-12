@@ -1,16 +1,10 @@
-"use client";
+import React from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import React, { useEffect } from "react";
 import HeaderLink from "../HeaderLink";
 import Image from "next/image";
-import AOS from "aos";
 
 export const Instagram = () => {
-  useEffect(() => {
-    AOS.init(); //You can add options as per your need inside an object
-  }, []);
-
   return (
     <Box
       sx={{ pb: { xs: 16, md: 8 }, minHeight: "100vh" }}

@@ -1,19 +1,12 @@
-"use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { Smartphone, Settings, User } from "react-feather";
 import Stack from "@mui/material/Stack";
-import AOS from "aos";
 import { customPalettes } from "../../variables";
 
 const Bio = () => {
   let size = 100;
-
-  useEffect(() => {
-    AOS.init(); //You can add options as per your need inside an object
-  }, []);
-
   return (
     <Container
       sx={{
