@@ -1,5 +1,6 @@
 import Script from "next/script";
 import React from "react";
+import PropTypes from "prop-types";
 
 const GTagHeadScript = ({ GTAG_ID }: { GTAG_ID: string }) => {
   return (
@@ -11,6 +12,10 @@ const GTagHeadScript = ({ GTAG_ID }: { GTAG_ID: string }) => {
           })(window,document,'script','dataLayer','${GTAG_ID}');`}
     </Script>
   );
+};
+
+GTagHeadScript.propTypes = {
+  GTAG_ID: PropTypes.string,
 };
 
 export default GTagHeadScript;

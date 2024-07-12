@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Link from "../CustomLink";
 import { useSearchParams } from "next/navigation";
 import { ErrorFeedback, SuccessFeedback } from "./UserFeedbackSnackbar";
-import { ConsentForm } from "./ConsentForm";
+import ConsentForm from "./ConsentForm";
 import CookieOutlinedIcon from "@mui/icons-material/CookieOutlined";
 
 // https://dev.to/idboussadel/implementing-google-analytics-in-consent-mode-with-a-cookie-banner-for-nextjs-with-ts-1ga6

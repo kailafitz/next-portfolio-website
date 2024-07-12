@@ -2,7 +2,7 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import React, { useEffect } from "react";
-import { HeaderLink } from "../HeaderLink";
+import HeaderLink from "../HeaderLink";
 import Image from "next/image";
 import AOS from "aos";
 

@@ -7,14 +7,14 @@ import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import { useTheme } from "@mui/material/styles";
 import { StyledHr } from "./styles";
-import { ProjectStackLogo } from "./ProjectStackLogo";
 import { GitHub, Monitor } from "react-feather";
 import ReactGA from "react-ga4";
-import { ProjectType, TechStackProps } from "../../../_types";
+import { ProjectType, StackLogo } from "../../../_types";
 import Image from "next/image";
 import Stack from "@mui/material/Stack";
 import AOS from "aos";
 import { useEffect } from "react";
+import ProjectStackLogo from "./ProjectStackLogo";
 
 export const Project = (props: ProjectType | ProjectType) => {
   const theme = useTheme();
@@ -116,7 +116,7 @@ export const Project = (props: ProjectType | ProjectType) => {
               }}
             >
               {props.techStack?.length > 1 &&
-                props.techStack.map((tech: TechStackProps, i: number) => {
+                props.techStack.map((tech: StackLogo, i: number) => {
                   return (
                     <ProjectStackLogo
                       key={i}
@@ -197,3 +197,5 @@ export const Project = (props: ProjectType | ProjectType) => {
     </Box>
   );
 };
+
+Project.propTypes = {};

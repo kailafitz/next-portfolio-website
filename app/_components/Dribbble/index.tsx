@@ -1,9 +1,8 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import ReactLoading from "react-loading";
-import { HeaderLink } from "../HeaderLink";
 import Shots from "./Shots";
+import HeaderLink from "../HeaderLink";
 
 export const Dribbble = () => {
   return (

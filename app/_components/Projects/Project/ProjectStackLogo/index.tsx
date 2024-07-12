@@ -3,16 +3,16 @@ import React from "react";
 import Tooltip from "@mui/material/Tooltip";
 import Box from "@mui/material/Box";
 import Image from "next/image";
-import { TechStackProps } from "../../../../_types";
+import { StackLogo } from "../../../../_types";
+import PropTypes from "prop-types";
 
-export const ProjectStackLogo = (props: TechStackProps) => {
+const ProjectStackLogo = (props: StackLogo) => {
   return (
     <Tooltip title={props.alt} arrow placement="top">
       <Box
         sx={{
           mr: 2,
           mb: 2,
-          // backgroundColor: "common.white",
           borderRadius: 1,
           p: 1,
           display: "flex",
@@ -31,3 +31,10 @@ export const ProjectStackLogo = (props: TechStackProps) => {
     </Tooltip>
   );
 };
+
+ProjectStackLogo.propTypes = {
+  src: PropTypes.string,
+  alt: PropTypes.string,
+};
+
+export default ProjectStackLogo;

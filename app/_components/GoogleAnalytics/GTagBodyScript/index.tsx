@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {};
-
-const GTagBodyScript = (props: Props) => {
+const GTagBodyScript = () => {
   return (
     <noscript>
       <iframe

@@ -2,11 +2,10 @@
 import React, { Fragment } from "react";
 import {
   ProjectType,
-  TechStackProps,
+  StackLogo,
   ProjectDetailSection,
 } from "../../../../_types";
 import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
@@ -20,7 +19,7 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { GitHub, Monitor } from "react-feather";
 import { useTheme } from "@mui/material/styles";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import { ProjectStackLogo } from "../../../../_components/Projects/Project/ProjectStackLogo";
+import ProjectStackLogo from "../../../../_components/Projects/Project/ProjectStackLogo";
 
 const ProjectDetails = ({
   params,
@@ -79,17 +78,15 @@ const ProjectDetails = ({
                     </Typography>
                     <Stack direction="row" mb={3}>
                       {proj.techStack?.length > 1 &&
-                        proj.techStack.map(
-                          (tech: TechStackProps, i: number) => {
-                            return (
-                              <ProjectStackLogo
-                                key={i}
-                                src={`${tech.src}`}
-                                alt={tech.alt}
-                              />
-                            );
-                          }
-                        )}
+                        proj.techStack.map((tech: StackLogo, i: number) => {
+                          return (
+                            <ProjectStackLogo
+                              key={i}
+                              src={`${tech.src}`}
+                              alt={tech.alt}
+                            />
+                          );
+                        })}
                     </Stack>
                     <Stack
                       direction={{ xs: "column", sm: "row" }}

@@ -1,22 +1,16 @@
-import { useState, ReactNode } from "react";
+import { useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import Alert, { AlertColor } from "@mui/material/Alert";
+import Alert from "@mui/material/Alert";
 import Link from "../../CustomLink";
+import PropTypes from "prop-types";
+import { FeedbackSnackbar } from "../../../_types";
 
 // https://www.reddit.com/r/reactjs/comments/oq1rtp/type_authors_author_is_not_assignable_to_type/
 
-const UserFeedbackSnackbar = ({
-  show,
-  message,
-  type,
-}: {
-  show: boolean;
-  message: ReactNode;
-  type: AlertColor;
-}) => {
-  const [open, setOpen] = useState(show);
+const UserFeedbackSnackbar = (props: FeedbackSnackbar) => {
+  const [open, setOpen] = useState(props.show);
 
   const handleClose = (
     event: React.SyntheticEvent | Event,
@@ -54,15 +48,21 @@ const UserFeedbackSnackbar = ({
       >
         <Alert
           onClose={handleClose}
-          severity={type}
+          severity={props.type}
           variant="filled"
           sx={{ width: "100%" }}
         >
-          {message}
+          {props.message}
         </Alert>
       </Snackbar>
     </div>
   );
+};
+
+UserFeedbackSnackbar.propTypes = {
+  show: PropTypes.string,
+  message: PropTypes.bool,
+  type: PropTypes.string,
 };
 
 export const SuccessFeedback = () => {

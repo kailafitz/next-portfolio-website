@@ -2,16 +2,11 @@
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import LaunchIcon from "@mui/icons-material/Launch";
-import Box from "@mui/material/Box";
 import ReactGA from "react-ga4";
+import { Header } from "../../_types";
+import PropTypes from "prop-types";
 
-type HeaderLinkProps = {
-  link: string;
-  label: string;
-  subtitle?: string | undefined;
-};
-
-export const HeaderLink = (props: HeaderLinkProps) => {
+const HeaderLink = (props: Header) => {
   const sendGA4Social = (projectName: String) => {
     ReactGA.event({
       category: "link_clicked",
@@ -83,3 +78,11 @@ export const HeaderLink = (props: HeaderLinkProps) => {
     </>
   );
 };
+
+HeaderLink.propTypes = {
+  link: PropTypes.string,
+  label: PropTypes.string,
+  subtitle: PropTypes.string,
+};
+
+export default HeaderLink;

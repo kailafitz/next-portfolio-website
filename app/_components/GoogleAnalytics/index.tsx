@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import Script from "next/script";
 import { useRouter } from "next/navigation";
 import ReactGA from "react-ga4";
+import PropTypes from "prop-types";
 
 ReactGA.initialize("G-C3NSFRZ1Q2");
 
@@ -53,6 +54,10 @@ const GoogleAnalytics = ({
       />
     </>
   );
+};
+
+GoogleAnalytics.propTypes = {
+  GA_MEASUREMENT_ID: PropTypes.string,
 };
 
 export default GoogleAnalytics;

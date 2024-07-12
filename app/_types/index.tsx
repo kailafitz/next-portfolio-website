@@ -1,4 +1,7 @@
-export type TechStackProps = {
+import { AlertColor } from "@mui/material/Alert";
+import { ReactNode } from "react";
+
+export type StackLogo = {
   src: string;
   alt: string;
 };
@@ -16,10 +19,26 @@ export interface ProjectType {
   purpose?: string;
   projectDescription: string;
   year: string;
-  techStack: TechStackProps[];
+  techStack: StackLogo[];
   projectURL: string;
   githubURL: string;
   projectDetails: ProjectDetailSection[];
+}
+
+export interface Header {
+  link: string;
+  label: string;
+  subtitle?: string | undefined;
+}
+
+export interface Consent {
+  test: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface FeedbackSnackbar {
+  show: boolean;
+  message: ReactNode;
+  type: AlertColor;
 }
 
 // export interface ProfessionalProjectType extends ProjectType {

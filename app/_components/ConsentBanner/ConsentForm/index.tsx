@@ -5,12 +5,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
 import { usePathname, useRouter } from "next/navigation";
 import { Stack } from "@mui/material";
+import { Consent } from "../../../_types";
 
-type Props = {
-  test: React.Dispatch<React.SetStateAction<string>>;
-};
-
-export const ConsentForm = (props: Props) => {
+const ConsentForm = (props: Consent) => {
   const [triggerGAPreferencesUpdate, setTriggerGAPreferencesUpdate] =
     useState(true); // used to send GA updates
   const [consent, setConsent] = useState({
@@ -147,3 +144,5 @@ export const ConsentForm = (props: Props) => {
     </>
   );
 };
+
+export default ConsentForm;
