@@ -36,7 +36,7 @@ export interface Consent {
 }
 
 export interface FeedbackSnackbar {
-  show: string;
+  show: boolean;
   message: ReactNode;
   type: AlertColor;
 }
