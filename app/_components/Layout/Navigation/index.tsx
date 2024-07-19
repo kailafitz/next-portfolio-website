@@ -28,7 +28,7 @@ export default function Navigation() {
             <Image
               width="70"
               height="70"
-              src={`/mf-logo-min.png`}
+              src={`/mf-logo.png`}
               alt={`MF logo`}
               className="logo"
             />

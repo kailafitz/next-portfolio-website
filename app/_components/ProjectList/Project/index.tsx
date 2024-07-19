@@ -177,7 +177,7 @@ export const Project = (props: ProjectType | ProjectType) => {
               placement="top"
             >
               <Image
-                src={`/${createFileHandle}.png`}
+                src={`/project-${props.projectId}/${createFileHandle}.png`}
                 width={300}
                 height={100}
                 alt={props.projectName}
