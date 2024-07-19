@@ -94,7 +94,7 @@ const Intro = () => {
           >
             <Box>
               <Image
-                src="/waving2.png"
+                src="/waving.png"
                 alt="Mikhaila Fitzpatrick avatar"
                 height={500}
                 width={500}

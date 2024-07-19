@@ -97,7 +97,7 @@ const ProjectDetails = ({ project }: { project: ProjectType[] }) => {
                 </Grid>
                 <Grid xs={12} md={4} sx={{ pt: { xs: 6, md: 0 } }}>
                   <Image
-                    src={`/${createFileHandle}.png`}
+                    src={`project-${project[0].projectId}/${createFileHandle}.png`}
                     width={500}
                     height={300}
                     alt={proj.projectName}

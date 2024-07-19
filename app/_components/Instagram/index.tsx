@@ -39,7 +39,7 @@ export const Instagram = () => {
                   key={i}
                   width="300"
                   height="100"
-                  src={`/graphic-${i + 1}-min.png`}
+                  src={`/instagram/graphic-${i + 1}.png`}
                   alt={`graphic-${i + 1}`}
                   className="shadow h-auto w-auto"
                   data-aos="fade-up"
