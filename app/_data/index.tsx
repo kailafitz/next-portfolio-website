@@ -2,6 +2,64 @@
 
 export const PersonalProjectData = [
   {
+    projectId: "3",
+    projectName: "The Cocktail Club",
+    projectDescription: "A virtual space for the art of mixology.",
+    year: "2024",
+    techStack: [
+      {
+        src: "react.png",
+        alt: "React",
+      },
+      {
+        src: "node.png",
+        alt: "Node",
+      },
+      {
+        src: "ts.webp",
+        alt: "TypeScript",
+      },
+      {
+        src: "mui.png",
+        alt: "Material UI",
+      },
+      {
+        src: "postgresql.png",
+        alt: "PostgreSQL",
+      },
+      {
+        src: "react-hook-form.png",
+        alt: "React Hook Form",
+      },
+      {
+        src: "passport.png",
+        alt: "Passport",
+      },
+      {
+        src: "aws.png",
+        alt: "Amazon S3",
+      },
+      {
+        src: "firebase.png",
+        alt: "Firebase",
+      },
+    ],
+    projectURL: "https://the-cocktail-club-co-657c5.web.app/",
+    githubURL: "https://github.com/kailafitz/the-cocktail-club",
+    projectDetails: [
+      {
+        sectionTitle: "Background",
+        sectionDetails:
+          "I actually started this project back in January 2023 and I thought it would be useful to not update everything to the latest technologies. Even though frameworks such as Next.js has revolutionised routing and data fetching in the frontend, I still felt it necessary to remind myself of the coding practises of libraries such as React-Router, React-Query and React-Hook-Form in 2024 given how it will take time for many companies to adjust to the ever changing landscape that is frontend development!.",
+      },
+      {
+        sectionTitle: "The Spec",
+        sectionDetails:
+          "I wanted to dig a little deeper into the Node.js environment so I chose to couple an Express.js backend with my CRA frontend. I also wanted to elevate from a localised SQLite database to a hosted PostgreSQL database which was a nice learning curve and step up from my project Lancer.",
+      },
+    ],
+  },
+  {
     projectId: "1",
     projectName: "Lancer",
     projectDescription:
@@ -68,6 +126,10 @@ export const ProfessionalProjectData = [
       {
         src: "mui.png",
         alt: "MaterialUI",
+      },
+      {
+        src: "firebase.png",
+        alt: "Firebase",
       },
     ],
     projectURL: "https://puredivilmentpictures.com",
