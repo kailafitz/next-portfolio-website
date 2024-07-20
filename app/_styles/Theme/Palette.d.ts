@@ -3,11 +3,11 @@ import * as createPalette from '@mui/material/styles/createPalette';
 
 declare module '@mui/material/styles' {
     interface Palette {
-        white: Palette['primary'];
+        light: Palette['primary'];
     }
 
     interface PaletteOptions {
-        white?: PaletteOptions['primary'];
+        light?: PaletteOptions['primary'];
     }
 }
 
@@ -15,18 +15,18 @@ declare module '@mui/material/styles' {
 // Update the Button's color options to include a salmon option
 declare module '@mui/material/TextField' {
     interface TextFieldPropsColorOverrides {
-        white: true;
+        light: true;
     }
 }
 
 declare module '@mui/material/InputBase' {
     interface InputBasePropsColorOverrides {
-        white: true;
+        light: true;
     }
 }
 
 declare module '@mui/material/Button' {
     interface ButtonPropsColorOverrides {
-        white: true;
+        light: true;
     }
 }

@@ -6,7 +6,7 @@ import ReactGA from "react-ga4";
 import PropTypes from "prop-types";
 import AOS from "aos";
 
-ReactGA.initialize("G-C3NSFRZ1Q2");
+ReactGA.initialize(process.env.GA4_MEASUREMENT_ID ?? "Placeholder");
 
 const GoogleAnalytics = ({
   GA_MEASUREMENT_ID,

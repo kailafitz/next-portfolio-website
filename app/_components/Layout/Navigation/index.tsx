@@ -1,4 +1,3 @@
-"use client";
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,15 +14,6 @@ export default function Navigation() {
     <Box sx={{ flexGrow: 1, p: 0 }}>
       <AppBar position="static" color="primary" elevation={0}>
         <Toolbar sx={{ flexWrap: "wrap", py: 3 }}>
-          {/* <Link href="/" color="common.white" variant="name">
-            fizz
-          </Link>
-          <Typography
-            variant="name"
-            sx={{ mx: { xs: 1, md: 2 }, fontWeight: 500 }}
-          >
-            |
-          </Typography> */}
           <Link href="/" component={NextLink}>
             <Image
               width="70"
@@ -34,6 +24,7 @@ export default function Navigation() {
             />
           </Link>
           <Link
+            variant="name"
             href="/"
             color="common.white"
             sx={{

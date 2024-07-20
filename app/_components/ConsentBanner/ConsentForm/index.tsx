@@ -5,9 +5,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
 import { usePathname, useRouter } from "next/navigation";
 import { Stack } from "@mui/material";
-import { Consent } from "../../../_types";
+import { IConsent } from "../../../_types";
 
-const ConsentForm = (props: Consent) => {
+const ConsentForm = (props: IConsent) => {
   const [triggerGAPreferencesUpdate, setTriggerGAPreferencesUpdate] =
     useState(true); // used to send GA updates
   const [consent, setConsent] = useState({
@@ -26,11 +26,11 @@ const ConsentForm = (props: Consent) => {
 
     if (localStorageString === choicesMadeString) {
       setTimeout(() => {
-        props.test("saved");
+        props.sendFeedbackBoolean("saved");
       }, 100);
     } else {
       setTimeout(() => {
-        props.test("not saved");
+        props.sendFeedbackBoolean("not saved");
       }, 100);
     }
   };
@@ -47,10 +47,10 @@ const ConsentForm = (props: Consent) => {
     router.push(pathname);
   };
 
-  const handleIndividualToggleClick = (test: string) => {
+  const handleIndividualToggleClick = (key: string) => {
     setConsent({
       ...consent,
-      [`${test}`]: !consent[test as keyof typeof consent],
+      [`${key}`]: !consent[key as keyof typeof consent],
     });
   };
 

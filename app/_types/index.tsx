@@ -1,17 +1,25 @@
 import { AlertColor } from "@mui/material/Alert";
 import { ReactNode } from "react";
 
-export type StackLogo = {
+export type IStackLogo = {
   src: string;
   alt: string;
 };
 
-export interface ProjectDetailSection {
+export interface IProjectDetailSection {
   sectionTitle: string;
   sectionDetails: string;
 }
 
-export interface ProjectType {
+export interface IProjectTopDetails {
+  projectId: string;
+  projectName: string;
+  techStack: IStackLogo[];
+  githubURL: string;
+  projectURL: string;
+}
+
+export interface IProjectType {
   projectId: string;
   projectName: string;
   companyName?: string;
@@ -19,23 +27,31 @@ export interface ProjectType {
   purpose?: string;
   projectDescription: string;
   year: string;
-  techStack: StackLogo[];
+  techStack: IStackLogo[];
   projectURL: string;
   githubURL: string;
-  projectDetails: ProjectDetailSection[];
+  projectDetails: IProjectDetailSection[];
 }
 
-export interface Header {
+export interface ILinkSpan {
   link: string;
   label: string;
-  subtitle?: string | undefined;
 }
 
-export interface Consent {
-  test: React.Dispatch<React.SetStateAction<string>>;
+export interface ISectionContainer {
+  id?: string;
+  pt?: boolean;
+  pb?: boolean;
+  mb?: boolean;
+  vh?: boolean;
+  sx?: object;
+  children: ReactNode;
+}
+export interface IConsent {
+  sendFeedbackBoolean: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export interface FeedbackSnackbar {
+export interface IFeedbackSnackbar {
   show: boolean;
   message: ReactNode;
   type: AlertColor;

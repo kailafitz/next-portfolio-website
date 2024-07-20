@@ -23,48 +23,42 @@ const ContactForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} action={action} method="POST">
-      <Stack
-        direction="column"
-        sx={{
-          div: {
-            mb: 3,
-          },
-        }}
+    <Stack
+      component="form"
+      action={action}
+      method="POST"
+      onSubmit={handleSubmit}
+      direction="column"
+      spacing={3}
+    >
+      <TextField
+        variant="standard"
+        color="light"
+        id="email"
+        type="email"
+        label="Email"
+        name="email"
+      />
+      <ValidationError prefix="Email" field="email" errors={state.errors} />
+      <TextField
+        variant="standard"
+        color="light"
+        id="message"
+        name="message"
+        label="Message"
+        multiline
+        rows={4}
+      />
+      <ValidationError prefix="Message" field="message" errors={state.errors} />
+      <Button
+        variant="inset"
+        color="secondary"
+        type="submit"
+        disabled={state.submitting}
       >
-        <TextField
-          variant="standard"
-          color="white"
-          id="email"
-          type="email"
-          label="email"
-          name="email"
-        />
-        <ValidationError prefix="Email" field="email" errors={state.errors} />
-        <TextField
-          variant="standard"
-          color="white"
-          id="message"
-          name="message"
-          label="message"
-          multiline
-          rows={4}
-        />
-        <ValidationError
-          prefix="Message"
-          field="message"
-          errors={state.errors}
-        />
-        <Button
-          variant="inset"
-          color="secondary"
-          type="submit"
-          disabled={state.submitting}
-        >
-          Submit
-        </Button>
-      </Stack>
-    </form>
+        Submit
+      </Button>
+    </Stack>
   );
 };
 

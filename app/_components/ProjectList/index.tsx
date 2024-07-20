@@ -1,7 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Container from "@mui/material/Container";
-import { PersonalProjectData, ProfessionalProjectData } from "../../_data";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
@@ -9,7 +7,11 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { Project } from "./Project";
 import Typography from "@mui/material/Typography";
-import { ProjectType } from "../../_types";
+import { IProjectType } from "../../_types";
+import Stack from "@mui/material/Stack";
+import { PersonalProjectData } from "../../_data/PersonalProjects";
+import { ProfessionalProjectData } from "../../_data/ProfessionalProjects";
+import SectionContainer from "../SectionContainer";
 
 export const Projects = () => {
   const [value, setValue] = useState("1");
@@ -19,41 +21,26 @@ export const Projects = () => {
   };
 
   return (
-    <Container
-      maxWidth="lg"
-      sx={{ pb: { xs: 16, md: 8 } }}
-      id="projects"
-      data-bg-class="test2"
-    >
-      <Container>
-        <Typography variant="h2" color="primary" pb={{ xs: 8, md: 16 }}>
-          Some things I have worked on...
-        </Typography>
-        <Box sx={{ width: "100%", typography: "body1" }}>
-          <TabContext value={value}>
-            <Box>
-              <TabList
-                variant="fullWidth"
-                onChange={handleChange}
-                aria-label="Project Tabs"
-                centered
-              >
-                <Tab
-                  disableRipple
-                  label="Personal"
-                  value="1"
-                  sx={{ fontSize: "h4.fontSize" }}
-                />
-                <Tab
-                  disableRipple
-                  label="Professional"
-                  value="2"
-                  sx={{ fontSize: "h4.fontSize" }}
-                />
-              </TabList>
-            </Box>
-            <TabPanel value="1" sx={{ p: 0, pt: 8 }}>
-              {PersonalProjectData.map((project: ProjectType, i: number) => {
+    <SectionContainer vh pt id="projects">
+      <Typography variant="h2" color="primary">
+        Some things I have worked on...
+      </Typography>
+      <Box sx={{ width: "100%", typography: "body1" }}>
+        <TabContext value={value}>
+          <Box>
+            <TabList
+              variant="fullWidth"
+              onChange={handleChange}
+              aria-label="Project Tabs"
+              centered
+            >
+              <Tab label="Personal" value="1" />
+              <Tab label="Professional" value="2" />
+            </TabList>
+          </Box>
+          <TabPanel value="1" sx={{ p: 0, pt: 4 }}>
+            <Stack direction="column" spacing={8}>
+              {PersonalProjectData.map((project: IProjectType, i: number) => {
                 return (
                   <Project
                     key={i}
@@ -68,10 +55,12 @@ export const Projects = () => {
                   />
                 );
               })}
-            </TabPanel>
-            <TabPanel value="2" sx={{ p: 0, pt: 8 }}>
+            </Stack>
+          </TabPanel>
+          <TabPanel value="2" sx={{ p: 0, pt: 4 }}>
+            <Stack direction="column" spacing={3}>
               {ProfessionalProjectData.map(
-                (project: ProjectType, i: number) => {
+                (project: IProjectType, i: number) => {
                   return (
                     <Project
                       key={i}
@@ -90,10 +79,10 @@ export const Projects = () => {
                   );
                 }
               )}
-            </TabPanel>
-          </TabContext>
-        </Box>
-      </Container>
-    </Container>
+            </Stack>
+          </TabPanel>
+        </TabContext>
+      </Box>
+    </SectionContainer>
   );
 };

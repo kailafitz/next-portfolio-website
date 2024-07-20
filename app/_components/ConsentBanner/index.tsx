@@ -1,5 +1,4 @@
 "use client";
-import { StyledDialog } from "./styles";
 import { useState } from "react";
 import Typography from "@mui/material/Typography";
 import { useSearchParams } from "next/navigation";
@@ -8,6 +7,7 @@ import ConsentForm from "./ConsentForm";
 import NextLink from "next/link";
 import Link from "@mui/material/Link";
 import CookieOutlinedIcon from "@mui/icons-material/CookieOutlined";
+import Dialog from "@mui/material/Dialog";
 
 // https://dev.to/idboussadel/implementing-google-analytics-in-consent-mode-with-a-cookie-banner-for-nextjs-with-ts-1ga6
 // https://blog.cloud66.com/google-tag-manager-consent-mode-v2-in-react
@@ -22,8 +22,12 @@ const ConsentBanner = () => {
 
   return (
     <>
-      <StyledDialog
+      <Dialog
         open={modal ? true : false}
+        sx={{
+          zIndex: 1,
+          bgcolor: "#0000007d",
+        }}
         PaperProps={{
           sx: {
             p: 3,
@@ -60,8 +64,8 @@ const ConsentBanner = () => {
           </Link>{" "}
           for more information.
         </Typography>
-        <ConsentForm test={setShowSnackbar} />
-      </StyledDialog>
+        <ConsentForm sendFeedbackBoolean={setShowSnackbar} />
+      </Dialog>
 
       {showSnackbar === "saved" ? (
         <SuccessFeedback />

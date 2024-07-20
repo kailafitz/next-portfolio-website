@@ -1,10 +1,10 @@
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 import React from "react";
+import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 import { Metadata } from "next";
 import Link from "@mui/material/Link";
+import SectionContainer from "../_components/SectionContainer";
 
 export const metadata: Metadata = {
   title: "Cookies Policy",
@@ -12,9 +12,10 @@ export const metadata: Metadata = {
 
 const CookiesPolicy = () => {
   return (
-    <Container
+    <SectionContainer
+      pb
+      pt
       sx={{
-        py: 7,
         "& b": { fontWeight: 700 },
         "& i": { fontStyle: "italic" },
         "& u": { textDecoration: "underline" },
@@ -550,7 +551,7 @@ const CookiesPolicy = () => {
         Ireland <br />
         Phone: <Link href="tel:+353862321667">+353862321667</Link>
       </Typography>
-    </Container>
+    </SectionContainer>
   );
 };
 

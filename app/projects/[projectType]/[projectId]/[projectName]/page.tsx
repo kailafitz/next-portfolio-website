@@ -35,7 +35,7 @@ const ProjectPage = ({
     <>
       <Button
         variant="inset"
-        color="white"
+        color="light"
         href="/#projects"
         startIcon={<NavigateBeforeIcon />}
         sx={{ mb: { xs: 3, md: 0 }, ml: 3, mt: 3 }}

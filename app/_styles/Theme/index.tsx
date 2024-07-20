@@ -1,33 +1,23 @@
 "use client";
-import { Urbanist, Open_Sans } from "next/font/google";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
-import { customPalettes } from "../../variables";
+import { urban, open } from "../Fonts";
+import { light, primary, secondary } from "../Palette";
 
-const urban = Urbanist({
-  weight: ["300", "400", "600", "700", "800"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-});
-
-const open = Open_Sans({
-  weight: ["300", "400", "600", "700", "800"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-});
+const defaultTheme = createTheme();
 
 let theme = createTheme({
   palette: {
     primary: {
-      main: customPalettes.primary.main,
-      dark: customPalettes.primary.dark,
+      main: primary.main,
+      dark: primary.dark,
     },
     secondary: {
-      main: customPalettes.secondary.main,
-      dark: customPalettes.secondary.dark,
+      main: secondary.main,
+      dark: secondary.dark,
     },
-    white: {
-      main: customPalettes.white.main,
-      dark: customPalettes.white.dark,
+    light: {
+      main: light.main,
+      dark: light.dark,
     },
   },
   typography: {
@@ -50,11 +40,6 @@ let theme = createTheme({
     h6: {
       fontFamily: urban.style.fontFamily,
     },
-    // subtitle1: {
-    //   fontSize: "1.2rem",
-    //   fontFamily: open.style.fontFamily,
-    //   fontWeight: 500,
-    // },
     body1: {
       fontFamily: open.style.fontFamily,
       lineHeight: 1.3,
@@ -67,18 +52,35 @@ let theme = createTheme({
       fontSize: "2rem",
     },
     copyright: {
-      fontSize: "0.875rem",
-      color: customPalettes.white.main,
+      fontSize: "0.7rem",
+      color: light.main,
+      fontFamily: open.style.fontFamily,
+    },
+    externalLinkHeading: {
+      color: secondary.main,
       fontFamily: open.style.fontFamily,
     },
   },
   components: {
-    MuiTypography: {
-      defaultProps: {
-        variantMapping: {
-          name: "h1",
-          body1: "p",
-          copyright: "p",
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          [defaultTheme.breakpoints.up("xs")]: {
+            // paddingTop: defaultTheme.spacing(16),
+            // paddingBottom: defaultTheme.spacing(16),
+            paddingRight: defaultTheme.spacing(2.3),
+            paddingLeft: defaultTheme.spacing(2.3),
+          },
+          [defaultTheme.breakpoints.up("md")]: {
+            // paddingTop: defaultTheme.spacing(8),
+            // paddingBottom: defaultTheme.spacing(8),
+            paddingRight: defaultTheme.spacing(5),
+            paddingLeft: defaultTheme.spacing(5),
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            flexGrow: 1,
+          },
         },
       },
     },
@@ -86,6 +88,7 @@ let theme = createTheme({
       defaultProps: {
         disableRipple: true,
         disableTouchRipple: true,
+        disableFocusRipple: true,
       },
       styleOverrides: {
         root: { minWidth: "unset", fontSize: "1.2rem" },
@@ -94,19 +97,19 @@ let theme = createTheme({
         {
           props: { variant: "inset", color: "primary" },
           style: {
-            color: customPalettes.white.main,
-            boxShadow: `0px 0px 0px ${customPalettes.primary.dark},
-                        0px 0px 0px ${customPalettes.primary.light},
-                        inset 5px 5px 10px ${customPalettes.primary.dark},
-                        inset -5px -5px 5px ${customPalettes.primary.light}`,
+            color: light.main,
+            boxShadow: `0px 0px 0px ${primary.dark},
+                        0px 0px 0px ${primary.light},
+                        inset 5px 5px 10px ${primary.dark},
+                        inset -5px -5px 5px ${primary.light}`,
             transition: "box-shadow .2s ease-in",
             "&:hover": {
-              boxShadow: `3px 4px 8px ${customPalettes.primary.dark},
-                          -1px -1px 10px ${customPalettes.primary.light},
-                          inset 0px 0px 0px ${customPalettes.primary.dark},
-                          inset 0px 0px 0px ${customPalettes.primary.light}`,
+              boxShadow: `3px 4px 8px ${primary.dark},
+                          -1px -1px 10px ${primary.light},
+                          inset 0px 0px 0px ${primary.dark},
+                          inset 0px 0px 0px ${primary.light}`,
               opacity: 1,
-              backgroundColor: customPalettes.primary.main,
+              backgroundColor: primary.main,
               transition: "box-shadow .2 ease-in",
             },
           },
@@ -114,40 +117,61 @@ let theme = createTheme({
         {
           props: { variant: "inset", color: "secondary" },
           style: {
-            color: customPalettes.white.main,
-            boxShadow: `0px 0px 0px ${customPalettes.secondary.dark},
-                        0px 0px 0px ${customPalettes.secondary.light},
-                        inset 5px 5px 10px ${customPalettes.secondary.dark},
-                        inset -5px -5px 5px ${customPalettes.secondary.light}`,
+            color: light.main,
+            boxShadow: `0px 0px 0px ${secondary.dark},
+                        0px 0px 0px ${secondary.light},
+                        inset 5px 5px 10px ${secondary.dark},
+                        inset -5px -5px 5px ${secondary.light}`,
             transition: "box-shadow .2s ease-in",
             "&:hover": {
-              boxShadow: `3px 4px 8px ${customPalettes.secondary.dark},
-                          -1px -1px 10px ${customPalettes.secondary.light},
-                          inset 0px 0px 0px ${customPalettes.secondary.dark},
-                          inset 0px 0px 0px ${customPalettes.secondary.light}`,
+              boxShadow: `3px 4px 8px ${secondary.dark},
+                          -1px -1px 10px ${secondary.light},
+                          inset 0px 0px 0px ${secondary.dark},
+                          inset 0px 0px 0px ${secondary.light}`,
               opacity: 1,
-              backgroundColor: customPalettes.secondary.main,
+              backgroundColor: secondary.main,
               transition: "box-shadow .2 ease-in",
             },
           },
         },
         {
-          props: { variant: "inset", color: "white" },
+          props: { variant: "inset", color: "light" },
           style: {
-            color: customPalettes.secondary.main,
-            boxShadow: `0px 0px 0px ${customPalettes.white.dark},
-                        0px 0px 0px ${customPalettes.white.light},
-                        inset 5px 5px 10px ${customPalettes.white.dark},
-                        inset -5px -5px 5px ${customPalettes.white.light}`,
+            color: secondary.main,
+            boxShadow: `0px 0px 0px ${light.dark},
+                        0px 0px 0px ${light.light},
+                        inset 5px 5px 10px ${light.dark},
+                        inset -5px -5px 5px ${light.light}`,
             transition: "box-shadow .2s ease-in",
             "&:hover": {
-              boxShadow: `3px 4px 8px ${customPalettes.white.dark},
-                          -1px -1px 10px ${customPalettes.white.light},
-                          inset 0px 0px 0px ${customPalettes.white.dark},
-                          inset 0px 0px 0px ${customPalettes.white.light}`,
+              boxShadow: `3px 4px 8px ${light.dark},
+                          -1px -1px 10px ${light.light},
+                          inset 0px 0px 0px ${light.dark},
+                          inset 0px 0px 0px ${light.light}`,
               opacity: 1,
-              backgroundColor: customPalettes.white.main,
+              backgroundColor: light.main,
               transition: "box-shadow .2 ease-in",
+            },
+          },
+        },
+      ],
+    },
+    MuiInput: {
+      variants: [
+        {
+          props: {
+            color: "light",
+          },
+          style: {
+            color: light.main,
+            "&::before": {
+              borderBottom: `2px solid ${light.main}`,
+            },
+            "&:hover:not(.Mui-disabled, .Mui-error):before": {
+              borderBottom: `2px solid ${light.main}`,
+            },
+            "&.Mui-focused:after": {
+              borderBottom: `2px solid ${primary.main}`,
             },
           },
         },
@@ -162,52 +186,132 @@ let theme = createTheme({
         },
       },
     },
+    MuiTab: {
+      defaultProps: {
+        disableRipple: true,
+        disableFocusRipple: true,
+        disableTouchRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          borderRadius: defaultTheme.spacing(0.5),
+          [defaultTheme.breakpoints.up("xs")]: {
+            fontSize: "1.5rem",
+          },
+          "&:not(.Mui-selected)": {
+            color: "#4a4e699c",
+            boxShadow: `0px 0px 0px ${light.dark},
+                        0px 0px 0px ${light.light},
+                        inset 5px 5px 10px ${light.dark},
+                        inset -5px -5px 5px ${light.light}`,
+            transition: "box-shadow .2s ease-in",
+            "&:hover": {
+              color: secondary.main,
+              boxShadow: `3px 4px 8px ${light.dark},
+                          -1px -1px 10px ${light.light},
+                          inset 0px 0px 0px ${light.dark},
+                          inset 0px 0px 0px ${light.light}`,
+              opacity: 1,
+              backgroundColor: light.main,
+              transition: "box-shadow .2 ease-in",
+            },
+          },
+        },
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        indicator: {
+          display: "none",
+        },
+        flexContainer: {
+          padding: defaultTheme.spacing(1),
+        },
+      },
+    },
     MuiTextField: {
       variants: [
         {
           props: {
-            color: "white",
+            color: "light",
           },
           style: {
             "& label": {
-              color: customPalettes.white.main,
+              color: light.main,
             },
             "& label.Mui-focused": {
-              color: customPalettes.primary.main,
+              color: light.main,
             },
           },
         },
       ],
     },
-    MuiInput: {
+    MuiTypography: {
+      defaultProps: {
+        variantMapping: {
+          name: "h1",
+          body1: "p",
+          copyright: "p",
+        },
+      },
       variants: [
         {
-          props: {
-            color: "white",
-          },
+          props: { variant: "h1" },
           style: {
-            color: customPalettes.white.main,
-            "&::before": {
-              borderBottom: `2px solid ${customPalettes.white.main}`,
+            [defaultTheme.breakpoints.up("xs")]: {
+              fontSize: "2.3rem",
             },
-            "&:hover:not(.Mui-disabled, .Mui-error):before": {
-              borderBottom: `2px solid ${customPalettes.white.main}`,
+            [defaultTheme.breakpoints.up("sm")]: {
+              fontSize: "3rem",
             },
-            "&.Mui-focused:after": {
-              borderBottom: `2px solid ${customPalettes.primary.main}`,
+            [defaultTheme.breakpoints.up("md")]: {
+              fontSize: "3.3rem",
+            },
+            [defaultTheme.breakpoints.up("lg")]: {
+              fontSize: "4rem",
+            },
+          },
+        },
+        {
+          props: { variant: "h2" },
+          style: {
+            textAlign: "left",
+            [defaultTheme.breakpoints.up("xs")]: {
+              paddingBottom: defaultTheme.spacing(8),
+            },
+            [defaultTheme.breakpoints.up("md")]: {
+              paddingBottom: defaultTheme.spacing(16),
+            },
+          },
+        },
+        {
+          props: { variant: "externalLinkHeading" },
+          style: {
+            color: secondary.main,
+            fontWeight: 600,
+            textDecoration: "none",
+            textShadow: "3px 5px 3px #0000002b",
+            transition: "text-shadow .6s ease",
+            svg: {
+              transform: "scale(1)",
+              paddingLeft: defaultTheme.spacing(0.3),
+              marginBottom: 0,
+              transition: "all .3s ease-in",
+            },
+            "&:hover": {
+              textShadow: "0px 0px 0px #0000002b",
+              transition: "text-shadow .6s ease",
+              svg: {
+                transform: "scale(1.6)",
+                paddingLeft: defaultTheme.spacing(0.8),
+                marginBottom: defaultTheme.spacing(0.8),
+                transition: "all .3s ease-in",
+              },
             },
           },
         },
       ],
     },
-    // MuiTab: {
-    //   styleOverrides: {
-    //     root: {
-    //       fontSize: "h3.fontSize",
-    //       "& .MuiButtonBase-root-MuiTab-root": { fontSize: "h4.fontSize" },
-    //     },
-    //   },
-    // },
   },
 });
 

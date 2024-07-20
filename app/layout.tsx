@@ -10,7 +10,7 @@ import { Metadata } from "next";
 import GTagHeadScript from "./_components/GoogleAnalytics/GTagHeadScript";
 import GTagBodyScript from "./_components/GoogleAnalytics/GTagBodyScript";
 import "aos/dist/aos.css";
-import { Footer } from "./_components/Layout/Footer";
+// import { Footer } from "./_components/Layout/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -29,9 +29,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <GoogleAnalytics GA_MEASUREMENT_ID="G-C3NSFRZ1Q2" />
+      <GoogleAnalytics
+        GA_MEASUREMENT_ID={
+          process.env.GA4_MEASUREMENT_ID ? process.env.GA4_MEASUREMENT_ID : ""
+        }
+      />
       <head>
-        <GTagHeadScript GTAG_ID="GTM-PKHDDR77" />
+        <GTagHeadScript GTAG_ID={process.env.GA4_GTM_ID ?? ""} />
         <meta charSet="utf-8"></meta>
         <meta
           name="viewport"
@@ -45,7 +49,7 @@ export default function RootLayout({
           <ThemeProvider theme={reponsiveTheme}>
             <Navigation />
             {children}
-            <Footer />
+            {/* <Footer /> */}
             <ConsentBanner />
           </ThemeProvider>
         </AppRouterCacheProvider>

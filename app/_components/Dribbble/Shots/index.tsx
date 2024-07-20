@@ -40,11 +40,13 @@ const Shots = async () => {
             return (
               <Image
                 key={i}
-                width="300"
+                width="200"
                 height="100"
                 src={shot.images.normal}
                 alt="shot"
                 className="shadow h-auto object-cover"
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
               />
             );
           }

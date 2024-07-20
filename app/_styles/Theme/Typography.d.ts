@@ -5,12 +5,14 @@ declare module "@mui/material/styles" {
     interface TypographyVariants {
         name: React.CSSProperties;
         copyright: React.CSSProperties;
+        externalLinkHeading: React.CSSProperties;
     }
 
     // allow configuration using `createTheme`
     interface TypographyVariantsOptions {
         name?: React.CSSProperties;
         copyright?: React.CSSProperties;
+        externalLinkHeading?: React.CSSProperties;
     }
 }
 
@@ -19,6 +21,7 @@ declare module "@mui/material/Typography" {
     interface TypographyPropsVariantOverrides {
         name: true;
         copyright: true;
+        externalLinkHeading: true;
     }
 }
 

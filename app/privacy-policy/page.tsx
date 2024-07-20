@@ -12,6 +12,7 @@ import Stack from "@mui/material/Stack";
 import { Metadata } from "next";
 import NextLink from "next/link";
 import Link from "@mui/material/Link";
+import SectionContainer from "../_components/SectionContainer";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -99,9 +100,10 @@ const rows = [
 
 const PrivayPolicy = () => {
   return (
-    <Container
+    <SectionContainer
+      pb
+      pt
       sx={{
-        py: 7,
         "& b": { fontWeight: 700 },
         "& i": { fontStyle: "italic" },
         "& u": { textDecoration: "underline" },
@@ -1427,7 +1429,7 @@ const PrivayPolicy = () => {
         <br />
         This privacy policy was created using Termly&#39;s Privacy Policy.
       </Typography>
-    </Container>
+    </SectionContainer>
   );
 };
 
