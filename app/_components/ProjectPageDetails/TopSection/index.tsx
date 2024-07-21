@@ -68,7 +68,7 @@ const TopSection = (props: IProjectPageTopDetails) => {
           </Button>
         </Stack>
       </Grid>
-      <Grid xs={12} md={5} sx={{ pt: { xs: 6, md: 0 } }}>
+      <Grid xs={12} md={5} sx={{ pt: { xs: 6, md: 0 }, pl: { xs: 0, md: 6 } }}>
         <Image
           src={`/project-${props.projectId}/${createFileHandle}.png`}
           width={500}

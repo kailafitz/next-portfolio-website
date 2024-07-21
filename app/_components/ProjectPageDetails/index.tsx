@@ -8,7 +8,7 @@ import ProfessionalDetails from "./ProfessionalDetails";
 
 const ProjectPageDetails = ({ project }: { project: IProject[] }) => {
   return (
-    <Container>
+    <Container sx={{ pt: { md: 5 } }}>
       {project.map((proj: IProject) => {
         return (
           <Fragment key={proj.projectName}>
@@ -27,16 +27,18 @@ const ProjectPageDetails = ({ project }: { project: IProject[] }) => {
               />
             </Grid>
             <Grid container py={16} rowSpacing={7}>
-              <Grid xs={12} md={4}>
-                {proj.companyName && (
-                  <ProfessionalDetails
-                    companyName={proj.companyName}
-                    industry={proj.industry}
-                    purpose={proj.purpose}
-                  />
-                )}
-              </Grid>
-              <Grid xs={0} sm={8} />
+              {proj.companyName && (
+                <>
+                  <Grid xs={12} md={4}>
+                    <ProfessionalDetails
+                      companyName={proj.companyName}
+                      industry={proj.industry}
+                      purpose={proj.purpose}
+                    />
+                  </Grid>
+                  <Grid xs={0} sm={8} />
+                </>
+              )}
               {proj.projectDetails.map((section: IProjectPageDetail) => {
                 return (
                   <Fragment key={section.sectionTitle}>
