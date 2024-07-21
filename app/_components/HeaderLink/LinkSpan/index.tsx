@@ -2,11 +2,11 @@
 import React from "react";
 import Link from "@mui/material/Link";
 import LaunchIcon from "@mui/icons-material/Launch";
-import { ILinkSpan } from "../../../_types";
+import { IHeadingLinkSpan } from "../../../_types";
 import PropTypes from "prop-types";
 import { sendGA4ExternalPortfolioLink } from "../../GoogleAnalytics/EventFunctions";
 
-const LinkSpan = (props: ILinkSpan) => {
+const LinkSpan = (props: IHeadingLinkSpan) => {
   return (
     <span>
       <Link

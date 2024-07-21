@@ -42,8 +42,8 @@ export const PersonalProjectData = [
         alt: "Firebase",
       },
     ],
-    projectURL: "https://the-cocktail-club-co-657c5.web.app/",
-    githubURL: "https://github.com/kailafitz/the-cocktail-club",
+    projectUrl: "https://the-cocktail-club-co-657c5.web.app/",
+    githubUrl: "https://github.com/kailafitz/the-cocktail-club",
     projectDetails: [
       {
         sectionTitle: "Background",
@@ -61,7 +61,7 @@ export const PersonalProjectData = [
     projectId: "1",
     projectName: "Lancer",
     projectDescription:
-      "My final project for CS50x, an online introductory course on computer science taught at Harvard University and Yale University.",
+      "A web app for freelancers to help keep track of employment records for invoicing and tax. My final project for CS50x, an online introductory course to computer science taught at Harvard University.",
     year: "2022",
     techStack: [
       {
@@ -85,8 +85,8 @@ export const PersonalProjectData = [
         alt: "Bootstrap",
       },
     ],
-    projectURL: "https://kailafitz.pythonanywhere.com",
-    githubURL: "https://github.com/kailafitz/lancer",
+    projectUrl: "https://kailafitz.pythonanywhere.com",
+    githubUrl: "https://github.com/kailafitz/lancer",
     projectDetails: [
       {
         sectionTitle: "Background",

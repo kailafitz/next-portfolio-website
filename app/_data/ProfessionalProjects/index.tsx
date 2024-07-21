@@ -26,8 +26,8 @@ export const ProfessionalProjectData = [
         alt: "Firebase",
       },
     ],
-    projectURL: "https://puredivilmentpictures.com",
-    githubURL: "https://github.com/kailafitz/pure-divilment-pictures",
+    projectUrl: "https://puredivilmentpictures.com",
+    githubUrl: "https://github.com/kailafitz/pure-divilment-pictures",
     projectDetails: [
       {
         sectionTitle: "Background",

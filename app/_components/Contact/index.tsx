@@ -21,7 +21,7 @@ export const Contact = () => {
           justifyContent="space-between"
           spacing={{ xs: 10, sm: 5, md: 10 }}
         >
-          <Box display="block" width={{ xs: "100%", sm: "60%" }}>
+          <Box width={{ xs: "100%", sm: "60%" }}>
             <ContactForm />
           </Box>
           <Typography

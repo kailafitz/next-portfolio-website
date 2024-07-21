@@ -1,9 +1,9 @@
 import Typography from "@mui/material/Typography";
-import { ILinkSpan } from "../../_types";
+import { IHeadingLinkSpan } from "../../_types";
 import PropTypes from "prop-types";
 import LinkSpan from "./LinkSpan";
 
-const HeaderLink = (props: ILinkSpan) => {
+const HeaderLink = (props: IHeadingLinkSpan) => {
   return (
     <>
       <Typography

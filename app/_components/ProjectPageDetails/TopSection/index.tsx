@@ -5,28 +5,27 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { GitHub, Monitor } from "react-feather";
 import { secondary } from "../../../_styles/Palette";
-import { IProjectTopDetails, IStackLogo } from "../../../_types";
+import { IProjectPageTopDetails, IStackLogo } from "../../../_types";
 import Image from "next/image";
-import ProjectStackLogo from "../../ProjectList/Project/ProjectStackLogo";
 import PropTypes from "prop-types";
+import ProjectStackLogo from "../../ProjectList/ProjectListItem/ProjectOverview/ProjectStackLogo";
 
-const TopSection = (props: IProjectTopDetails) => {
+const TopSection = (props: IProjectPageTopDetails) => {
   const createFileHandle = props.projectName.replaceAll(" ", "-").toLowerCase();
 
   return (
     <>
       <Grid xs={12} md={7}>
         <Typography
-          variant="h4"
+          variant="h1"
           color="secondary"
           align="left"
           fontWeight="600"
           mb={3}
-          fontSize="h1.fontSize"
         >
           {props.projectName}
         </Typography>
-        <Stack direction="row" mb={3}>
+        <Stack direction="row" mb={3} flexWrap="wrap">
           {props.techStack?.length > 1 &&
             props.techStack.map((tech: IStackLogo, i: number) => {
               return (
@@ -44,7 +43,7 @@ const TopSection = (props: IProjectTopDetails) => {
           }}
         >
           <Button
-            href={props.githubURL}
+            href={props.githubUrl}
             target="_blank"
             variant="inset"
             color="light"
@@ -58,7 +57,7 @@ const TopSection = (props: IProjectTopDetails) => {
             View code
           </Button>
           <Button
-            href={props.projectURL}
+            href={props.projectUrl}
             target="_blank"
             variant="inset"
             color="light"
@@ -69,9 +68,9 @@ const TopSection = (props: IProjectTopDetails) => {
           </Button>
         </Stack>
       </Grid>
-      <Grid xs={12} md={4} sx={{ pt: { xs: 6, md: 0 } }}>
+      <Grid xs={12} md={5} sx={{ pt: { xs: 6, md: 0 } }}>
         <Image
-          src={`project-${props.projectId}/${createFileHandle}.png`}
+          src={`/project-${props.projectId}/${createFileHandle}.png`}
           width={500}
           height={300}
           alt={props.projectName}
@@ -85,9 +84,14 @@ const TopSection = (props: IProjectTopDetails) => {
 TopSection.propTypes = {
   projectId: PropTypes.string,
   projectName: PropTypes.string,
-  techStack: PropTypes.object,
-  githubURL: PropTypes.string,
-  projectURL: PropTypes.string,
+  techStack: PropTypes.arrayOf(
+    PropTypes.shape({
+      src: PropTypes.string,
+      alt: PropTypes.string,
+    })
+  ),
+  githubUrl: PropTypes.string,
+  projectUrl: PropTypes.string,
 };
 
 export default TopSection;

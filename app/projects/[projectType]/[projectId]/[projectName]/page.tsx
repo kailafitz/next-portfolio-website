@@ -1,16 +1,14 @@
 import React from "react";
-import { ProjectType } from "../../../../_types";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import {
-  PersonalProjectData,
-  ProfessionalProjectData,
-} from "../../../../_data";
 import Image from "next/image";
 import { Contact } from "../../../../_components/Contact";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import ProjectDetails from "../../../../_components/ProjectDetails";
+import ProjectPageDetails from "../../../../_components/ProjectPageDetails";
 import { Metadata } from "next";
+import { IProject } from "../../../../_types";
+import { ProfessionalProjectData } from "../../../../_data/ProfessionalProjects";
+import { PersonalProjectData } from "../../../../_data/PersonalProjects";
 
 export const metadata: Metadata = {
   title: "Project",
@@ -27,7 +25,7 @@ const ProjectPage = ({
       ? ProfessionalProjectData
       : PersonalProjectData;
 
-  const Project: ProjectType[] = data.filter((project) => {
+  const Project: IProject[] = data.filter((project) => {
     return project.projectId === id;
   });
 
@@ -42,7 +40,9 @@ const ProjectPage = ({
       >
         Home
       </Button>
-      <ProjectDetails project={Project} />
+
+      <ProjectPageDetails project={Project} />
+
       <Stack
         bgcolor="secondary.main"
         flexDirection={{ xs: "column", md: "row" }}

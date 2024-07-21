@@ -26,8 +26,6 @@ const Shots = async () => {
   let accessToken = process.env.DRIBBBLE_ACCESS_TOKEN ?? "";
   const data = await getData({ token: accessToken });
 
-  // console.log(data.slice(0, 3));
-
   return (
     <>
       {data

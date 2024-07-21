@@ -1,25 +1,7 @@
 import { AlertColor } from "@mui/material/Alert";
 import { ReactNode } from "react";
 
-export type IStackLogo = {
-  src: string;
-  alt: string;
-};
-
-export interface IProjectDetailSection {
-  sectionTitle: string;
-  sectionDetails: string;
-}
-
-export interface IProjectTopDetails {
-  projectId: string;
-  projectName: string;
-  techStack: IStackLogo[];
-  githubURL: string;
-  projectURL: string;
-}
-
-export interface IProjectType {
+export interface IProject {
   projectId: string;
   projectName: string;
   companyName?: string;
@@ -28,12 +10,36 @@ export interface IProjectType {
   projectDescription: string;
   year: string;
   techStack: IStackLogo[];
-  projectURL: string;
-  githubURL: string;
-  projectDetails: IProjectDetailSection[];
+  projectUrl: string;
+  githubUrl: string;
+  projectDetails: IProjectPageDetail[];
 }
 
-export interface ILinkSpan {
+// export interface IProjectProfessional extends IProject {
+//   companyName?: string;
+//   industry?: string;
+//   purpose?: string;
+// }
+
+export type IStackLogo = {
+  src: string;
+  alt: string;
+};
+
+export interface IProjectPageTopDetails {
+  projectId: string;
+  projectName: string;
+  techStack: IStackLogo[];
+  githubUrl: string;
+  projectUrl: string;
+}
+
+export interface IProjectPageDetail {
+  sectionTitle: string;
+  sectionDetails: string;
+}
+
+export interface IHeadingLinkSpan {
   link: string;
   label: string;
 }
@@ -56,9 +62,3 @@ export interface IFeedbackSnackbar {
   message: ReactNode;
   type: AlertColor;
 }
-
-// export interface ProfessionalProjectType extends ProjectType {
-//   companyName: string;
-//   industry: string;
-//   purpose: string;
-// }

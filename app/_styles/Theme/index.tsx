@@ -23,7 +23,7 @@ let theme = createTheme({
   typography: {
     h1: {
       fontFamily: urban.style.fontFamily,
-      fontWeight: 100,
+      fontWeight: 600,
       lineHeight: 1,
     },
     h2: {
@@ -33,6 +33,10 @@ let theme = createTheme({
     },
     h3: {
       lineHeight: 1.2,
+    },
+    h4: {
+      color: secondary.main,
+      fontWeight: 600,
     },
     h5: {
       fontFamily: urban.style.fontFamily,
@@ -250,7 +254,6 @@ let theme = createTheme({
       defaultProps: {
         variantMapping: {
           name: "h1",
-          body1: "p",
           copyright: "p",
         },
       },
