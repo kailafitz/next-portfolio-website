@@ -2,8 +2,8 @@ import React from "react";
 import Tooltip from "@mui/material/Tooltip";
 import Box from "@mui/material/Box";
 import Image from "next/image";
-import { IStackLogo } from "../../../../_types";
 import PropTypes from "prop-types";
+import { IStackLogo } from "../../../../../_types";
 
 const ProjectStackLogo = (props: IStackLogo) => {
   return (

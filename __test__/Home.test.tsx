@@ -5,7 +5,7 @@ import Bio from "../app/_components/Bio";
 
 // Triple A
 describe("Home", () => {
-  it("should have text", () => {
+  it("Bio text", () => {
     render(<Bio />); // ARRANGE
 
     const myElem = screen.getByText("functionality"); // ACT
