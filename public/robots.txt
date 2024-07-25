@@ -4,6 +4,7 @@ Allow: /
 
 Disallow: /project/*/*/cookies-policy
 Disallow: /project/*/*/privacy-policy
+Disallow: /?modal=true
 
 Sitemap: https://mikhailafitzpatrick.com/sitemap.xml
 Sitemap: https://www.mikhailafitzpatrick.com/sitemap.xml

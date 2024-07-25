@@ -9,6 +9,7 @@ import { Metadata } from "next";
 import { IProject } from "../../../../_types";
 import { ProfessionalProjectData } from "../../../../_data/ProfessionalProjects";
 import { PersonalProjectData } from "../../../../_data/PersonalProjects";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Project",
@@ -25,12 +26,19 @@ const ProjectPage = ({
       ? ProfessionalProjectData
       : PersonalProjectData;
 
-  const Project: IProject[] = data.filter((project) => {
+  const selectedProject: IProject[] = data.filter((project) => {
     return project.projectId === id;
   });
 
   return (
     <>
+      <Head>
+        <link
+          rel="canonical"
+          href={`https://mikhailafitzpatrick.com/projects/${params.projectType}/${params.projectId}/${selectedProject[0].projectName}}`}
+          key="canonical"
+        />
+      </Head>
       <Button
         variant="inset"
         color="light"
@@ -41,7 +49,7 @@ const ProjectPage = ({
         Home
       </Button>
 
-      <ProjectPageDetails project={Project} />
+      <ProjectPageDetails project={selectedProject} />
 
       <Stack
         bgcolor="secondary.main"
@@ -53,7 +61,7 @@ const ProjectPage = ({
             <Image
               key={i}
               src={`/project-${id}/shot-${i + 1}.png`}
-              alt={`${Project[0]?.projectName} image`}
+              alt={`${selectedProject[0]?.projectName} image`}
               width={300}
               height={100}
               className="project-gallery-image"
