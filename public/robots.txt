@@ -1,0 +1,6 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+Sitemap: https://mikhailafitzpatrick.com/sitemap.xml
+Sitemap: https://www.mikhailafitzpatrick.com/sitemap.xml
