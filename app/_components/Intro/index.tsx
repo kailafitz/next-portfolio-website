@@ -52,6 +52,7 @@ const Intro = () => {
                 alt="Mikhaila Fitzpatrick avatar"
                 height={500}
                 width={500}
+                loading="eager"
                 className="next-image mx-auto d-block image-inset-shadow-primary"
               />
             </Box>
