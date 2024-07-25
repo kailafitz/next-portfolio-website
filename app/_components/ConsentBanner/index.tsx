@@ -23,6 +23,7 @@ const ConsentBanner = () => {
   return (
     <>
       <Dialog
+        aaria-labelledby="Analytics Consent Modal"
         open={modal ? true : false}
         sx={{
           zIndex: 1,
