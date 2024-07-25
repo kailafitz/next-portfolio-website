@@ -13,10 +13,14 @@ import { Metadata } from "next";
 import NextLink from "next/link";
 import Link from "@mui/material/Link";
 import SectionContainer from "../_components/SectionContainer";
-import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
+  description:
+    "Privacy Policy for Google Analytics used on Mikhaila Fitzpatrick website",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
 };
 
 interface row {
@@ -102,13 +106,6 @@ const rows = [
 const PrivayPolicy = () => {
   return (
     <>
-      <Head>
-        <link
-          rel="canonical"
-          href="https://mikhailafitzpatrick.com/privacy-policy"
-          key="canonical"
-        />
-      </Head>
       <SectionContainer
         pb
         pt
@@ -130,7 +127,7 @@ const PrivayPolicy = () => {
           justifyContent={{ xs: "inherit", md: "space-between" }}
           alignItems={{ xs: "inherit", md: "flex-end" }}
         >
-          <Typography variant="h1" mb={2}>
+          <Typography variant="h1" mb={2} color="secondary.main">
             Privacy Policy
           </Typography>
           <Link component={NextLink} sx={{ mb: 2 }} href="?modal=true">

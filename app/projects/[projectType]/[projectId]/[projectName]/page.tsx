@@ -9,17 +9,23 @@ import { Metadata } from "next";
 import { IProject } from "../../../../_types";
 import { ProfessionalProjectData } from "../../../../_data/ProfessionalProjects";
 import { PersonalProjectData } from "../../../../_data/PersonalProjects";
-import Head from "next/head";
 
-export const metadata: Metadata = {
-  title: "Project",
+type Props = {
+  params: { projectId: string; projectType: string; projectName: string };
 };
 
-const ProjectPage = ({
-  params,
-}: {
-  params: { projectId: string; projectType: string };
-}) => {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  return {
+    title: "Project",
+    description:
+      "Project details outlining the purpose behind the decision making",
+    alternates: {
+      canonical: `/projects/${params.projectType}/${params.projectId}/${params.projectName}}`,
+    },
+  };
+}
+
+const ProjectPage = ({ params }: { params: Props["params"] }) => {
   let id = params.projectId;
   let data =
     params.projectType !== "personal"
@@ -32,13 +38,6 @@ const ProjectPage = ({
 
   return (
     <>
-      <Head>
-        <link
-          rel="canonical"
-          href={`https://mikhailafitzpatrick.com/projects/${params.projectType}/${params.projectId}/${selectedProject[0].projectName}}`}
-          key="canonical"
-        />
-      </Head>
       <Button
         variant="inset"
         color="light"

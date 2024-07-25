@@ -5,22 +5,19 @@ import Stack from "@mui/material/Stack";
 import { Metadata } from "next";
 import Link from "@mui/material/Link";
 import SectionContainer from "../_components/SectionContainer";
-import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Cookies Policy",
+  description:
+    "Cookies Policy for Google Analytics used on Mikhaila Fitzpatrick website",
+  alternates: {
+    canonical: "/cookies-policy",
+  },
 };
 
 const CookiesPolicy = () => {
   return (
     <>
-      <Head>
-        <link
-          rel="canonical"
-          href="https://mikhailafitzpatrick.com/cookies-policy"
-          key="canonical"
-        />
-      </Head>
       <SectionContainer
         pb
         pt
@@ -37,7 +34,7 @@ const CookiesPolicy = () => {
           },
         }}
       >
-        <Typography variant="h1" mb={2}>
+        <Typography variant="h1" mb={2} color="secondary.main">
           Cookies Policy
         </Typography>
         <Typography variant="body1" sx={{ mb: 3 }}>
