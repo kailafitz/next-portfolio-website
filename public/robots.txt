@@ -5,6 +5,7 @@ Allow: /
 Disallow: /project/*/*/cookies-policy
 Disallow: /project/*/*/privacy-policy
 Disallow: /?modal=true
+Disallow: /privacy-policy/?modal=true
 Disallow: /MikhailaFitzpatrick_Technical_CurriculumVitae.pdf
 
 Sitemap: https://mikhailafitzpatrick.com/sitemap.xml
