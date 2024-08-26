@@ -25,8 +25,8 @@ const Taglines = () => {
       >
         <Button
           variant="inset"
-          href="./MikhailaFitzpatrick_Technical_CurriculumVitae.pdf"
-          download="MikhailaFitzpatrick_Technical_CurriculumVitae"
+          href="./MikhailaFitzpatrick_Tech_CurriculumVitae.pdf"
+          download="MikhailaFitzpatrick_Tech_CurriculumVitae"
         >
           Download my resume
         </Button>
