@@ -50,7 +50,7 @@ const ProjectPage = ({ params }: { params: Props["params"] }) => {
 
       <ProjectPageDetails project={selectedProject} />
 
-      <Stack
+      {/* <Stack
         bgcolor="secondary.main"
         flexDirection={{ xs: "column", md: "row" }}
         justifyContent="space-between"
@@ -67,7 +67,7 @@ const ProjectPage = ({ params }: { params: Props["params"] }) => {
             />
           );
         })}
-      </Stack>
+      </Stack> */}
       <Contact />
     </>
   );

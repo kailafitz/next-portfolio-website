@@ -10,13 +10,14 @@ const ProfessionalDetails = (props: Partial<IProject>) => {
         <Stack
           direction={{ xs: "column", md: "row" }}
           justifyContent={{ xs: "center", md: "space-between" }}
-          alignItems="center"
+          alignItems="start"
+          gap={3}
           mb={{ xs: 2, md: 0 }}
         >
           <Typography variant="h6" mb={{ xs: 1, md: 0 }}>
             Company
           </Typography>
-          <Typography variant="body2" align="left">
+          <Typography variant="body2" align="right">
             {props.companyName}
           </Typography>
         </Stack>
