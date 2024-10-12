@@ -15,7 +15,7 @@ const TopSection = (props: IProjectPageTopDetails) => {
 
   return (
     <>
-      <Grid xs={12} md={7}>
+      <Grid xs={12} md={7} alignItems="end">
         <Typography
           variant="h1"
           color="secondary"

@@ -45,7 +45,7 @@ export const ProfessionalProjectData = [
       {
         sectionTitle: "The Spec",
         sectionDetails:
-          "Client wanted a dramatic website to go with the theme of a stage and performance. A dark background was important for the client and although it goes against UX principal, I enhanced the the brand purple colour to make it stand as best I could.",
+          "Client wanted a dramatic website to go with the theme of a stage and performance. A dark background was important for the client and although it goes against UX principal, I enhanced the brand purple colour to make it stand as best I could.",
       },
     ],
   },

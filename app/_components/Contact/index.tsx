@@ -16,7 +16,7 @@ export const Contact = () => {
           Contact Me
         </Typography>
         <Stack
-          direction={{ xs: "column", md: "row" }}
+          direction="column"
           alignItems="center"
           justifyContent="space-between"
           spacing={{ xs: 10, sm: 5, md: 10 }}
@@ -24,15 +24,6 @@ export const Contact = () => {
           <Box width={{ xs: "100%", sm: "60%" }}>
             <ContactForm />
           </Box>
-          <Typography
-            variant="body1"
-            fontSize="h2.fontSize"
-            fontWeight={300}
-            color="light.main"
-            sx={{ pb: 0 }}
-          >
-            OR
-          </Typography>
           <CommLinks />
         </Stack>
       </SectionContainer>
