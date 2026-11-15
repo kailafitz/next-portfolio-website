@@ -1,69 +1,59 @@
-"use client";
-import React, { useEffect } from "react";
 import Script from "next/script";
-import { useRouter } from "next/navigation";
-import ReactGA from "react-ga4";
-import PropTypes from "prop-types";
-import AOS from "aos";
+import { Suspense } from "react";
+import GoogleAnalyticsEffects from "./GoogleAnalyticsEffects";
 
-ReactGA.initialize(process.env.GA4_MEASUREMENT_ID ?? "Placeholder");
-
-const GoogleAnalytics = ({
-  GA_MEASUREMENT_ID,
-}: {
-  GA_MEASUREMENT_ID: string;
-}) => {
-  const router = useRouter();
-
-  useEffect(() => {
-    const localStorageCookies = localStorage.getItem("consentMode");
-    if (localStorageCookies === null) {
-      router.push("?modal=true");
-    }
-
-    AOS.init();
-  }, []);
+const GoogleAnalytics = ({ measurementId }: { measurementId: string }) => {
+  if (!measurementId || !/^G-[A-Z0-9]+$/i.test(measurementId)) return null;
 
   return (
     <>
-      <Script
-        id="GA"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
+      <Script id="ga-consent-default" strategy="beforeInteractive">
+        {`
           window.dataLayer = window.dataLayer || [];
-          function gtag() { window.dataLayer.push(arguments) }
-
-          if (localStorage.getItem('consentMode') === null) {
-            gtag("consent", "default", {
-              ad_storage: "denied",
-              analytics_storage: "denied",
-              personalization_storage: "denied",
-              functionality_storage: "denied",
-              security_storage: "denied",
-            })
-          }
-          else {
-            gtag(
-              "consent",
-              "default",
-              JSON.parse(localStorage.getItem("consentMode"))
-            )
-          }
-
-          gtag('js', new Date());
-          gtag('config', '${GA_MEASUREMENT_ID}');
-        `,
-        }}
+          function gtag(){dataLayer.push(arguments);}
+          var stored = null;
+          try {
+            var raw = localStorage.getItem('consentMode');
+            if (raw) {
+              var parsed = JSON.parse(raw);
+              var toStatus = function (value) { return value ? 'granted' : 'denied'; };
+              stored = {
+                ad_storage: toStatus(!!parsed.ad_storage),
+                analytics_storage: toStatus(!!parsed.analytics_storage),
+                ad_user_data: toStatus(!!parsed.ad_user_data),
+                ad_personalization: toStatus(!!parsed.ad_personalization)
+              };
+            }
+          } catch (error) {}
+          gtag('consent', 'default', Object.assign({
+            ad_storage: 'denied',
+            analytics_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            functionality_storage: 'denied',
+            personalization_storage: 'denied',
+            security_storage: 'granted',
+            wait_for_update: 500
+          }, stored || {}));
+        `}
+      </Script>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+        strategy="afterInteractive"
       />
+      <Script id="ga-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${measurementId}', { send_page_view: false });
+        `}
+      </Script>
+      <Suspense fallback={null}>
+        <GoogleAnalyticsEffects measurementId={measurementId} />
+      </Suspense>
     </>
   );
 };
 
-GoogleAnalytics.propTypes = {
-  GA_MEASUREMENT_ID: PropTypes.string,
-};
-
 export default GoogleAnalytics;
-
-// https://github.com/vercel/next.js/discussions/20784

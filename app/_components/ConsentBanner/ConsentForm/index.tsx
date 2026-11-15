@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -7,64 +7,68 @@ import { usePathname, useRouter } from "next/navigation";
 import { Stack } from "@mui/material";
 import { IConsent } from "../../../_types";
 
-const ConsentForm = (props: IConsent) => {
-  const [triggerGAPreferencesUpdate, setTriggerGAPreferencesUpdate] =
-    useState(true); // used to send GA updates
-  const [consent, setConsent] = useState({
-    ad_storage: false,
-    analytics_storage: true,
-    ad_user_data: false,
-    ad_personalization: false,
-  }); // GA object
+const CONSENT_STORAGE_KEY = "consentMode";
 
+type ConsentChoices = {
+  ad_storage: boolean;
+  analytics_storage: boolean;
+  ad_user_data: boolean;
+  ad_personalization: boolean;
+};
+
+const deniedChoices: ConsentChoices = {
+  ad_storage: false,
+  analytics_storage: false,
+  ad_user_data: false,
+  ad_personalization: false,
+};
+
+const ConsentForm = (props: IConsent) => {
+  const [consent, setConsent] = useState<ConsentChoices>(deniedChoices);
   const pathname = usePathname();
   const router = useRouter();
 
-  const confirmGAPreferences = () => {
-    let localStorageString = localStorage.getItem("consentMode");
-    let choicesMadeString = JSON.stringify(consent);
+  useEffect(() => {
+    const raw = localStorage.getItem(CONSENT_STORAGE_KEY);
+    if (!raw) return;
 
-    if (localStorageString === choicesMadeString) {
-      setTimeout(() => {
-        props.sendFeedbackBoolean("saved");
-      }, 100);
-    } else {
-      setTimeout(() => {
-        props.sendFeedbackBoolean("not saved");
-      }, 100);
+    try {
+      const parsed = JSON.parse(raw) as Partial<ConsentChoices>;
+      setConsent({
+        ad_storage: !!parsed.ad_storage,
+        analytics_storage: !!parsed.analytics_storage,
+        ad_user_data: !!parsed.ad_user_data,
+        ad_personalization: !!parsed.ad_personalization,
+      });
+    } catch {
+      localStorage.removeItem(CONSENT_STORAGE_KEY);
     }
-  };
+  }, []);
 
-  const handleAllClick = (all: boolean) => {
-    setConsent({
-      ad_storage: all,
-      analytics_storage: all,
-      ad_user_data: all,
-      ad_personalization: all,
-    });
-    confirmGAPreferences();
+  const applyConsent = (choices: ConsentChoices) => {
+    localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(choices));
+    setConsent(choices);
 
+    if (typeof gtag === "function") {
+      const toStatus = (value: boolean) => (value ? "granted" : "denied");
+      gtag("consent", "update", {
+        ad_storage: toStatus(choices.ad_storage),
+        analytics_storage: toStatus(choices.analytics_storage),
+        ad_user_data: toStatus(choices.ad_user_data),
+        ad_personalization: toStatus(choices.ad_personalization),
+      });
+    }
+
+    props.sendFeedbackBoolean("saved");
     router.push(pathname);
   };
 
-  const handleIndividualToggleClick = (key: string) => {
+  const handleIndividualToggleClick = (key: keyof ConsentChoices) => {
     setConsent({
       ...consent,
-      [`${key}`]: !consent[key as keyof typeof consent],
+      [key]: !consent[key],
     });
   };
-
-  useEffect(() => {
-    if (localStorage.getItem("consentMode") !== null) {
-      gtag("consent", "update", {
-        ad_storage: consent.ad_storage ? "granted" : "denied",
-        analytics_storage: consent.analytics_storage ? "granted" : "denied",
-        ad_user_data: consent.ad_user_data ? "granted" : "denied",
-        ad_personalization: consent.ad_personalization ? "granted" : "denied",
-      });
-    }
-    localStorage.setItem("consentMode", JSON.stringify(consent));
-  }, [triggerGAPreferencesUpdate, consent]);
 
   return (
     <>
@@ -124,20 +128,23 @@ const ConsentForm = (props: IConsent) => {
           },
         }}
       >
-        <Button
-          variant="contained"
-          onClick={() => {
-            setTriggerGAPreferencesUpdate(!triggerGAPreferencesUpdate);
-            router.push(pathname);
-            confirmGAPreferences();
-          }}
-        >
+        <Button variant="contained" onClick={() => applyConsent(consent)}>
           Save my Choices
         </Button>
-        <Button variant="contained" onClick={() => handleAllClick(true)}>
+        <Button
+          variant="contained"
+          onClick={() =>
+            applyConsent({
+              ad_storage: true,
+              analytics_storage: true,
+              ad_user_data: true,
+              ad_personalization: true,
+            })
+          }
+        >
           Accept All
         </Button>
-        <Button variant="outlined" onClick={() => handleAllClick(false)}>
+        <Button variant="outlined" onClick={() => applyConsent(deniedChoices)}>
           Reject All
         </Button>
       </Stack>

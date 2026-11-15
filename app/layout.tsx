@@ -7,8 +7,6 @@ import { reponsiveTheme } from "./_styles/Theme";
 import GoogleAnalytics from "./_components/GoogleAnalytics";
 import ConsentBanner from "./_components/ConsentBanner";
 import { Metadata } from "next";
-import GTagHeadScript from "./_components/GoogleAnalytics/GTagHeadScript";
-import GTagBodyScript from "./_components/GoogleAnalytics/GTagBodyScript";
 import "aos/dist/aos.css";
 // import { Footer } from "./_components/Layout/Footer";
 
@@ -29,13 +27,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <GoogleAnalytics
-        GA_MEASUREMENT_ID={
-          process.env.GA4_MEASUREMENT_ID ? process.env.GA4_MEASUREMENT_ID : ""
-        }
-      />
       <head>
-        <GTagHeadScript GTAG_ID={process.env.GA4_GTM_ID ?? ""} />
+        <GoogleAnalytics
+          measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? ""}
+        />
         <meta charSet="utf-8"></meta>
         <meta
           name="viewport"
@@ -44,7 +39,6 @@ export default function RootLayout({
         <link rel="icon" type="image/x-icon" href="./favicon.png" />
       </head>
       <body>
-        <GTagBodyScript />
         <AppRouterCacheProvider options={{ key: "css", enableCssLayer: true }}>
           <ThemeProvider theme={reponsiveTheme}>
             <Navigation />
