@@ -6,18 +6,22 @@ import { Dribbble } from "./_components/Dribbble";
 import Intro from "./_components/Intro";
 import Bio from "./_components/Bio";
 import Box from "@mui/material/Box";
+import { getProjects } from "./_lib/projects";
 
-// export const metadata: Metadata = {
-//   title: "Home",
-// };
+export const revalidate = 30;
 
-export default function Home() {
+export default async function Home() {
+  const [personal, professional] = await Promise.all([
+    getProjects("personal"),
+    getProjects("professional"),
+  ]);
+
   return (
     <main>
       <Intro />
       <Box className="body">
         <Bio />
-        <Projects />
+        <Projects personal={personal} professional={professional} />
         <Dribbble />
         <Instagram />
         <Contact />

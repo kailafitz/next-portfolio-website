@@ -8,12 +8,16 @@ import TabPanel from "@mui/lab/TabPanel";
 import Typography from "@mui/material/Typography";
 import { IProject } from "../../_types";
 import Stack from "@mui/material/Stack";
-import { PersonalProjectData } from "../../_data/PersonalProjects";
-import { ProfessionalProjectData } from "../../_data/ProfessionalProjects";
 import SectionContainer from "../SectionContainer";
 import ProjectListItem from "./ProjectListItem";
 
-export const Projects = () => {
+export const Projects = ({
+  personal,
+  professional,
+}: {
+  personal: IProject[];
+  professional: IProject[];
+}) => {
   const [value, setValue] = useState("1");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -22,65 +26,46 @@ export const Projects = () => {
 
   return (
     <SectionContainer vh pt id="projects">
-      <Typography variant="h2" color="primary">
-        Some things I have worked on...
+      <Typography variant="h6" color="primary.dark" sx={{ mb: 1.5 }}>
+        Portfolio
+      </Typography>
+      <Typography variant="h2" color="secondary.main">
+        Selected work
       </Typography>
       <Box sx={{ width: "100%", typography: "body1" }}>
         <TabContext value={value}>
           <Box>
-            <TabList
-              variant="fullWidth"
-              onChange={handleChange}
-              aria-label="Project Tabs"
-              centered
-            >
+            <TabList onChange={handleChange} aria-label="Project Tabs">
               <Tab label="Personal" value="1" />
               <Tab label="Professional" value="2" />
             </TabList>
           </Box>
           <TabPanel value="1" sx={{ p: 0, pt: 4 }}>
-            <Stack direction="column" spacing={8}>
-              {PersonalProjectData.map((project: IProject, i: number) => {
-                return (
-                  <ProjectListItem
-                    key={i}
-                    projectId={project.projectId}
-                    projectName={project.projectName}
-                    projectDescription={project.projectDescription}
-                    year={project.year}
-                    techStack={project.techStack}
-                    projectUrl={project.projectUrl}
-                    githubUrl={project.githubUrl}
-                    projectDetails={project.projectDetails}
-                  />
-                );
-              })}
-            </Stack>
+            <ProjectStack projects={personal} />
           </TabPanel>
           <TabPanel value="2" sx={{ p: 0, pt: 4 }}>
-            <Stack direction="column" spacing={8}>
-              {ProfessionalProjectData.map((project: IProject, i: number) => {
-                return (
-                  <ProjectListItem
-                    key={i}
-                    projectId={project.projectId}
-                    projectName={project.projectName}
-                    companyName={project.companyName}
-                    industry={project.industry}
-                    purpose={project.purpose}
-                    projectDescription={project.projectDescription}
-                    year={project.year}
-                    techStack={project.techStack}
-                    projectUrl={project.projectUrl}
-                    githubUrl={project.githubUrl}
-                    projectDetails={project.projectDetails}
-                  />
-                );
-              })}
-            </Stack>
+            <ProjectStack projects={professional} />
           </TabPanel>
         </TabContext>
       </Box>
     </SectionContainer>
+  );
+};
+
+const ProjectStack = ({ projects }: { projects: IProject[] }) => {
+  if (projects.length === 0) {
+    return (
+      <Typography color="text.secondary">
+        New work will land here shortly.
+      </Typography>
+    );
+  }
+
+  return (
+    <Stack direction="column" spacing={4}>
+      {projects.map((project) => (
+        <ProjectListItem key={project.projectId} {...project} />
+      ))}
+    </Stack>
   );
 };

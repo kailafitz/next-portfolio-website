@@ -1,40 +1,36 @@
 import React from "react";
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import Image from "next/image";
 import { Contact } from "../../../../_components/Contact";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import ProjectPageDetails from "../../../../_components/ProjectPageDetails";
 import { Metadata } from "next";
-import { IProject } from "../../../../_types";
-import { ProfessionalProjectData } from "../../../../_data/ProfessionalProjects";
-import { PersonalProjectData } from "../../../../_data/PersonalProjects";
+import { getProject } from "../../../../_lib/projects";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: { projectId: string; projectType: string; projectName: string };
 };
 
+export const revalidate = 30;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const project = await getProject(params.projectType, params.projectId);
+
   return {
-    title: "Project",
+    title: project?.projectName ?? "Project",
     description:
+      project?.projectDescription ??
       "Project details outlining the purpose behind the decision making",
     alternates: {
-      canonical: `/projects/${params.projectType}/${params.projectId}/${params.projectName}}`,
+      canonical: `/projects/${params.projectType}/${params.projectId}/${params.projectName}`,
     },
   };
 }
 
-const ProjectPage = ({ params }: { params: Props["params"] }) => {
-  let id = params.projectId;
-  let data =
-    params.projectType !== "personal"
-      ? ProfessionalProjectData
-      : PersonalProjectData;
+const ProjectPage = async ({ params }: { params: Props["params"] }) => {
+  const project = await getProject(params.projectType, params.projectId);
 
-  const selectedProject: IProject[] = data.filter((project) => {
-    return project.projectId === id;
-  });
+  if (!project) notFound();
 
   return (
     <>
@@ -48,26 +44,7 @@ const ProjectPage = ({ params }: { params: Props["params"] }) => {
         Home
       </Button>
 
-      <ProjectPageDetails project={selectedProject} />
-
-      {/* <Stack
-        bgcolor="secondary.main"
-        flexDirection={{ xs: "column", md: "row" }}
-        justifyContent="space-between"
-      >
-        {[1, 2, 3, 4].map((img, i) => {
-          return (
-            <Image
-              key={i}
-              src={`/project-${id}/shot-${i + 1}.png`}
-              alt={`${selectedProject[0]?.projectName} image`}
-              width={300}
-              height={100}
-              className="project-gallery-image"
-            />
-          );
-        })}
-      </Stack> */}
+      <ProjectPageDetails project={[project]} />
       <Contact />
     </>
   );
