@@ -5,16 +5,27 @@ import Toolbar from "@mui/material/Toolbar";
 import Image from "next/image";
 import NextLink from "next/link";
 import Link from "@mui/material/Link";
-
-// https://stackoverflow.com/questions/77262540/warning-failed-prop-type-invalid-prop-component-supplied-to-forwardreflink
-// https://stackoverflow.com/questions/74421327/nextrouter-was-not-mounted-next-js
+import Stack from "@mui/material/Stack";
 
 export default function Navigation() {
   return (
     <Box sx={{ flexGrow: 1, p: 0 }}>
-      <AppBar position="static" color="primary" elevation={0}>
-        <Toolbar sx={{ flexWrap: "wrap", py: 3 }}>
-          <Link href="/" component={NextLink}>
+      <AppBar
+        position="sticky"
+        color="inherit"
+        elevation={0}
+        sx={{
+          bgcolor: "rgba(251, 246, 243, 0.86)",
+          backdropFilter: "blur(16px)",
+          borderBottom: "1px solid rgba(63, 42, 56, 0.08)",
+        }}
+      >
+        <Toolbar sx={{ flexWrap: "wrap", py: 1.5, gap: 2 }}>
+          <Link
+            href="/"
+            component={NextLink}
+            sx={{ display: "flex", alignItems: "center", gap: 1.5 }}
+          >
             <Image
               width="70"
               height="70"
@@ -22,19 +33,29 @@ export default function Navigation() {
               alt={`MF logo`}
               className="logo"
             />
+            <Box
+              component="span"
+              sx={{
+                typography: "name",
+                color: "secondary.main",
+                fontSize: { xs: "1.15rem", md: "1.45rem" },
+              }}
+            >
+              Mikhaila Fitzpatrick
+            </Box>
           </Link>
-          <Link
-            variant="name"
-            href="/"
-            color="common.white"
-            sx={{
-              fontWeight: 300,
-              typography: { md: "name" },
-              fontSize: "h5.fontSize",
-            }}
+          <Stack
+            direction="row"
+            spacing={{ xs: 2, md: 4 }}
+            sx={{ ml: "auto" }}
           >
-            Mikhaila Fitzpatrick
-          </Link>
+            <Link href="/#projects" color="secondary.main" underline="hover">
+              Work
+            </Link>
+            <Link href="/#contact" color="secondary.main" underline="hover">
+              Contact
+            </Link>
+          </Stack>
         </Toolbar>
       </AppBar>
     </Box>

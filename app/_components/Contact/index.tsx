@@ -12,8 +12,11 @@ export const Contact = () => {
   return (
     <Box id="contact" bgcolor="secondary.main">
       <SectionContainer vh pt pb>
+        <Typography variant="h6" color="primary.light" sx={{ mb: 1.5 }}>
+          Hello
+        </Typography>
         <Typography variant="h2" color="common.white">
-          Contact Me
+          Contact me
         </Typography>
         <Stack
           direction="column"

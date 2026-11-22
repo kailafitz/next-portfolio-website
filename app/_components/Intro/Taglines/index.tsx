@@ -6,25 +6,29 @@ import Typography from "@mui/material/Typography";
 const Taglines = () => {
   return (
     <>
-      <Typography color="common.white" variant="h6">
-        Website under progress!
+      <Typography color="primary.dark" variant="h6" mb={2}>
+        Ireland · Frontend
       </Typography>
-      <Typography color="common.white" variant="h1" fontWeight="700" mb={1}>
-        Frontend Development
+      <Typography color="secondary.main" variant="h1" mb={2}>
+        Frontend{" "}
+        <span style={{ fontStyle: "italic", fontWeight: 500, color: "#8d4e59" }}>
+          Development
+        </span>
       </Typography>
-      <Typography variant="h3" color="common.white" fontWeight="300" mb={1}>
-        React | TypeScript
+      <Typography variant="h5" color="secondary.light" mb={1.5}>
+        React · TypeScript
       </Typography>
-      <Typography variant="body2" color="common.white" fontWeight="400">
+      <Typography variant="body1" color="text.secondary" maxWidth={460}>
         . . .and I like to golf when I&apos;ve free time!
       </Typography>
       <Stack
-        direction={{ xs: "column", md: "row" }}
-        spacing={3}
-        sx={{ mt: 3, a: { width: { xs: "100%", md: "fit-content" } } }}
+        direction={{ xs: "column", sm: "row" }}
+        spacing={2}
+        sx={{ mt: 4, a: { width: { xs: "100%", sm: "fit-content" } } }}
       >
         <Button
           variant="inset"
+          color="primary"
           href="./MikhailaFitzpatrick_Tech_CurriculumVitae.pdf"
           download="MikhailaFitzpatrick_Tech_CurriculumVitae"
         >
@@ -32,6 +36,7 @@ const Taglines = () => {
         </Button>
         <Button
           variant="inset"
+          color="light"
           id="action-contact-button"
           data-scroll-to
           href="#contact"

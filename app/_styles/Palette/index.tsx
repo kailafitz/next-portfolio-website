@@ -1,17 +1,17 @@
 export const primary = {
-  main: "#e26d5c",
-  light: "#ff8372",
-  dark: "#5a180e",
+  main: "#b76e79",
+  light: "#f6dfe2",
+  dark: "#8d4e59",
 };
 
 export const secondary = {
-  main: "#4a4e69",
-  light: "#8b92c2",
-  dark: "#2c313d",
+  main: "#3f2a38",
+  light: "#8a7382",
+  dark: "#261820",
 };
 
 export const light = {
-  main: "#f4f3f3",
-  light: "#ffffff",
-  dark: "#bab6b6",
+  main: "#fbf6f3",
+  light: "#fffdfb",
+  dark: "#e7d9d1",
 };

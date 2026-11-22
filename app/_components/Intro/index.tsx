@@ -1,5 +1,5 @@
 import React from "react";
-import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
+import Grid from "@mui/material/Unstable_Grid2";
 import Image from "next/image";
 import Box from "@mui/material/Box";
 import { Stack } from "@mui/material";
@@ -11,23 +11,24 @@ const Intro = () => {
     <Stack
       direction="column"
       justifyContent="center"
-      bgcolor="primary.main"
       sx={{
-        marginTop: "-1px",
-        minHeight: { xs: "calc(100vh - 104px)", md: "calc(100vh - 112px)" },
+        background:
+          "radial-gradient(circle at 88% 8%, rgba(246, 223, 226, 0.95) 0%, rgba(251, 246, 243, 0) 36%), linear-gradient(180deg, #fffdfb 0%, #fbf6f3 100%)",
+        minHeight: { xs: "calc(100vh - 88px)", md: "calc(100vh - 96px)" },
       }}
     >
       <SectionContainer mb>
         <Grid
           container
           justifyContent="center"
+          alignItems="center"
           rowSpacing={6}
-          columnSpacing={5}
+          columnSpacing={6}
         >
           <Grid
             xs={12}
             sm={7}
-            md={8}
+            md={7}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -38,21 +39,20 @@ const Intro = () => {
           </Grid>
           <Grid
             xs={12}
-            sm={4}
-            lg={4}
+            sm={5}
+            md={5}
             sx={{
               display: "flex",
-              flexDirection: "column",
-              justifyContent: { xs: "start", sm: "center" },
+              justifyContent: "center",
             }}
           >
-            <Box>
+            <Box sx={{ width: "min(100%, 380px)" }}>
               <Image
                 src="/waving.png"
                 alt="Mikhaila Fitzpatrick avatar"
                 height={500}
                 width={500}
-                loading="eager"
+                priority
                 className="next-image mx-auto d-block image-inset-shadow-primary"
               />
             </Box>

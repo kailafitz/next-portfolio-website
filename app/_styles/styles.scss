@@ -56,12 +56,15 @@ li {
 }
 
 .shadow {
-    box-shadow: -2px 5px 24px -13px grey;
+    box-shadow: 0 18px 40px rgba(63, 42, 56, 0.12);
+    border-radius: 22px;
 }
 
 .image-inset-shadow-primary {
-    box-shadow: inset 4px 6px 14px 0px #5a180e, inset 0px 0px 3px -1px #5a180e;
-    border-radius: 50%;
+    border-radius: 46% 54% 50% 50% / 42% 46% 54% 58%;
+    box-shadow: 0 28px 60px rgba(63, 42, 56, 0.14);
+    outline: 12px solid rgba(183, 110, 121, 0.22);
+    outline-offset: 10px;
 }
 
 .bio-paragraph1 {
@@ -90,7 +93,7 @@ li {
 }
 
 .services-list {
-    color: #e26d5c;
+    color: #b76e79;
     margin-bottom: 0;
 }
 
@@ -126,7 +129,7 @@ li {
 }
 
 .body {
-    background-color: #f4f3f3;
+    background-color: #fbf6f3;
     // background-color: #f4f3f398;
     // backdrop-filter: blur(20px);
 }

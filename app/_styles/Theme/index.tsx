@@ -1,18 +1,28 @@
 "use client";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
-import { urban, open } from "../Fonts";
+import { display, sans } from "../Fonts";
 import { light, primary, secondary } from "../Palette";
 
 const defaultTheme = createTheme();
 
 let theme = createTheme({
   palette: {
+    background: {
+      default: light.main,
+      paper: light.light,
+    },
+    text: {
+      primary: secondary.main,
+      secondary: secondary.light,
+    },
     primary: {
       main: primary.main,
+      light: primary.light,
       dark: primary.dark,
     },
     secondary: {
       main: secondary.main,
+      light: secondary.light,
       dark: secondary.dark,
     },
     light: {
@@ -20,49 +30,68 @@ let theme = createTheme({
       dark: light.dark,
     },
   },
+  shape: {
+    borderRadius: 16,
+  },
   typography: {
+    fontFamily: sans.style.fontFamily,
     h1: {
-      fontFamily: urban.style.fontFamily,
-      fontWeight: 600,
-      lineHeight: 1,
+      fontFamily: display.style.fontFamily,
+      fontWeight: 500,
+      lineHeight: 1.05,
+      letterSpacing: "-0.03em",
     },
     h2: {
-      fontFamily: urban.style.fontFamily,
-      fontWeight: 300,
-      lineHeight: 1.2,
+      fontFamily: display.style.fontFamily,
+      fontWeight: 500,
+      lineHeight: 1.15,
+      letterSpacing: "-0.03em",
     },
     h3: {
       lineHeight: 1.2,
     },
     h4: {
+      fontFamily: display.style.fontFamily,
       color: secondary.main,
-      fontWeight: 600,
+      fontWeight: 500,
+      letterSpacing: "-0.02em",
     },
     h5: {
-      fontFamily: urban.style.fontFamily,
+      fontFamily: display.style.fontFamily,
+      fontWeight: 500,
     },
     h6: {
-      fontFamily: urban.style.fontFamily,
+      fontFamily: sans.style.fontFamily,
+      letterSpacing: "0.14em",
+      textTransform: "uppercase",
+      fontWeight: 500,
     },
     body1: {
-      fontFamily: open.style.fontFamily,
-      lineHeight: 1.3,
+      fontFamily: sans.style.fontFamily,
+      lineHeight: 1.6,
+    },
+    body2: {
+      fontFamily: sans.style.fontFamily,
+      lineHeight: 1.7,
     },
     button: {
-      textTransform: "capitalize",
+      textTransform: "none",
     },
     name: {
-      fontFamily: open.style.fontFamily,
-      fontSize: "2rem",
+      fontFamily: display.style.fontFamily,
+      fontSize: "1.7rem",
+      fontWeight: 500,
     },
     copyright: {
-      fontSize: "0.7rem",
+      fontSize: "0.75rem",
+      letterSpacing: "0.04em",
       color: light.main,
-      fontFamily: open.style.fontFamily,
+      fontFamily: sans.style.fontFamily,
     },
     externalLinkHeading: {
-      color: secondary.main,
-      fontFamily: open.style.fontFamily,
+      color: primary.dark,
+      fontFamily: display.style.fontFamily,
+      fontStyle: "italic",
     },
   },
   components: {
@@ -88,6 +117,14 @@ let theme = createTheme({
         },
       },
     },
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: light.main,
+          color: secondary.main,
+        },
+      },
+    },
     MuiButton: {
       defaultProps: {
         disableRipple: true,
@@ -95,46 +132,42 @@ let theme = createTheme({
         disableFocusRipple: true,
       },
       styleOverrides: {
-        root: { minWidth: "unset", fontSize: "1.2rem" },
+        root: {
+          minWidth: "unset",
+          fontSize: "0.95rem",
+          fontWeight: 500,
+          letterSpacing: "0.02em",
+          borderRadius: 999,
+          textTransform: "none",
+          boxShadow: "none",
+        },
       },
       variants: [
         {
           props: { variant: "inset", color: "primary" },
           style: {
-            color: light.main,
-            boxShadow: `0px 0px 0px ${primary.dark},
-                        0px 0px 0px ${primary.light},
-                        inset 5px 5px 10px ${primary.dark},
-                        inset -5px -5px 5px ${primary.light}`,
-            transition: "box-shadow .2s ease-in",
+            color: light.light,
+            backgroundColor: primary.main,
+            border: `1px solid ${primary.main}`,
+            padding: "10px 22px",
             "&:hover": {
-              boxShadow: `3px 4px 8px ${primary.dark},
-                          -1px -1px 10px ${primary.light},
-                          inset 0px 0px 0px ${primary.dark},
-                          inset 0px 0px 0px ${primary.light}`,
-              opacity: 1,
-              backgroundColor: primary.main,
-              transition: "box-shadow .2 ease-in",
+              backgroundColor: primary.dark,
+              borderColor: primary.dark,
+              boxShadow: "none",
             },
           },
         },
         {
           props: { variant: "inset", color: "secondary" },
           style: {
-            color: light.main,
-            boxShadow: `0px 0px 0px ${secondary.dark},
-                        0px 0px 0px ${secondary.light},
-                        inset 5px 5px 10px ${secondary.dark},
-                        inset -5px -5px 5px ${secondary.light}`,
-            transition: "box-shadow .2s ease-in",
+            color: secondary.main,
+            backgroundColor: light.light,
+            border: `1px solid ${light.light}`,
+            padding: "10px 22px",
             "&:hover": {
-              boxShadow: `3px 4px 8px ${secondary.dark},
-                          -1px -1px 10px ${secondary.light},
-                          inset 0px 0px 0px ${secondary.dark},
-                          inset 0px 0px 0px ${secondary.light}`,
-              opacity: 1,
-              backgroundColor: secondary.main,
-              transition: "box-shadow .2 ease-in",
+              backgroundColor: primary.light,
+              borderColor: primary.light,
+              boxShadow: "none",
             },
           },
         },
@@ -142,19 +175,13 @@ let theme = createTheme({
           props: { variant: "inset", color: "light" },
           style: {
             color: secondary.main,
-            boxShadow: `0px 0px 0px ${light.dark},
-                        0px 0px 0px ${light.light},
-                        inset 5px 5px 10px ${light.dark},
-                        inset -5px -5px 5px ${light.light}`,
-            transition: "box-shadow .2s ease-in",
+            backgroundColor: "transparent",
+            border: `1px solid ${light.dark}`,
+            padding: "10px 18px",
             "&:hover": {
-              boxShadow: `3px 4px 8px ${light.dark},
-                          -1px -1px 10px ${light.light},
-                          inset 0px 0px 0px ${light.dark},
-                          inset 0px 0px 0px ${light.light}`,
-              opacity: 1,
-              backgroundColor: light.main,
-              transition: "box-shadow .2 ease-in",
+              backgroundColor: primary.light,
+              borderColor: primary.main,
+              boxShadow: "none",
             },
           },
         },
@@ -185,7 +212,7 @@ let theme = createTheme({
       styleOverrides: {
         root: {
           textDecoration: "none",
-          fontFamily: open.style.fontFamily,
+          fontFamily: sans.style.fontFamily,
           wordWrap: "break-word",
         },
       },
@@ -198,26 +225,23 @@ let theme = createTheme({
       },
       styleOverrides: {
         root: {
-          borderRadius: defaultTheme.spacing(0.5),
+          borderRadius: 999,
+          textTransform: "none",
+          fontWeight: 500,
+          minHeight: 44,
           [defaultTheme.breakpoints.up("xs")]: {
-            fontSize: "1.5rem",
+            fontSize: "1rem",
+          },
+          "&.Mui-selected": {
+            color: primary.dark,
+            backgroundColor: primary.light,
           },
           "&:not(.Mui-selected)": {
-            color: "#4a4e699c",
-            boxShadow: `0px 0px 0px ${light.dark},
-                        0px 0px 0px ${light.light},
-                        inset 5px 5px 10px ${light.dark},
-                        inset -5px -5px 5px ${light.light}`,
-            transition: "box-shadow .2s ease-in",
+            color: secondary.light,
+            backgroundColor: "transparent",
             "&:hover": {
               color: secondary.main,
-              boxShadow: `3px 4px 8px ${light.dark},
-                          -1px -1px 10px ${light.light},
-                          inset 0px 0px 0px ${light.dark},
-                          inset 0px 0px 0px ${light.light}`,
-              opacity: 1,
-              backgroundColor: light.main,
-              transition: "box-shadow .2 ease-in",
+              backgroundColor: "rgba(183, 110, 121, 0.08)",
             },
           },
         },
@@ -227,6 +251,13 @@ let theme = createTheme({
       styleOverrides: {
         indicator: {
           display: "none",
+        },
+        root: {
+          backgroundColor: "rgba(255, 253, 251, 0.7)",
+          border: `1px solid ${light.dark}`,
+          borderRadius: 999,
+          width: "fit-content",
+          minHeight: 52,
         },
         flexContainer: {
           padding: defaultTheme.spacing(1),
@@ -280,10 +311,10 @@ let theme = createTheme({
           style: {
             textAlign: "left",
             [defaultTheme.breakpoints.up("xs")]: {
-              paddingBottom: defaultTheme.spacing(8),
+              paddingBottom: defaultTheme.spacing(4),
             },
             [defaultTheme.breakpoints.up("md")]: {
-              paddingBottom: defaultTheme.spacing(16),
+              paddingBottom: defaultTheme.spacing(6),
             },
           },
         },

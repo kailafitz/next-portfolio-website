@@ -1,5 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import Navigation from "./_components/Layout/Navigation";
 import "./_styles/styles.scss";
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body>
         <AppRouterCacheProvider options={{ key: "css", enableCssLayer: true }}>
           <ThemeProvider theme={reponsiveTheme}>
+            <CssBaseline />
             <Navigation />
             {children}
             {/* <Footer /> */}

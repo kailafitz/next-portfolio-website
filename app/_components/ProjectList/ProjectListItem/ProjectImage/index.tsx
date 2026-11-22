@@ -13,7 +13,14 @@ const ProjectImage = ({
 }) => {
   const createFileHandle = projectName.replaceAll(" ", "-").toLowerCase();
   return (
-    <Box pl={3}>
+    <Box
+      sx={{
+        borderRadius: "22px",
+        overflow: "hidden",
+        bgcolor: "#f6ece8",
+        p: { xs: 1, md: 2 },
+      }}
+    >
       <Tooltip
         title={
           <Link
