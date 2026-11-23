@@ -1,0 +1,36 @@
+---
+import Icon from "./Icon.astro";
+
+const items = [
+  { icon: "settings" as const, label: "Functionality" },
+  { icon: "user" as const, label: "Experience" },
+  { icon: "smartphone" as const, label: "Responsive" },
+];
+---
+
+<section class="mx-auto w-full max-w-6xl px-5 pt-32 md:min-h-screen md:px-10 md:pt-16 md:flex md:justify-center md:flex-col">
+  <div class="flex flex-col gap-8">
+    <p class="flex items-center gap-3 text-sm font-medium uppercase tracking-[0.14em] text-primary">
+      <span class="live-pip" aria-hidden="true"></span>
+      About
+    </p>
+    <p class="max-w-3xl font-display text-[1.55rem] font-medium leading-snug md:text-[2rem]">
+      Business and technology professional at the intersection of engineering and product with a love for collaborating with others who are passionate and optimistic in today's age.
+    </p>
+    <ul class="flex w-full flex-col gap-4 md:flex-row">
+      {
+        items.map((item, index) => (
+          <li
+            class="reveal flex flex-1 items-center gap-4 border border-line bg-white px-5 py-4"
+            style={`animation-delay:${index * 100}ms`}
+          >
+            <span class="grid h-[52px] w-[52px] shrink-0 place-items-center text-primary">
+              <Icon name={item.icon} class="h-6 w-6" strokeWidth={1.4} />
+            </span>
+            <span class="font-medium">{item.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

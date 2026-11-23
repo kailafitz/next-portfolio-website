@@ -1,0 +1,27 @@
+---
+import type { StackLogo } from "../lib/types";
+
+interface Props {
+  logos: StackLogo[];
+}
+
+const { logos } = Astro.props;
+---
+
+{
+  logos.length > 1 && (
+    <ul class="mb-6 flex flex-wrap items-center gap-2">
+      {logos.map((tech) => (
+        <li class="grid h-10 w-10 place-items-center" title={tech.alt}>
+          <img
+            src={`/tech-stack-logos/${tech.src}`}
+            alt={tech.alt}
+            width="28"
+            height="28"
+            class="h-7 w-7 object-contain"
+          />
+        </li>
+      ))}
+    </ul>
+  )
+}

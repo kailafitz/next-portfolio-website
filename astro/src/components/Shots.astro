@@ -1,0 +1,49 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  label: string;
+  href: string;
+  images: { src: string; alt: string }[];
+  padded?: boolean;
+}
+
+const { label, href, images, padded = false } = Astro.props;
+---
+
+<section
+  class:list={[
+    "mx-auto w-full max-w-6xl px-5 pt-32 md:min-h-screen md:px-10 md:pt-16",
+    padded && "pb-32 md:pb-16",
+  ]}
+>
+  <h2 class="mb-8 font-display text-4xl font-light text-primary md:mb-12 md:text-5xl">
+    <span class="block sm:inline">Catch me on </span>
+    <a
+      class="inline-flex items-center gap-1 font-semibold text-ink no-underline transition-shadow duration-500 hover:shadow-none"
+      style="text-shadow: 3px 5px 3px #0000002b"
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      data-ga="external-portfolio"
+      data-ga-label={label}
+    >
+      {label}
+      <Icon name="external" class="h-5 w-5" strokeWidth={1.6} />
+    </a>
+  </h2>
+  <div class="flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+    {
+      images.map((image, index) => (
+        <img
+          src={image.src}
+          alt={image.alt}
+          width="300"
+          height="200"
+          class="reveal h-auto w-full border border-line object-cover sm:w-[30%]"
+          style={`animation-delay:${index * 100}ms`}
+        />
+      ))
+    }
+  </div>
+</section>

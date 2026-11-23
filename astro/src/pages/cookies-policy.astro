@@ -1,0 +1,12 @@
+---
+import Base from "../layouts/Base.astro";
+import cookies from "../content/cookies.html?raw";
+---
+
+<Base
+  title="Cookies Policy"
+  description="Cookies Policy for Google Analytics used on Mikhaila Fitzpatrick website"
+  canonical="/cookies-policy"
+>
+  <main class="legal mx-auto w-full max-w-6xl px-5 pt-16 pb-24 md:px-10" set:html={cookies} />
+</Base>

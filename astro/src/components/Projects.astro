@@ -1,0 +1,56 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import type { Project } from "../lib/types";
+
+interface Props {
+  personal: Project[];
+  professional: Project[];
+}
+
+const { personal, professional } = Astro.props;
+
+const tabs = [
+  { id: "personal", label: "Personal", projects: personal },
+  { id: "professional", label: "Professional", projects: professional },
+];
+---
+
+<section id="projects" class="mx-auto min-h-0 w-full max-w-6xl px-5 py-32 md:min-h-screen md:px-10 md:py-16">
+  <p class="mb-3 text-sm font-medium uppercase tracking-[0.14em] text-primary">Portfolio</p>
+  <h2 class="mb-8 font-display text-4xl font-medium md:mb-12 md:text-5xl">Selected work</h2>
+  <div data-tabs>
+    <div class="flex w-fit gap-2 py-2" role="tablist" aria-label="Project tabs">
+      {
+        tabs.map((tab, index) => (
+          <button
+            type="button"
+            role="tab"
+            data-tab={tab.id}
+            aria-selected={index === 0 ? "true" : "false"}
+            class:list={[
+              "min-h-11 px-3 text-base font-medium",
+              index === 0 ? "text-primary shadow-[inset_0_-1px_0_#e26d5c]" : "text-muted hover:text-ink",
+            ]}
+          >
+            {tab.label}
+          </button>
+        ))
+      }
+    </div>
+    {
+      tabs.map((tab, index) => (
+        <div class="pt-8" role="tabpanel" data-panel={tab.id} hidden={index !== 0}>
+          {tab.projects.length === 0 ? (
+            <p class="text-muted">New work will land here shortly.</p>
+          ) : (
+            <div class="flex flex-col gap-8">
+              {tab.projects.map((project) => (
+                <ProjectCard project={project} />
+              ))}
+            </div>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</section>
