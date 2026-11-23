@@ -16,20 +16,6 @@ const shots = await getShots();
     <Intro />
     <Bio />
     <Projects personal={personal} professional={professional} />
-    <Shots
-      label="Dribbble"
-      href="https://dribbble.com/kfitz47"
-      images={shots.map((src) => ({ src, alt: "Dribbble shot" }))}
-    />
-    <Shots
-      label="Instagram"
-      href="https://www.instagram.com/kaila.fizz/"
-      padded
-      images={[1, 2, 3].map((n) => ({
-        src: `/instagram/graphic-${n}.png`,
-        alt: `Instagram graphic ${n}`,
-      }))}
-    />
     <Contact />
   </main>
 </Base>

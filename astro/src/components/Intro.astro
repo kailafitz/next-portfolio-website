@@ -1,3 +1,7 @@
+---
+import ContactChannels from "./ContactChannels.astro";
+---
+
 <section class="flex min-h-[calc(100vh-88px)] items-center bg-white md:min-h-[calc(100vh-96px)]">
   <div class="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-12 md:px-10 md:pb-16">
     <div class="md:col-span-7">
@@ -8,7 +12,7 @@
       <h1 class="mb-4 font-display text-[2.3rem] font-medium leading-[1.05] tracking-tight sm:text-5xl md:text-[3.3rem] lg:text-6xl">
         Frontend <span class="font-medium italic text-primary">Development</span>
       </h1>
-      <p class="mb-2 font-display text-xl font-medium text-muted">React · TypeScript</p>
+      <p class="mb-2 font-display text-xl font-medium text-muted">Node.js · React · TypeScript</p>
       <p class="max-w-md leading-7 text-muted">. . .and I like to golf when I've free time!</p>
       <div class="mt-8 flex flex-col gap-4 sm:flex-row">
         <a
@@ -44,6 +48,9 @@
           class="mx-auto block h-auto w-full max-w-[400px] rounded-full outline outline-1 outline-[#e6e6e6] outline-offset-8"
         />
       </div>
+    </div>
+    <div class="col-span-12">
+      <ContactChannels />
     </div>
   </div>
 </section>
