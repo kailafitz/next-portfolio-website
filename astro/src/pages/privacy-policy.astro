@@ -1,0 +1,12 @@
+---
+import Base from "../layouts/Base.astro";
+import privacy from "../content/privacy.html?raw";
+---
+
+<Base
+  title="Privacy Policy"
+  description="Privacy Policy for Google Analytics used on Mikhaila Fitzpatrick website"
+  canonical="/privacy-policy"
+>
+  <main class="legal mx-auto w-full max-w-6xl px-5 pt-16 pb-24 md:px-10" set:html={privacy} />
+</Base>

@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --color-primary: #e26d5c;
+  --color-primary-dark: #c45140;
+  --color-ink: #111111;
+  --color-muted: #737373;
+  --color-line: #e6e6e6;
+  --color-paper: #fafafa;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: unset;
+  padding: 0.65rem 1.35rem;
+  border-radius: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: none;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-dark {
+  color: #fff;
+  background-color: #111;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 42%);
+  border: 1px solid #2a2a2a;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.btn-dark:hover {
+  background-color: #000;
+  border-color: #4a4f57;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.btn-light {
+  color: #111;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+}
+
+.btn-light:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.live-pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: radial-gradient(circle at 32% 32%, #fff, #d5d9e0 42%, #8d95a3);
+  box-shadow: 0 0 0 3px rgba(176, 182, 192, 0.28);
+  animation: pip-blink 2.8s ease-in-out infinite;
+}
+
+.metal-scan {
+  position: relative;
+  overflow: hidden;
+}
+
+.metal-scan::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 22%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f7f8fa 35%, #9aa3b2 72%, transparent);
+  animation: metal-pass 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.sensor-ring {
+  position: absolute;
+  inset: -18px;
+  width: calc(100% + 36px);
+  height: calc(100% + 36px);
+  pointer-events: none;
+  animation: sensor-spin 18s linear infinite;
+}
+
+.metal-frame {
+  background-image:
+    linear-gradient(#c5cad3, #c5cad3),
+    linear-gradient(#c5cad3, #c5cad3),
+    linear-gradient(#c5cad3, #c5cad3),
+    linear-gradient(#c5cad3, #c5cad3),
+    linear-gradient(#c5cad3, #c5cad3),
+    linear-gradient(#c5cad3, #c5cad3),
+    linear-gradient(#c5cad3, #c5cad3),
+    linear-gradient(#c5cad3, #c5cad3);
+  background-repeat: no-repeat;
+  background-size:
+    12px 1px, 1px 12px,
+    12px 1px, 1px 12px,
+    12px 1px, 1px 12px,
+    12px 1px, 1px 12px;
+  background-position:
+    7px 7px, 7px 7px,
+    right 7px top 7px, right 7px top 7px,
+    left 7px bottom 7px, left 7px bottom 7px,
+    right 7px bottom 7px, right 7px bottom 7px;
+}
+
+.reveal {
+  animation: rise 0.7s ease both;
+}
+
+@keyframes metal-pass {
+  0% { transform: translateX(-130%); }
+  100% { transform: translateX(480%); }
+}
+
+@keyframes sensor-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pip-blink {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+.legal ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0 0 1rem;
+}
+
+.legal ol {
+  list-style: decimal;
+  padding-left: 1.25rem;
+  margin: 0 0 1rem;
+}
+
+.legal li {
+  margin-bottom: 0.35rem;
+}
+
+.legal a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.legal a:hover {
+  text-decoration: underline;
+}
+
+.legal table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.legal th,
+.legal td {
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.7rem 0.8rem;
+  vertical-align: top;
+  text-align: left;
+}
+
+.legal th {
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .metal-scan::after,
+  .sensor-ring,
+  .live-pip,
+  .reveal {
+    animation: none;
+  }
+}

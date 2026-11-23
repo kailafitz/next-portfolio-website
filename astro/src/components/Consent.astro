@@ -1,0 +1,57 @@
+<div
+  id="consent-dialog"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="consent-title"
+>
+  <div class="w-full max-w-lg bg-white p-6 shadow-xl">
+    <h2 id="consent-title" class="mb-3 flex items-center gap-2 font-display text-2xl font-medium">
+      Cookies
+    </h2>
+    <p class="text-[0.95rem] leading-7">
+      Cookies are used on this website to collect data on user activity. This data is not shared
+      with any third-parties and is only used to ensure that the website is functioning properly.
+      View <a class="text-primary" href="/privacy-policy">Privacy Policy</a> for more information.
+    </p>
+    <div class="my-5 space-y-3">
+      {
+        [
+          ["ad_storage", "Ad Storage"],
+          ["ad_personalization", "Ad Personalisation"],
+          ["ad_user_data", "Ad User Data"],
+          ["analytics_storage", "Analytics Storage"],
+        ].map(([key, label]) => (
+          <label class="flex items-center justify-between gap-4 text-sm">
+            <span>{label}</span>
+            <input data-consent={key} type="checkbox" class="h-5 w-9 accent-primary" />
+          </label>
+        ))
+      }
+    </div>
+    <div class="flex flex-col gap-2 md:flex-row">
+      <button type="button" data-consent-save class="btn btn-dark flex-1">Save my Choices</button>
+      <button type="button" data-consent-accept class="btn btn-dark flex-1">Accept All</button>
+      <button type="button" data-consent-reject class="btn btn-light flex-1">Reject All</button>
+    </div>
+  </div>
+</div>
+
+<div
+  id="consent-toast"
+  class="fixed bottom-4 right-4 z-50 hidden max-w-sm bg-ink px-4 py-3 text-sm text-white shadow-lg"
+  role="status"
+>
+  <div class="flex items-start gap-3">
+    <p id="consent-toast-message" class="leading-6"></p>
+    <button id="consent-toast-close" type="button" class="text-white" aria-label="Close">
+      ×
+    </button>
+  </div>
+</div>
+
+<style>
+  #consent-dialog:not(.hidden) {
+    display: flex;
+  }
+</style>

@@ -1,0 +1,99 @@
+---
+import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+import Consent from "../components/Consent.astro";
+import { env } from "../lib/env";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = "Mikhaila Fitzpatrick",
+  description = "The official website of frontend developer, Mikhaila Fitzpatrick.",
+  canonical,
+} = Astro.props;
+
+const pageTitle = title === "Mikhaila Fitzpatrick" ? title : `${title} | Mikhaila Fitzpatrick`;
+const measurementId = env("NEXT_PUBLIC_GA_MEASUREMENT_ID");
+const gaEnabled = /^G-[A-Z0-9]+$/i.test(measurementId);
+const canonicalUrl = canonical
+  ? new URL(canonical, Astro.site)
+  : Astro.url;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Outfit:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    {
+      gaEnabled && (
+        <script is:inline define:vars={{ measurementId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          window.gtag = gtag;
+          var stored = null;
+          try {
+            var raw = localStorage.getItem("consentMode");
+            if (raw) {
+              var parsed = JSON.parse(raw);
+              var toStatus = function (value) {
+                return value ? "granted" : "denied";
+              };
+              stored = {
+                ad_storage: toStatus(!!parsed.ad_storage),
+                analytics_storage: toStatus(!!parsed.analytics_storage),
+                ad_user_data: toStatus(!!parsed.ad_user_data),
+                ad_personalization: toStatus(!!parsed.ad_personalization),
+              };
+            }
+          } catch (error) {}
+          gtag(
+            "consent",
+            "default",
+            Object.assign(
+              {
+                ad_storage: "denied",
+                analytics_storage: "denied",
+                ad_user_data: "denied",
+                ad_personalization: "denied",
+                functionality_storage: "denied",
+                personalization_storage: "denied",
+                security_storage: "granted",
+                wait_for_update: 500,
+              },
+              stored || {},
+            ),
+          );
+          gtag("js", new Date());
+          gtag("config", measurementId, { send_page_view: false });
+        </script>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></script>
+      )
+    }
+  </head>
+  <body data-ga-id={gaEnabled ? measurementId : undefined}>
+    <Nav />
+    <slot />
+    <Consent />
+    <script>
+      import { initSite } from "../scripts/site";
+      initSite();
+    </script>
+  </body>
+</html>
