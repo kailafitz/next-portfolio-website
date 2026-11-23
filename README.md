@@ -1,3 +1,9 @@
-## Portfolio website built with NextJS and MUI
+## Portfolio website
 
-My first project using NextJS showcasing my previous experience.
+Astro and Tailwind. The site lives in `astro`.
+
+```bash
+cd astro
+npm install
+npm run dev
+```
