@@ -48,7 +48,7 @@ export const PersonalProjectData = [
       {
         sectionTitle: "Background",
         sectionDetails:
-          "I actually started this project back in January 2023 and I thought it would be useful to not update everything to the latest technologies. Even though frameworks such as Next.js has revolutionised routing and data fetching in the frontend, I still felt it necessary to remind myself of the coding practises of libraries such as React-Router, React-Query and React-Hook-Form in 2024 given how it will take time for many companies to adjust to the ever changing landscape that is frontend development!.",
+          "I actually started this project back in January 2023 and I thought it would be useful to not update everything to the latest technologies. Even though frameworks such as Next.js has revolutionised routing and data fetching in the frontend, I still felt it necessary to remind myself of the coding practises of libraries such as React-Router, React-Query and React-Hook-Form in 2024 given how it will take time for many companies to adjust to the ever changing landscape that is frontend development!",
       },
       {
         sectionTitle: "The Spec",
