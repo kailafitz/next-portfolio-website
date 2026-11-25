@@ -1,38 +1,52 @@
 <div
   id="consent-dialog"
-  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4"
-  role="dialog"
-  aria-modal="true"
+  class="fixed inset-x-0 bottom-0 z-50 hidden border-t border-ink/10 bg-white/90 px-4 py-3 shadow-[0_-4px_24px_rgba(0,0,0,0.06)] backdrop-blur-sm sm:px-6"
+  role="region"
   aria-labelledby="consent-title"
 >
-  <div class="w-full max-w-lg bg-white p-6 shadow-xl">
-    <h2 id="consent-title" class="mb-3 flex items-center gap-2 font-display text-2xl font-medium">
-      Cookies
-    </h2>
-    <p class="text-[0.95rem] leading-7">
-      Cookies are used on this website to collect data on user activity. This data is not shared
-      with any third-parties and is only used to ensure that the website is functioning properly.
-      View <a class="text-primary" href="/privacy-policy">Privacy Policy</a> for more information.
-    </p>
-    <div class="my-5 space-y-3">
-      {
-        [
-          ["ad_storage", "Ad Storage"],
-          ["ad_personalization", "Ad Personalisation"],
-          ["ad_user_data", "Ad User Data"],
-          ["analytics_storage", "Analytics Storage"],
-        ].map(([key, label]) => (
-          <label class="flex items-center justify-between gap-4 text-sm">
-            <span>{label}</span>
-            <input data-consent={key} type="checkbox" class="h-5 w-9 accent-primary" />
-          </label>
-        ))
-      }
+  <div class="mx-auto flex w-full max-w-4xl flex-col gap-3 sm:gap-4">
+    <div data-consent-simple class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+      <div class="min-w-0">
+        <p id="consent-title" class="text-sm leading-relaxed text-ink/90">
+          This site uses cookies for analytics. See the
+          <a class="text-primary underline-offset-2 hover:underline" href="/privacy-policy"> Privacy Policy</a>.
+        </p>
+      </div>
+      <div class="flex shrink-0 flex-wrap items-center gap-2 sm:gap-3">
+        <button type="button" data-consent-accept class="btn btn-dark px-4 py-2 text-sm">
+          OK
+        </button>
+        <button
+          type="button"
+          data-consent-customize
+          class="text-sm text-ink/70 underline-offset-2 transition hover:text-ink hover:underline"
+        >
+          Choose options
+        </button>
+      </div>
     </div>
-    <div class="flex flex-col gap-2 md:flex-row">
-      <button type="button" data-consent-save class="btn btn-dark flex-1">Save my Choices</button>
-      <button type="button" data-consent-accept class="btn btn-dark flex-1">Accept All</button>
-      <button type="button" data-consent-reject class="btn btn-light flex-1">Reject All</button>
+
+    <div data-consent-options class="hidden border-t border-ink/10 pt-3">
+      <p class="mb-3 text-sm text-ink/80">Choose which types of storage to allow.</p>
+      <div class="space-y-2.5">
+        {
+          [
+            ["ad_storage", "Ad Storage"],
+            ["ad_personalization", "Ad Personalisation"],
+            ["ad_user_data", "Ad User Data"],
+            ["analytics_storage", "Analytics Storage"],
+          ].map(([key, label]) => (
+            <label class="flex items-center justify-between gap-4 text-sm">
+              <span>{label}</span>
+              <input data-consent={key} type="checkbox" class="h-5 w-9 accent-primary" checked />
+            </label>
+          ))
+        }
+      </div>
+      <div class="mt-4 flex flex-col gap-2 sm:flex-row">
+        <button type="button" data-consent-save class="btn btn-dark flex-1 text-sm">Save choices</button>
+        <button type="button" data-consent-reject class="btn btn-light flex-1 text-sm">Reject all</button>
+      </div>
     </div>
   </div>
 </div>
@@ -49,9 +63,3 @@
     </button>
   </div>
 </div>
-
-<style>
-  #consent-dialog:not(.hidden) {
-    display: flex;
-  }
-</style>

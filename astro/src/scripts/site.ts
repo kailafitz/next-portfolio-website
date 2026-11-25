@@ -14,6 +14,13 @@ const denied: ConsentChoices = {
   ad_personalization: false,
 };
 
+const granted: ConsentChoices = {
+  ad_storage: true,
+  analytics_storage: true,
+  ad_user_data: true,
+  ad_personalization: true,
+};
+
 function track(eventName: string, params: Record<string, string>) {
   const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
   if (typeof gtag !== "function") return;
@@ -55,9 +62,21 @@ function applyConsent(choices: ConsentChoices) {
   );
 }
 
+function setConsentOptionsVisible(dialog: HTMLElement, visible: boolean) {
+  dialog.querySelector("[data-consent-options]")?.classList.toggle("hidden", !visible);
+}
+
+function syncConsentInputs(dialog: HTMLElement, choices: ConsentChoices) {
+  dialog.querySelectorAll<HTMLInputElement>("[data-consent]").forEach((input) => {
+    const key = input.dataset.consent as keyof ConsentChoices;
+    input.checked = choices[key];
+  });
+}
+
 function closeConsent() {
-  document.getElementById("consent-dialog")?.classList.add("hidden");
-  document.body.classList.remove("overflow-hidden");
+  const dialog = document.getElementById("consent-dialog");
+  dialog?.classList.add("hidden");
+  if (dialog) setConsentOptionsVisible(dialog, false);
   const url = new URL(window.location.href);
   if (url.searchParams.has("modal")) {
     url.searchParams.delete("modal");
@@ -65,16 +84,13 @@ function closeConsent() {
   }
 }
 
-function openConsent() {
+function openConsent(showOptions = false) {
   const dialog = document.getElementById("consent-dialog");
   if (!dialog) return;
-  const stored = readConsent() ?? denied;
-  dialog.querySelectorAll<HTMLInputElement>("[data-consent]").forEach((input) => {
-    const key = input.dataset.consent as keyof ConsentChoices;
-    input.checked = stored[key];
-  });
+  const stored = readConsent() ?? granted;
+  syncConsentInputs(dialog, stored);
+  setConsentOptionsVisible(dialog, showOptions);
   dialog.classList.remove("hidden");
-  document.body.classList.add("overflow-hidden");
 }
 
 function showToast(html: string) {
@@ -92,9 +108,17 @@ function initConsent() {
   dialog.dataset.ready = "true";
 
   const params = new URLSearchParams(window.location.search);
-  if (params.get("modal") === "true" || localStorage.getItem(CONSENT_KEY) === null) {
-    openConsent();
+  if (params.get("modal") === "true") {
+    openConsent(true);
+  } else if (localStorage.getItem(CONSENT_KEY) === null) {
+    openConsent(false);
   }
+
+  dialog.querySelector("[data-consent-customize]")?.addEventListener("click", () => {
+    const stored = readConsent() ?? granted;
+    syncConsentInputs(dialog, stored);
+    setConsentOptionsVisible(dialog, true);
+  });
 
   dialog.querySelector("[data-consent-save]")?.addEventListener("click", () => {
     const choices = { ...denied };
@@ -105,12 +129,7 @@ function initConsent() {
   });
 
   dialog.querySelector("[data-consent-accept]")?.addEventListener("click", () => {
-    applyConsent({
-      ad_storage: true,
-      analytics_storage: true,
-      ad_user_data: true,
-      ad_personalization: true,
-    });
+    applyConsent(granted);
   });
 
   dialog.querySelector("[data-consent-reject]")?.addEventListener("click", () => {
