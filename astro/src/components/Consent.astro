@@ -1,6 +1,6 @@
 <div
   id="consent-dialog"
-  class="fixed inset-x-0 bottom-0 z-50 hidden border-t border-ink/10 bg-white/90 px-4 py-3 shadow-[0_-4px_24px_rgba(0,0,0,0.06)] backdrop-blur-sm sm:px-6"
+  class="fixed inset-x-0 bottom-0 z-50 hidden border-t border-ink/10 bg-white/90 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_24px_rgba(0,0,0,0.06)] backdrop-blur-sm sm:px-6 sm:pb-3"
   role="region"
   aria-labelledby="consent-title"
 >
@@ -12,14 +12,14 @@
           <a class="text-primary underline-offset-2 hover:underline" href="/privacy-policy"> Privacy Policy</a>.
         </p>
       </div>
-      <div class="flex shrink-0 flex-wrap items-center gap-2 sm:gap-3">
-        <button type="button" data-consent-accept class="btn btn-dark px-4 py-2 text-sm">
+      <div class="flex w-full shrink-0 flex-col gap-2 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+        <button type="button" data-consent-accept class="btn btn-dark min-h-11 w-full text-sm sm:w-auto sm:min-w-24">
           OK
         </button>
         <button
           type="button"
           data-consent-customize
-          class="text-sm text-ink/70 underline-offset-2 transition hover:text-ink hover:underline"
+          class="inline-flex min-h-11 w-full items-center justify-center text-sm text-ink/70 underline-offset-2 transition hover:text-ink hover:underline sm:w-auto sm:justify-start sm:px-2"
         >
           Choose options
         </button>
@@ -28,7 +28,7 @@
 
     <div data-consent-options class="hidden border-t border-ink/10 pt-3">
       <p class="mb-3 text-sm text-ink/80">Choose which types of storage to allow.</p>
-      <div class="space-y-2.5">
+      <div class="max-h-[min(40vh,14rem)] space-y-2.5 overflow-y-auto overscroll-contain pr-1">
         {
           [
             ["ad_storage", "Ad Storage"],
@@ -44,8 +44,8 @@
         }
       </div>
       <div class="mt-4 flex flex-col gap-2 sm:flex-row">
-        <button type="button" data-consent-save class="btn btn-dark flex-1 text-sm">Save choices</button>
-        <button type="button" data-consent-reject class="btn btn-light flex-1 text-sm">Reject all</button>
+        <button type="button" data-consent-save class="btn btn-dark min-h-11 flex-1 text-sm">Save choices</button>
+        <button type="button" data-consent-reject class="btn btn-light min-h-11 flex-1 text-sm">Reject all</button>
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@
 
 <div
   id="consent-toast"
-  class="fixed bottom-4 right-4 z-50 hidden max-w-sm bg-ink px-4 py-3 text-sm text-white shadow-lg"
+  class="fixed right-4 z-50 hidden max-w-sm bg-ink px-4 py-3 text-sm text-white shadow-lg bottom-[max(1rem,env(safe-area-inset-bottom))]"
   role="status"
 >
   <div class="flex items-start gap-3">
