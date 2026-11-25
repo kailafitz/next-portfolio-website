@@ -1,0 +1,51 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+
+interface Props {
+  id?: string;
+  /** Small label above the section title (pip + uppercase). */
+  eyebrow: string;
+  /** Large section title — same header block on every section. Use `title` slot for custom markup. */
+  title?: string;
+  viewport?: boolean;
+  class?: string;
+  titleClass?: string;
+}
+
+const {
+  id,
+  eyebrow,
+  title,
+  viewport = true,
+  class: className,
+  titleClass,
+} = Astro.props;
+
+const hasCustomTitle = Astro.slots.has("title");
+---
+
+<section
+  id={id}
+  class:list={[
+    "layout-container",
+    "section-inset",
+    viewport && "section-viewport",
+    className,
+  ]}
+>
+  <div class="stack-section">
+    <header class="section-header">
+      <SectionHeading title={eyebrow} />
+      {
+        hasCustomTitle ? (
+          <slot name="title" />
+        ) : (
+          title && <h2 class:list={["type-display-title", titleClass]}>{title}</h2>
+        )
+      }
+    </header>
+    <div class="section-body">
+      <slot />
+    </div>
+  </div>
+</section>

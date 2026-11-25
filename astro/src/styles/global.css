@@ -9,6 +9,102 @@
   --color-muted: #737373;
   --color-line: #e6e6e6;
   --color-paper: #fafafa;
+  --spacing-site-header: 5.5rem;
+  --spacing-site-header-md: 6rem;
+}
+
+/*
+ * Layout & spacing
+ * layout-container       — centered column + horizontal padding (20px mobile, 40px md+)
+ * section-inset          — standard vertical section padding (128px mobile, 64px md+)
+ * section-inset-document — legal / prose pages (64px top, 96px bottom)
+ * section-inset-compact  — detail page hero band
+ * section-inset-block    — stacked blocks inside a page (64px / 96px vertical)
+ * section-viewport       — min-height section, vertically centered from md up
+ * section-hero           — intro viewport minus sticky header (uses dvh + header tokens)
+ * stack-section          — primary vertical rhythm inside sections
+ * stack-content          — lists, cards, tab panels
+ * stack-grid             — grid gap companion (use with `grid`)
+ * stack-form             — form field groups
+ * section-header         — eyebrow + optional title (12px between); use inside PageSection
+ * section-body           — main content below the header (spacing from stack-section)
+ * type-display-title     — section titles (h2); margin below comes from stack-section, not the title
+ * type-section-lede      — opening paragraph under the section title (same role on every section)
+ * layout-site-footer     — footer vertical padding inside layout-container
+ * PageSection.astro      — one wrapper for id, inset, viewport, header, and body
+ */
+
+@layer components {
+  .layout-container {
+    @apply mx-auto w-full max-w-6xl px-5 md:px-10;
+  }
+
+  .section-inset {
+    @apply py-32 md:py-16;
+  }
+
+  .section-inset-document {
+    @apply pt-16 pb-24;
+  }
+
+  .section-inset-compact {
+    @apply pt-8 md:pt-12;
+  }
+
+  .section-inset-block {
+    @apply py-16 md:py-24;
+  }
+
+  .section-viewport {
+    @apply md:min-h-screen md:flex md:flex-col md:justify-center;
+  }
+
+  .section-hero {
+    @apply flex items-center bg-white;
+    min-height: calc(100dvh - var(--spacing-site-header));
+  }
+
+  @media (width >= 48rem) {
+    .section-hero {
+      min-height: calc(100dvh - var(--spacing-site-header-md));
+    }
+  }
+
+  .stack-section {
+    @apply flex flex-col gap-10 md:gap-12;
+  }
+
+  .stack-content {
+    @apply flex flex-col gap-8;
+  }
+
+  .stack-grid {
+    @apply gap-6 md:gap-8;
+  }
+
+  .stack-form {
+    @apply flex flex-col gap-6;
+  }
+
+  .section-header {
+    @apply flex flex-col gap-3;
+  }
+
+  .section-body {
+    @apply flex min-w-0 flex-col gap-10 md:gap-12;
+  }
+
+  .type-display-title {
+    @apply m-0 font-display text-4xl font-medium md:text-5xl w-full md:w-[70%];
+  }
+
+  .type-section-lede {
+    @apply max-w-3xl text-lg leading-7 text-ink md:text-xl;
+  }
+
+  .layout-site-footer {
+    @apply py-4;
+  }
 }
 
 html {

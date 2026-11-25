@@ -41,13 +41,13 @@ const image = `/project-${project.projectId}/${projectSlug(project.projectName)}
   description={project.projectDescription}
   canonical={projectPath(project)}
 >
-  <a class="btn btn-light mt-6 ml-6" href="/#projects">
+  <a class="btn btn-light layout-container mt-6 block w-fit" href="/#projects">
     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
     </svg>
     Home
   </a>
-  <article class="mx-auto w-full max-w-6xl px-5 pt-8 md:px-10 md:pt-12">
+  <article class="layout-container section-inset-compact">
     <div class="grid items-end gap-10 md:grid-cols-12">
       <div class="md:col-span-7">
         <h1 class="mb-6 font-display text-[2.3rem] font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
@@ -85,7 +85,7 @@ const image = `/project-${project.projectId}/${projectSlug(project.projectName)}
       </div>
     </div>
 
-    <div class="grid gap-8 py-16 md:grid-cols-12 md:py-24">
+    <div class="section-inset-block grid stack-grid md:grid-cols-12">
       {
         project.companyName && (
           <div class="space-y-4 md:col-span-4">
