@@ -3,6 +3,7 @@ import SectionHeading from "./SectionHeading.astro";
 
 interface Props {
   id?: string;
+  sectionNumber?: string;
   /** Small label above the section title (pip + uppercase). */
   eyebrow: string;
   /** Large section title — same header block on every section. Use `title` slot for custom markup. */
@@ -14,9 +15,10 @@ interface Props {
 
 const {
   id,
+  sectionNumber,
   eyebrow,
   title,
-  viewport = true,
+  viewport = false,
   class: className,
   titleClass,
 } = Astro.props;
@@ -34,8 +36,10 @@ const hasCustomTitle = Astro.slots.has("title");
   ]}
 >
   <div class="stack-section">
-    <header class="section-header">
-      <SectionHeading title={eyebrow} />
+    <header class="section-band-header">
+      <div class="section-header min-w-0 flex-1">
+        {sectionNumber && <p class="section-number mb-3">{sectionNumber}</p>}
+        <SectionHeading title={eyebrow} />
       {
         hasCustomTitle ? (
           <slot name="title" />
@@ -43,6 +47,7 @@ const hasCustomTitle = Astro.slots.has("title");
           title && <h2 class:list={["type-display-title", titleClass]}>{title}</h2>
         )
       }
+      </div>
     </header>
     <div class="section-body">
       <slot />

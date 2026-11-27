@@ -1,0 +1,20 @@
+---
+import PageSection from "./PageSection.astro";
+import { behindTheScreen } from "../data/landing";
+---
+
+<PageSection
+  id="about"
+  sectionNumber={behindTheScreen.number}
+  eyebrow={behindTheScreen.eyebrow}
+  title={behindTheScreen.title}
+  viewport={false}
+>
+  <p class="type-section-lede">{behindTheScreen.lede}</p>
+  <blockquote class="max-w-2xl border-l-2 border-primary py-1 pl-6 font-display text-lg italic leading-snug text-ink md:text-xl">
+    “Curiosity is the engine of achievement.”
+    <footer class="mt-2 font-sans text-sm not-italic text-muted">— Ken Robinson</footer>
+  </blockquote>
+  <p class="max-w-2xl text-base leading-relaxed text-muted">{behindTheScreen.aside}</p>
+  <p class="text-base leading-relaxed text-ink">{behindTheScreen.interests}</p>
+</PageSection>

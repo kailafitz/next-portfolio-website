@@ -141,29 +141,6 @@ function initConsent() {
   });
 }
 
-function initTabs() {
-  document.querySelectorAll<HTMLElement>("[data-tabs]").forEach((root) => {
-    if (root.dataset.ready === "true") return;
-    root.dataset.ready = "true";
-    const buttons = root.querySelectorAll<HTMLButtonElement>("[data-tab]");
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const selected = button.dataset.tab;
-        buttons.forEach((item) => {
-          const on = item === button;
-          item.setAttribute("aria-selected", String(on));
-          item.classList.toggle("text-primary", on);
-          item.classList.toggle("shadow-[inset_0_-1px_0_#e26d5c]", on);
-          item.classList.toggle("text-muted", !on);
-        });
-        root.querySelectorAll<HTMLElement>("[data-panel]").forEach((panel) => {
-          panel.hidden = panel.dataset.panel !== selected;
-        });
-      });
-    });
-  });
-}
-
 function initForm() {
   const form = document.querySelector<HTMLFormElement>("#contact-form");
   if (!form || form.dataset.ready === "true") return;
@@ -240,7 +217,6 @@ function initAnalytics() {
 
 export function initSite() {
   initConsent();
-  initTabs();
   initForm();
   initAnalytics();
 }

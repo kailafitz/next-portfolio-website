@@ -4,8 +4,11 @@ import ContactChannels from "./ContactChannels.astro";
 import PageSection from "./PageSection.astro";
 ---
 
-<PageSection id="contact" class="bg-white" eyebrow="Hello" title="Contact me">
-  <div class="mx-auto w-full sm:w-3/5">
+<PageSection id="contact" sectionNumber="06" eyebrow="Hello" title="Let's connect" class="bg-white" viewport={false}>
+  <p class="type-section-lede">
+    Open to conversations about frontend engineering, product, and solutions-facing roles.
+  </p>
+  <div class="mx-auto w-full max-w-xl">
     <form
       id="contact-form"
       class="stack-form"
@@ -33,7 +36,7 @@ import PageSection from "./PageSection.astro";
         ></textarea>
       </label>
       <p data-form-error class="text-sm text-primary"></p>
-      <button class="btn btn-dark self-start" type="submit">Submit</button>
+      <button class="btn btn-dark self-start" type="submit">Send message</button>
     </form>
   </div>
   <ContactChannels />

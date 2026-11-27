@@ -1,59 +1,47 @@
 ---
-import ContactChannels from "./ContactChannels.astro";
-import SectionHeading from "./SectionHeading.astro";
+import { hero } from "../data/landing";
 ---
 
-<section class="section-hero">
-  <div class="layout-container grid items-center gap-10 py-16 md:grid-cols-12 md:gap-12 md:pb-16">
-    <div class="stack-form md:col-span-7">
+<section class="section-hero" aria-labelledby="hero-title">
+  <div class="layout-container grid items-center gap-10 py-16 md:grid-cols-12 md:gap-12 md:pb-20 md:pt-20">
+    <div class="stack-section md:col-span-7">
       <header class="section-header">
-        <SectionHeading title="Frontend · Product · AI solutions" />
-        <h1 class="type-display-title text-[2.3rem] leading-[1.05] tracking-tight sm:text-5xl md:text-[3.3rem] lg:text-6xl">
-          Frontend <span class="font-medium italic text-primary">Development</span>
+        <p class="section-number">01</p>
+        {
+          hero.showLocation && (
+            <p class="font-mono text-xs tracking-wide text-muted uppercase">{hero.locationLabel}</p>
+          )
+        }
+        <h1 id="hero-title" class="type-hero-title">
+          {
+            hero.headlineLines.map((line) => (
+              <span class="block">{line}</span>
+            ))
+          }
         </h1>
-        <p class="font-display text-xl font-medium text-muted">Node.js · React · TypeScript</p>
       </header>
-      <div>
-        
-        <p class="max-w-md leading-7 text-muted">. . .and I like to golf when I've free time!</p>
-      </div>
+      <p class="type-section-lede max-w-xl">{hero.intro}</p>
       <div class="flex flex-col gap-4 sm:flex-row">
-        <a
-          class="btn btn-dark w-full sm:w-auto"
-          href="/MikhailaFitzpatrick_Tech_CurriculumVitae.pdf"
-          download="MikhailaFitzpatrick_Tech_CurriculumVitae"
-        >
-          Download my resume
+        <a class="btn btn-dark w-full sm:w-auto" href={hero.primaryCta.href}>
+          {hero.primaryCta.label}
         </a>
-        <a class="btn btn-light w-full sm:w-auto" href="#contact">Contact me</a>
+        <a
+          class="btn btn-light w-full sm:w-auto"
+          href={hero.resumeCta.href}
+          download={hero.resumeCta.download}
+        >
+          {hero.resumeCta.label}
+        </a>
       </div>
     </div>
-    <div class="flex justify-center w-[80%] mx-auto md:col-span-5">
-      <div class="relative w-[min(100%,380px)]">
-        <svg class="sensor-ring" viewBox="0 0 100 100" aria-hidden="true">
-          <circle cx="50" cy="50" r="48" fill="none" stroke="#e4e6ea" stroke-width="0.35"></circle>
-          <circle
-            cx="50"
-            cy="50"
-            r="48"
-            fill="none"
-            stroke="#9aa3b2"
-            stroke-width="0.9"
-            stroke-dasharray="16 84"
-            stroke-linecap="butt"></circle>
-          <circle cx="50" cy="2.2" r="0.9" fill="#d7dbe3"></circle>
-        </svg>
-        <img
-          src="/waving.png"
-          alt="Mikhaila Fitzpatrick avatar"
-          width="500"
-          height="500"
-          class="mx-auto block h-auto w-full max-w-[400px] rounded-full outline outline-1 outline-[#e6e6e6] outline-offset-8"
-        />
-      </div>
-    </div>
-    <div class="md:col-span-12">
-      <ContactChannels />
+    <div class="flex justify-center md:col-span-5 md:justify-end">
+      <img
+        src="/waving.png"
+        alt="Mikhaila Fitzpatrick"
+        width="500"
+        height="500"
+        class="h-auto w-full max-w-[min(100%,340px)] rounded-sm border border-line object-cover shadow-[8px_8px_0_0_var(--color-sage)]"
+      />
     </div>
   </div>
 </section>
