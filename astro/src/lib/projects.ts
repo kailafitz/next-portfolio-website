@@ -1,11 +1,14 @@
 import { createClient } from "@supabase/supabase-js";
 import { env } from "./env";
+import { usesLocalProjectData } from "./projectSource";
 import { PersonalProjectData } from "../data/personal";
 import { ProfessionalProjectData } from "../data/professional";
-import type { Project, ProjectKind, StackLogo } from "./types";
+import type { CaseStudyFields, Project, ProjectKind } from "./types";
+
+export { usesLocalProjectData } from "./projectSource";
 
 type ProjectRow = {
-  legacy_id: string;
+  slug: string;
   kind: ProjectKind;
   name: string;
   company_name: string | null;
@@ -13,14 +16,21 @@ type ProjectRow = {
   purpose: string | null;
   description: string;
   year: string;
-  tech_stack: StackLogo[] | null;
+  tech_stack: string[] | null;
   project_url: string | null;
   github_url: string | null;
   details: Project["projectDetails"] | null;
+  case_study: CaseStudyFields | null;
+  featured: boolean | null;
+  featured_rank: number | null;
+  role: string | null;
+  value_proposition: string | null;
+  outcome: string | null;
 };
 
-export function projectSlug(name: string) {
-  return name.replace(/ /g, "-").toLowerCase();
+function techTags(raw: string[] | null): string[] {
+  if (!Array.isArray(raw)) return [];
+  return raw.map((t) => t.trim()).filter(Boolean);
 }
 
 export function projectKind(project: Project): ProjectKind {
@@ -28,30 +38,56 @@ export function projectKind(project: Project): ProjectKind {
 }
 
 export function projectPath(project: Project) {
-  return `/projects/${projectKind(project)}/${project.projectId}/${projectSlug(project.projectName)}`;
+  return `/projects/${projectKind(project)}/${project.slug}`;
 }
 
-function fallback(kind: ProjectKind): Project[] {
+export function projectImageDir(project: Project) {
+  return `/project-${project.slug}`;
+}
+
+export function projectCoverImage(project: Project) {
+  return `${projectImageDir(project)}/${project.slug}.png`;
+}
+
+function localProjects(kind: ProjectKind): Project[] {
   return kind === "personal" ? PersonalProjectData : ProfessionalProjectData;
+}
+
+function normalizeSlug(slug: string, kind: ProjectKind): string {
+  let normalized = slug.trim().replace(/^\/+/, "");
+  const kindPrefix = `${kind}/`;
+  if (normalized.startsWith(kindPrefix)) {
+    normalized = normalized.slice(kindPrefix.length);
+  }
+  return normalized;
 }
 
 function mapRow(row: ProjectRow): Project {
   return {
-    projectId: row.legacy_id,
+    slug: normalizeSlug(row.slug, row.kind),
     projectName: row.name,
     companyName: row.company_name ?? undefined,
     industry: row.industry ?? undefined,
     purpose: row.purpose ?? undefined,
     projectDescription: row.description,
     year: row.year,
-    techStack: row.tech_stack ?? [],
+    techTags: techTags(row.tech_stack),
     projectUrl: row.project_url ?? "",
     githubUrl: row.github_url ?? "",
     projectDetails: row.details ?? [],
+    caseStudy: row.case_study ?? undefined,
+    featured: row.featured ?? false,
+    featuredRank: row.featured_rank ?? undefined,
+    role: row.role ?? undefined,
+    valueProposition: row.value_proposition ?? undefined,
+    outcome: row.outcome ?? undefined,
   };
 }
 
-function supabase() {
+const PROJECT_COLUMNS =
+  "slug, kind, name, company_name, industry, purpose, description, year, tech_stack, project_url, github_url, details, case_study, featured, featured_rank, role, value_proposition, outcome";
+
+function createSupabaseClient() {
   const url = env("NEXT_PUBLIC_SUPABASE_URL") || env("PUBLIC_SUPABASE_URL");
   const key =
     env("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY") ||
@@ -60,21 +96,45 @@ function supabase() {
   return createClient(url, key);
 }
 
-export async function getProjects(kind: ProjectKind): Promise<Project[]> {
-  const client = supabase();
-  if (!client) return fallback(kind);
+function assertProductionSupabaseConfigured(): never | void {
+  const url = env("NEXT_PUBLIC_SUPABASE_URL") || env("PUBLIC_SUPABASE_URL");
+  const key =
+    env("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY") ||
+    env("PUBLIC_SUPABASE_PUBLISHABLE_KEY");
+  if (!url || !key) {
+    throw new Error(
+      "[projects] Production build requires NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY in the repo root .env (or Vercel env). Local dev uses src/data/*.ts only.",
+    );
+  }
+}
+
+async function fetchFromSupabase(kind: ProjectKind): Promise<Project[]> {
+  assertProductionSupabaseConfigured();
+  const client = createSupabaseClient()!;
 
   const { data, error } = await client
     .from("projects")
-    .select(
-      "legacy_id, kind, name, company_name, industry, purpose, description, year, tech_stack, project_url, github_url, details",
-    )
+    .select(PROJECT_COLUMNS)
     .eq("kind", kind)
     .eq("published", true)
     .order("sort_order", { ascending: true });
 
-  if (error || !data) return fallback(kind);
+  if (error) {
+    throw new Error(`[projects] Supabase error for kind=${kind}: ${error.message}`);
+  }
+  if (!data?.length) {
+    throw new Error(
+      `[projects] No published ${kind} projects in Supabase. Add rows or set published=true.`,
+    );
+  }
   return (data as ProjectRow[]).map(mapRow);
+}
+
+export async function getProjects(kind: ProjectKind): Promise<Project[]> {
+  if (usesLocalProjectData()) {
+    return localProjects(kind);
+  }
+  return fetchFromSupabase(kind);
 }
 
 export async function getAllProjects() {
@@ -83,24 +143,4 @@ export async function getAllProjects() {
     getProjects("professional"),
   ]);
   return { personal, professional };
-}
-
-export async function getShots(): Promise<string[]> {
-  const token = env("DRIBBBLE_ACCESS_TOKEN");
-  if (!token) return [];
-
-  try {
-    const response = await fetch(
-      `https://api.dribbble.com/v2/user/shots?access_token=${token}`,
-    );
-    if (!response.ok) return [];
-    const data: unknown = await response.json();
-    if (!Array.isArray(data)) return [];
-    return data
-      .slice(0, 3)
-      .map((shot) => shot?.images?.normal as string | undefined)
-      .filter((src): src is string => Boolean(src));
-  } catch {
-    return [];
-  }
 }

@@ -1,6 +1,11 @@
-export const ProfessionalProjectData = [
+import type { Project } from "../lib/types";
+
+/** Local dev only — production reads from Supabase. Keep in sync with DB when possible. */
+export const ProfessionalProjectData: Project[] = [
   {
-    projectId: "4",
+    slug: "eileen-fitzgerald-school",
+    featured: true,
+    featuredRank: 3,
     projectName: "The Eileen Fitzgerald School of Speech and Drama",
     companyName: "The Eileen Fitzgerald School of Speech and Drama",
     industry: "Arts & Media",
@@ -8,32 +13,7 @@ export const ProfessionalProjectData = [
     projectDescription:
       "Corporate website for a Speech and Drama school based in Clare.",
     year: "2020",
-    techStack: [
-      {
-        src: "react.png",
-        alt: "React",
-      },
-      {
-        src: "ts.webp",
-        alt: "TypeScript",
-      },
-      {
-        src: "shadcn.png",
-        alt: "shadcn/ui",
-      },
-      {
-        src: "tailwindcss.png",
-        alt: "TailwindCSS",
-      },
-      {
-        src: "next.png",
-        alt: "NextJS",
-      },
-      {
-        src: "framer.png",
-        alt: "Framer",
-      },
-    ],
+    techTags: ["React", "Next.js", "TypeScript", "Tailwind", "Framer", "shadcn/ui"],
     projectUrl: "https://eileenfitzgerald-school.com",
     githubUrl: "https://github.com/kailafitz/eileen-fitzgerald-school",
     projectDetails: [
@@ -48,9 +28,14 @@ export const ProfessionalProjectData = [
           "Client wanted a dramatic website to go with the theme of a stage and performance. A dark background was important for the client and although it goes against UX principal, I enhanced the brand purple colour to make it stand as best I could.",
       },
     ],
+    valueProposition: "Stage-themed site for a Clare drama school.",
+    role: "Freelance developer",
+    outcome: "Brand-forward site with programme and enrolment content.",
   },
   {
-    projectId: "2",
+    slug: "pure-divilment-pictures",
+    featured: true,
+    featuredRank: 2,
     projectName: "Pure Divilment Pictures",
     companyName: "Pure Divilment Pictures",
     industry: "Arts & Media",
@@ -58,24 +43,7 @@ export const ProfessionalProjectData = [
     projectDescription:
       "Corporate website for a production company based in Dublin.",
     year: "2023",
-    techStack: [
-      {
-        src: "react.png",
-        alt: "React",
-      },
-      {
-        src: "ts.webp",
-        alt: "TypeScript",
-      },
-      {
-        src: "mui.png",
-        alt: "MaterialUI",
-      },
-      {
-        src: "firebase.png",
-        alt: "Firebase",
-      },
-    ],
+    techTags: ["React", "TypeScript", "Material UI", "Firebase"],
     projectUrl: "https://puredivilmentpictures.com",
     githubUrl: "https://github.com/kailafitz/pure-divilment-pictures",
     projectDetails: [
@@ -90,5 +58,8 @@ export const ProfessionalProjectData = [
           "Client wanted a clean and minimalist B&W website with visuals bringing the website to life. This really highlights the work carried out by the company. The website was to be made with no fuss or clutter, whilst providing relevant and necessary information about various aspects of the company and its employees and services.",
       },
     ],
+    valueProposition: "Digital presence for a Dublin production company.",
+    role: "Freelance developer",
+    outcome: "Launched marketing site with CMS-friendly React stack.",
   },
 ];
