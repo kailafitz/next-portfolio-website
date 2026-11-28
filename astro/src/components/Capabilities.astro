@@ -1,0 +1,23 @@
+---
+import PageSection from "./PageSection.astro";
+import { capabilitiesSection } from "../data/landing";
+---
+
+<PageSection
+  id="how-i-think"
+  sectionNumber={capabilitiesSection.number}
+  eyebrow={capabilitiesSection.eyebrow}
+  title={capabilitiesSection.title}
+  viewport={false}
+>
+  <div class="grid stack-grid md:grid-cols-3">
+    {
+      capabilitiesSection.pillars.map((pillar) => (
+        <article class="pillar-card">
+          <h3 class="mb-3 font-display text-lg font-semibold text-ink">{pillar.title}</h3>
+          <p class="text-sm leading-relaxed text-muted">{pillar.body}</p>
+        </article>
+      ))
+    }
+  </div>
+</PageSection>

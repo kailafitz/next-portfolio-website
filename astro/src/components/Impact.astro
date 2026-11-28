@@ -1,0 +1,32 @@
+---
+import PageSection from "./PageSection.astro";
+import { impactMetrics, impactSection } from "../data/landing";
+---
+
+<PageSection
+  sectionNumber={impactSection.number}
+  eyebrow={impactSection.eyebrow}
+  title={impactSection.title}
+  viewport={false}
+>
+  <p class="type-section-lede">
+    A snapshot of commercial and engineering impact.
+  </p>
+  <ul class="grid stack-grid sm:grid-cols-3" role="list">
+    {
+      impactMetrics.map((metric) => (
+        <li>
+          <article class="stat-card h-full d-flex flex-col justify-between">
+          <div>
+              <p class="font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+                {metric.value}
+              </p>
+              <p class="text-sm leading-relaxed text-muted">{metric.label}</p>
+            </div>
+            <p class="font-mono text-[0.65rem] tracking-wide text-sage uppercase">engineering</p>
+          </article>
+        </li>
+      ))
+    }
+  </ul>
+</PageSection>

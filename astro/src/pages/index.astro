@@ -1,21 +1,23 @@
 ---
 import Base from "../layouts/Base.astro";
 import Intro from "../components/Intro.astro";
-import Bio from "../components/Bio.astro";
+import Impact from "../components/Impact.astro";
 import Projects from "../components/Projects.astro";
-import Shots from "../components/Shots.astro";
+import Capabilities from "../components/Capabilities.astro";
+import BehindTheScreen from "../components/BehindTheScreen.astro";
 import Contact from "../components/Contact.astro";
-import { getAllProjects, getShots } from "../lib/projects";
+import { getAllProjects } from "../lib/projects";
 
 const { personal, professional } = await getAllProjects();
-const shots = await getShots();
 ---
 
 <Base canonical="/">
   <main>
     <Intro />
-    <Bio />
+    <Impact />
     <Projects personal={personal} professional={professional} />
+    <Capabilities />
+    <BehindTheScreen />
     <Contact />
   </main>
 </Base>

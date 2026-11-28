@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --color-primary: #e26d5c;
-  --color-primary-dark: #c45140;
-  --color-ink: #111111;
-  --color-muted: #737373;
-  --color-line: #e6e6e6;
-  --color-paper: #fafafa;
-  --spacing-site-header: 5.5rem;
-  --spacing-site-header-md: 6rem;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --color-primary: #d24a29;
+  --color-primary-dark: #b23d22;
+  --color-ink: #202020;
+  --color-muted: #5c5c5c;
+  --color-line: #d8d2c4;
+  --color-paper: #ebe6dc;
+  --color-ivory: #f4f1e8;
+  --color-sage: #b8c1ae;
+  --spacing-site-header: 3.75rem;
+  --spacing-site-header-md: 4rem;
 }
 
 /*
@@ -32,6 +35,10 @@
  * type-section-lede      — opening paragraph under the section title (same role on every section)
  * layout-site-footer     — footer vertical padding inside layout-container
  * PageSection.astro      — one wrapper for id, inset, viewport, header, and body
+ * section-number         — editorial index (IBM Plex Mono)
+ * bento-grid             — asymmetric featured work layout
+ * bento-card             — project card shell
+ * tag-chip               — inline tech label (replaces logo wall on cards)
  */
 
 @layer components {
@@ -60,7 +67,7 @@
   }
 
   .section-hero {
-    @apply flex items-center bg-white;
+    @apply flex items-center bg-ivory;
     min-height: calc(100dvh - var(--spacing-site-header));
   }
 
@@ -105,6 +112,46 @@
   .layout-site-footer {
     @apply py-4;
   }
+
+  .section-number {
+    @apply font-mono text-xs font-medium tracking-[0.2em] text-muted uppercase;
+  }
+
+  .section-band-header {
+    @apply flex flex-wrap items-end justify-between gap-4 border-b border-line pb-6;
+  }
+
+  .type-hero-title {
+    @apply m-0 font-display text-[2.1rem] font-semibold leading-[1.08] tracking-tight sm:text-5xl md:text-[3.1rem] lg:text-[3.5rem];
+  }
+
+  .bento-grid {
+    @apply grid grid-cols-1 gap-6 md:grid-cols-12 md:auto-rows-[minmax(11rem,auto)] md:gap-8;
+  }
+
+  .bento-card {
+    @apply flex h-full flex-col overflow-hidden rounded-sm border border-line bg-white transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(32,32,32,0.08)];
+  }
+
+  .tag-chip {
+    @apply inline-flex rounded-full border border-line bg-ivory px-2.5 py-0.5 font-mono text-[0.7rem] tracking-wide text-ink uppercase;
+  }
+
+  .stat-card {
+    @apply flex flex-col gap-2 border border-line bg-white p-6 md:p-8;
+  }
+
+  .stat-card[data-unverified="true"] {
+    @apply border-dashed border-sage;
+  }
+
+  .pillar-card {
+    @apply border border-line bg-white p-6 md:p-8;
+  }
+
+  .nav-wordmark {
+    @apply font-display text-xl font-semibold tracking-tight text-ink;
+  }
 }
 
 html {
@@ -113,7 +160,7 @@ html {
 
 body {
   margin: 0;
-  background: #fff;
+  background: var(--color-ivory);
   color: var(--color-ink);
   font-family: var(--font-sans);
 }
@@ -168,16 +215,16 @@ body {
 
 .btn-light {
   color: var(--color-ink);
-  background: #fff;
+  background: var(--color-ivory);
   border-color: var(--color-line);
-  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.05);
+  box-shadow: 0 1px 2px rgba(32, 32, 32, 0.05);
 }
 
 .btn-light:hover {
   color: var(--color-primary-dark);
   border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-line));
-  background: color-mix(in srgb, var(--color-primary) 7%, #fff);
-  box-shadow: 0 4px 16px rgba(226, 109, 92, 0.14);
+  background: color-mix(in srgb, var(--color-primary) 7%, var(--color-ivory));
+  box-shadow: 0 4px 16px rgba(210, 74, 41, 0.12);
   transform: translateY(-1px);
 }
 
@@ -203,66 +250,8 @@ body {
   animation: pip-blink 2.8s ease-in-out infinite;
 }
 
-.metal-scan {
-  position: relative;
-  overflow: hidden;
-}
-
-.metal-scan::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 22%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #f7f8fa 35%, #9aa3b2 72%, transparent);
-  animation: metal-pass 7s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.sensor-ring {
-  position: absolute;
-  inset: -18px;
-  width: calc(100% + 36px);
-  height: calc(100% + 36px);
-  pointer-events: none;
-  animation: sensor-spin 18s linear infinite;
-}
-
-.metal-frame {
-  background-image:
-    linear-gradient(#c5cad3, #c5cad3),
-    linear-gradient(#c5cad3, #c5cad3),
-    linear-gradient(#c5cad3, #c5cad3),
-    linear-gradient(#c5cad3, #c5cad3),
-    linear-gradient(#c5cad3, #c5cad3),
-    linear-gradient(#c5cad3, #c5cad3),
-    linear-gradient(#c5cad3, #c5cad3),
-    linear-gradient(#c5cad3, #c5cad3);
-  background-repeat: no-repeat;
-  background-size:
-    12px 1px, 1px 12px,
-    12px 1px, 1px 12px,
-    12px 1px, 1px 12px,
-    12px 1px, 1px 12px;
-  background-position:
-    7px 7px, 7px 7px,
-    right 7px top 7px, right 7px top 7px,
-    left 7px bottom 7px, left 7px bottom 7px,
-    right 7px bottom 7px, right 7px bottom 7px;
-}
-
 .reveal {
   animation: rise 0.7s ease both;
-}
-
-@keyframes metal-pass {
-  0% { transform: translateX(-130%); }
-  100% { transform: translateX(480%); }
-}
-
-@keyframes sensor-spin {
-  to { transform: rotate(360deg); }
 }
 
 @keyframes pip-blink {
@@ -320,8 +309,6 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .metal-scan::after,
-  .sensor-ring,
   .live-pip,
   .reveal {
     animation: none;

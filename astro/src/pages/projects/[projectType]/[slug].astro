@@ -1,28 +1,19 @@
 ---
-import Base from "../../../../layouts/Base.astro";
-import Contact from "../../../../components/Contact.astro";
-import Icon from "../../../../components/Icon.astro";
-import TechLogos from "../../../../components/TechLogos.astro";
-import { getAllProjects, projectPath, projectSlug } from "../../../../lib/projects";
-import type { Project } from "../../../../lib/types";
+import Base from "../../../layouts/Base.astro";
+import Icon from "../../../components/Icon.astro";
+import { resolveCaseStudySections } from "../../../lib/caseStudy";
+import { getAllProjects, projectCoverImage, projectPath } from "../../../lib/projects";
+import type { Project } from "../../../lib/types";
 
 export async function getStaticPaths() {
   const { personal, professional } = await getAllProjects();
   return [
     ...personal.map((project) => ({
-      params: {
-        projectType: "personal",
-        projectId: project.projectId,
-        projectName: projectSlug(project.projectName),
-      },
+      params: { projectType: "personal", slug: project.slug },
       props: { project },
     })),
     ...professional.map((project) => ({
-      params: {
-        projectType: "professional",
-        projectId: project.projectId,
-        projectName: projectSlug(project.projectName),
-      },
+      params: { projectType: "professional", slug: project.slug },
       props: { project },
     })),
   ];
@@ -33,7 +24,8 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const image = `/project-${project.projectId}/${projectSlug(project.projectName)}.png`;
+const sections = resolveCaseStudySections(project);
+const tags = project.techTags;
 ---
 
 <Base
@@ -45,19 +37,25 @@ const image = `/project-${project.projectId}/${projectSlug(project.projectName)}
     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
     </svg>
-    Home
+    Back to work
   </a>
   <article class="layout-container section-inset-compact">
     <div class="grid items-end gap-10 md:grid-cols-12">
       <div class="md:col-span-7">
-        <h1 class="mb-6 font-display text-[2.3rem] font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+        <p class="font-mono text-xs tracking-wide text-muted uppercase">{project.year}</p>
+        <h1 class="type-display-title mt-3 mb-6 w-full text-[2.3rem] sm:text-5xl">
           {project.projectName}
         </h1>
-        <TechLogos logos={project.techStack} />
-        <div class="flex flex-col gap-3 sm:flex-row sm:justify-between">
+        <p class="mb-6 max-w-xl leading-7 text-muted">{project.projectDescription}</p>
+        <ul class="mb-8 flex flex-wrap gap-2" role="list">
+          {tags.map((tag) => (
+            <li class="tag-chip">{tag}</li>
+          ))}
+        </ul>
+        <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           {
             project.githubUrl && (
-              <a class="btn btn-light w-full sm:w-[47%]" href={project.githubUrl} target="_blank" rel="noreferrer">
+              <a class="btn btn-light w-full sm:w-auto" href={project.githubUrl} target="_blank" rel="noreferrer">
                 <Icon name="github" class="h-6 w-6" strokeWidth={1.1} />
                 View code
               </a>
@@ -66,7 +64,7 @@ const image = `/project-${project.projectId}/${projectSlug(project.projectName)}
           {
             project.projectUrl && (
               <a
-                class="btn btn-light w-full sm:w-[47%]"
+                class="btn btn-light w-full sm:w-auto"
                 href={project.projectUrl}
                 target="_blank"
                 rel="noreferrer"
@@ -80,8 +78,14 @@ const image = `/project-${project.projectId}/${projectSlug(project.projectName)}
           }
         </div>
       </div>
-      <div class="md:col-span-5 md:pl-8">
-        <img src={image} alt={project.projectName} width="500" height="300" class="mx-auto block h-auto max-w-full" />
+      <div class="md:col-span-5 md:pl-4">
+        <img
+          src={projectCoverImage(project)}
+          alt={`Screenshot of ${project.projectName}`}
+          width="500"
+          height="300"
+          class="mx-auto block h-auto max-w-full rounded-sm border border-line"
+        />
       </div>
     </div>
 
@@ -90,18 +94,18 @@ const image = `/project-${project.projectId}/${projectSlug(project.projectName)}
         project.companyName && (
           <div class="space-y-4 md:col-span-4">
             <div class="flex flex-col gap-1 md:flex-row md:justify-between">
-              <p class="text-sm font-medium uppercase tracking-[0.14em]">Company</p>
+              <p class="font-mono text-xs tracking-wide text-muted uppercase">Company</p>
               <p class="text-sm leading-7 md:text-right">{project.companyName}</p>
             </div>
             {project.industry && (
               <div class="flex flex-col gap-1 md:flex-row md:justify-between">
-                <p class="text-sm font-medium uppercase tracking-[0.14em]">Industry</p>
+                <p class="font-mono text-xs tracking-wide text-muted uppercase">Industry</p>
                 <p class="text-sm leading-7">{project.industry}</p>
               </div>
             )}
             {project.purpose && (
               <div class="flex flex-col gap-1 md:flex-row md:justify-between">
-                <p class="text-sm font-medium uppercase tracking-[0.14em]">Purpose</p>
+                <p class="font-mono text-xs tracking-wide text-muted uppercase">Purpose</p>
                 <p class="text-sm leading-7">{project.purpose}</p>
               </div>
             )}
@@ -112,14 +116,13 @@ const image = `/project-${project.projectId}/${projectSlug(project.projectName)}
         project.companyName && <div class="hidden md:col-span-8 md:block" />
       }
       {
-        project.projectDetails.map((section) => (
+        sections.map((section) => (
           <div class="contents">
-            <h2 class="font-display text-2xl font-medium md:col-span-4">{section.sectionTitle}</h2>
-            <p class="text-[0.95rem] leading-7 md:col-span-8">{section.sectionDetails}</p>
+            <h2 class="font-display text-xl font-semibold md:col-span-4">{section.sectionTitle}</h2>
+            <p class="text-[0.95rem] leading-7 text-ink md:col-span-8">{section.sectionDetails}</p>
           </div>
         ))
       }
     </div>
   </article>
-  <Contact />
 </Base>

@@ -1,6 +1,8 @@
 ---
 import PageSection from "./PageSection.astro";
 import ProjectCard from "./ProjectCard.astro";
+import { workSection } from "../data/landing";
+import { resolveFeaturedProjects } from "../lib/featured";
 import type { Project } from "../lib/types";
 
 interface Props {
@@ -9,47 +11,30 @@ interface Props {
 }
 
 const { personal, professional } = Astro.props;
-
-const tabs = [
-  { id: "personal", label: "Personal", projects: personal },
-  { id: "professional", label: "Professional", projects: professional },
-];
+const featured = resolveFeaturedProjects(personal, professional);
 ---
 
-<PageSection id="projects" eyebrow="Portfolio" title="[WIP] Selected work">
-  <div data-tabs>
-    <div class="flex w-fit gap-2 py-2" role="tablist" aria-label="Project tabs">
-      {
-        tabs.map((tab, index) => (
-          <button
-            type="button"
-            role="tab"
-            data-tab={tab.id}
-            aria-selected={index === 0 ? "true" : "false"}
-            class:list={[
-              "min-h-11 px-3 text-base font-medium",
-              index === 0 ? "text-primary shadow-[inset_0_-1px_0_#e26d5c]" : "text-muted hover:text-ink",
-            ]}
-          >
-            {tab.label}
-          </button>
-        ))
-      }
-    </div>
-    {
-      tabs.map((tab, index) => (
-        <div class="pt-8" role="tabpanel" data-panel={tab.id} hidden={index !== 0}>
-          {tab.projects.length === 0 ? (
-            <p class="text-muted">New work will land here shortly.</p>
-          ) : (
-            <div class="stack-content">
-              {tab.projects.map((project) => (
-                <ProjectCard project={project} />
-              ))}
-            </div>
-          )}
-        </div>
-      ))
-    }
-  </div>
+<PageSection
+  id="projects"
+  sectionNumber={workSection.number}
+  eyebrow={workSection.eyebrow}
+  title={workSection.title}
+  viewport={false}
+>
+  {
+    featured.length === 0 ? (
+      <p class="text-muted">
+        No featured projects yet. Set <code class="font-mono text-xs">featured</code> and{" "}
+        <code class="font-mono text-xs">featured_rank</code> on projects in local data or Supabase.
+      </p>
+    ) : (
+      <div class="bento-grid">
+        {
+          featured.map(({ project, bentoClass }) => (
+            <ProjectCard project={project} class={bentoClass} />
+          ))
+        }
+      </div>
+    )
+  }
 </PageSection>
